@@ -1,0 +1,18 @@
+# One-epoch EvoTool treatment with source tool JSON Schema shown to the Caller.
+# Match the static control's model, seed, split, and schema-enabled data.
+llm:
+  model_name: evotool-qwen3:8b
+  backend: ollama
+  base_url: http://127.0.0.1:11434/v1
+  api_key: ollama
+  temperature: 0.0
+  max_tokens: 512
+
+caller_schema: true
+data_path: data_schema
+
+evolve:
+  mutation_target: blame
+  selection: diversity
+  epochs: 1
+
