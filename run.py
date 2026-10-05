@@ -33,7 +33,7 @@ def build_config(config_path: str) -> EvoToolConfig:
     cfg = EvoToolConfig()
     for path in (BASE_CONFIG, config_path):
         if path and os.path.exists(path):
-            with open(path, "r") as f:
+            with open(path, "r", encoding="utf-8") as f:
                 raw = yaml.safe_load(f) or {}
             _merge_into_dataclass(cfg, raw)
     return cfg

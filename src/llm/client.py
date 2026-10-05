@@ -36,8 +36,13 @@ class LLMClient:
             "messages": messages,
             "temperature": self.config.temperature if temperature is None else temperature,
             "max_tokens": self.config.max_tokens if max_tokens is None else max_tokens,
-            "extra_body": {"chat_template_kwargs": {"enable_thinking": False}},
         }
+        # Qwen3 thinking must be disabled so structured policy outputs contain only
+        # the requested JSON. vLLM and Ollama expose this through different fields.
+        if self.config.backend == "ollama":
+            kwargs["reasoning_effort"] = "none"
+        elif self.config.backend == "vllm":
+            kwargs["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
         if json_mode:
             kwargs["response_format"] = {"type": "json_object"}
         try:

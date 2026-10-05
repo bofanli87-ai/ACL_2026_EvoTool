@@ -17,6 +17,7 @@ import yaml
 @dataclass
 class LLMConfig:
     model_name: str = "Qwen3-8B"
+    backend: str = "vllm"       # vllm | ollama | generic
     temperature: float = 0.0
     max_tokens: int = 1024
     api_key: str = ""
@@ -103,7 +104,7 @@ def _merge_into_dataclass(instance: Any, data: dict) -> Any:
 
 
 def load_config(yaml_path: str) -> EvoToolConfig:
-    with open(yaml_path, "r") as f:
+    with open(yaml_path, "r", encoding="utf-8") as f:
         raw = yaml.safe_load(f) or {}
     cfg = EvoToolConfig()
     _merge_into_dataclass(cfg, raw)

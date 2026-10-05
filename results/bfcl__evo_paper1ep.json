@@ -1,0 +1,31 @@
+{
+  "preset": "local_ollama_paper1ep",
+  "benchmark": "bfcl",
+  "mutation_target": "blame",
+  "selection": "diversity",
+  "score": 43.33,
+  "success_rate": 43.33,
+  "mean_reward": 42.55,
+  "tokens": 1107334,
+  "seconds": 3051.0,
+  "n_train": 90,
+  "n_sel": 30,
+  "n_test": 30,
+  "held_out_leak": 0,
+  "population_size": 7,
+  "population_ids": [
+    "init",
+    "g0-planner",
+    "g3-planner",
+    "g6-planner",
+    "g17-planner",
+    "g23-caller",
+    "g26-caller"
+  ],
+  "test_ensemble": false,
+  "deployed_policy_ids": [
+    "g26-caller"
+  ],
+  "runlog": "results/logs\\bfcl__local_ollama_paper1ep.runlog.jsonl",
+  "runlog_summary": "results/logs\\bfcl__local_ollama_paper1ep.runlog.summary.json"
+}

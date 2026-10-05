@@ -1,0 +1,14 @@
+# local_ollama on bfcl  (mutation=blame, selection=diversity)
+# split: train=20 sel=10 test=20 leak=0
+gen 0 (epoch 0): parent=init target=caller parent_avg=0.125 child_avg=0.125 reject | pop=1
+gen 1 (epoch 0): parent=init target=caller parent_avg=0.095 child_avg=0.095 reject | pop=1
+gen 2 (epoch 0): parent=init target=caller parent_avg=0.118 child_avg=0.118 reject | pop=1
+gen 3 (epoch 0): parent=init target=caller parent_avg=0.150 child_avg=0.500 ACCEPT | pop=2
+gen 4 (epoch 0): parent=init target=planner parent_avg=0.112 child_avg=0.135 ACCEPT | pop=3
+gen 5 (epoch 0): parent=init target=caller parent_avg=0.150 child_avg=0.150 reject | pop=3
+gen 6 (epoch 0): parent=g3-caller target=selector parent_avg=0.125 child_avg=0.150 ACCEPT | pop=3
+gen 7 (epoch 0): parent=g3-caller target=caller parent_avg=0.150 child_avg=0.150 reject | pop=3
+gen 8 (epoch 0): parent=init target=caller parent_avg=0.850 child_avg=0.850 reject | pop=3
+gen 9 (epoch 0): parent=init target=caller parent_avg=0.116 child_avg=0.116 reject | pop=3
+# FINAL held-out test success=10.0 mean_reward=19.67 pop=3 ids=['init', 'g3-caller', 'g4-planner']
+# deploy=single deployed_ids=['g3-caller']
