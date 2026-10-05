@@ -59,6 +59,11 @@ def main() -> None:
 
     client = LLMClient(cfg.llm)
     instances = load_instances(cfg.benchmark, cfg.data_path)
+    if cfg.caller_schema:
+        schema_tools = sum(bool(t.get("parameter_schema"))
+                           for item in instances for t in item.get("available_tools", []))
+        all_tools = sum(len(item.get("available_tools", [])) for item in instances)
+        print(f"caller JSON Schema prompt: enabled ({schema_tools}/{all_tools} tools have schema)")
     train, sel, test = split_instances(instances, cfg)
     # held-out test must be disjoint from train/sel
     _ids = lambda xs: {x["id"] for x in xs}
@@ -79,6 +84,7 @@ def main() -> None:
     run_log = RunLog(runlog_path, meta={
         "preset": name, "benchmark": cfg.benchmark,
         "mutation_target": cfg.evolve.mutation_target, "selection": cfg.evolve.selection,
+        "caller_schema": cfg.caller_schema,
         "seed": cfg.seed, "epochs": cfg.evolve.epochs, "batch_size": cfg.evolve.batch_size,
         "n_train": len(train), "n_sel": len(sel), "n_test": len(test),
     })
@@ -91,11 +97,11 @@ def main() -> None:
     # kept ONLY as the named optional ablation evolve.test_ensemble (never headline).
     if cfg.evolve.test_ensemble:
         deployed_ids = [p.policy_id for p in population]
-        episodes = [route_episode(client, population, x, cfg.max_steps) for x in test]
+        episodes = [route_episode(client, population, x, cfg.max_steps, cfg.caller_schema) for x in test]
     else:
         theta_star = best_policy(client, cfg, population, sel)
         deployed_ids = [theta_star.policy_id]
-        episodes = [run_episode(client, theta_star, x, cfg.max_steps) for x in test]
+        episodes = [run_episode(client, theta_star, x, cfg.max_steps, cfg.caller_schema) for x in test]
     success = success_rate([e.success for e in episodes])
     mean_reward = headline_score([e.reward for e in episodes])
     elapsed = time.time() - t0
@@ -118,6 +124,7 @@ def main() -> None:
         "benchmark": cfg.benchmark,
         "mutation_target": cfg.evolve.mutation_target,
         "selection": cfg.evolve.selection,
+        "caller_schema": cfg.caller_schema,
         "score": round(success, 2),          # headline = task success rate (paper metric)
         "success_rate": round(success, 2),
         "mean_reward": round(mean_reward, 2),
@@ -159,3 +166,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
