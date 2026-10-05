@@ -81,16 +81,28 @@ def run_selector(client: LLMClient, spec: str, query: str, substep: str,
 
 
 def run_caller(client: LLMClient, spec: str, tool: dict, query: str, substep: str,
-               state: dict) -> dict:
+               state: dict, use_schema: bool = False) -> dict:
     # The Caller constructs valid arguments for the selected tool of the CURRENT
     # substep, resolving values from the task and from earlier observations in STATE.
     fmt = '\n\nReturn JSON only: {"arguments": {"<param>": "<value>", ...}}.'
+    schema = tool.get("parameter_schema") if use_schema else None
+    schema_section = ""
+    if isinstance(schema, dict) and schema:
+        fmt += (
+            " Use the JSON Schema below as interface guidance: preserve primitive and "
+            "array types, include required properties, and do not add undeclared properties. "
+            "The schema describes shape only; infer values from the task and observations."
+        )
+        import json
+        schema_text = json.dumps(schema, ensure_ascii=False, separators=(",", ":"))
+        schema_section = f"TOOL_PARAMETER_JSON_SCHEMA:\n{schema_text}\n\n"
     messages = [
         {"role": "system", "content": spec + fmt},
         {"role": "user", "content": (
             f"USER_TASK:\n{query}\n\nCURRENT_SUBGOAL:\n{substep}\n\n"
             f"SELECTED_TOOL:\n{tool.get('name')}: {tool.get('description', '')}\n\n"
-            f"TOOL_DOC:\n{_tool_doc(tool)}\n\nOBSERVATIONS SO FAR:\n{_state_brief(state)}"
+            f"TOOL_DOC:\n{_tool_doc(tool)}\n\n{schema_section}"
+            f"OBSERVATIONS SO FAR:\n{_state_brief(state)}"
         )},
     ]
     out = client.generate_json(messages)

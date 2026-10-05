@@ -92,8 +92,9 @@ def _step_summary(sub: str, tool: str, obs: dict) -> str:
     return f"[{sub}] {tool} -> {out}"
 
 
-def run_episode(client: LLMClient, policy: Policy, instance: dict, max_steps: int) -> Episode:
-    key = (_policy_key(policy), instance.get("id"))
+def run_episode(client: LLMClient, policy: Policy, instance: dict, max_steps: int,
+                caller_schema: bool = False) -> Episode:
+    key = (_policy_key(policy), instance.get("id"), caller_schema)
     if key in _EPISODE_CACHE:
         return _EPISODE_CACHE[key]
 
@@ -113,7 +114,8 @@ def run_episode(client: LLMClient, policy: Policy, instance: dict, max_steps: in
         if tool.upper() in _NO_TOOL:
             continue                      # this substep requires no tool call
         card = registry.find_tool(tools, tool)
-        args = modules.run_caller(client, policy.caller, card, query, sub, state) if card else {}
+        args = modules.run_caller(client, policy.caller, card, query, sub, state,
+                                  use_schema=caller_schema) if card else {}
         if executor is None:
             # bfcl: NO execution — record the chosen call, no observation produced.
             obs = {"tool": tool, "args": args, "output": None,
@@ -140,19 +142,22 @@ def run_episode(client: LLMClient, policy: Policy, instance: dict, max_steps: in
     return episode
 
 
-def mean_reward(client: LLMClient, policy: Policy, instances: list[dict], max_steps: int) -> float:
+def mean_reward(client: LLMClient, policy: Policy, instances: list[dict], max_steps: int,
+                caller_schema: bool = False) -> float:
     if not instances:
         return 0.0
-    return sum(run_episode(client, policy, x, max_steps).reward for x in instances) / len(instances)
+    return sum(run_episode(client, policy, x, max_steps, caller_schema).reward
+               for x in instances) / len(instances)
 
 
 def _error_count(ep: Episode) -> int:
     return sum(1 for s in ep.steps if s.observation.get("status") == "error")
 
 
-def route_episode(client: LLMClient, policies: list[Policy], instance: dict, max_steps: int) -> Episode:
+def route_episode(client: LLMClient, policies: list[Policy], instance: dict, max_steps: int,
+                  caller_schema: bool = False) -> Episode:
     """Optional best-of-population routing (ablation only — SPEC.md §7 keeps
     the single Theta* at test time). Runs every retained policy and keeps the rollout
     with the fewest execution errors, breaking ties by reward."""
-    eps = [run_episode(client, p, instance, max_steps) for p in policies]
+    eps = [run_episode(client, p, instance, max_steps, caller_schema) for p in policies]
     return min(eps, key=lambda e: (_error_count(e), -e.reward))

@@ -18,10 +18,11 @@ from src.policy.agent import run_episode
 from src.policy.modules import Policy
 
 
-def _reward_matrix(client, population, sel_set, max_steps) -> list[list[float]]:
+def _reward_matrix(client, cfg, population, sel_set, max_steps) -> list[list[float]]:
     # rows = policies, cols = selection instances (episodes are cached, so this
     # only actually runs LLM calls for policy/instance pairs not seen before).
-    return [[run_episode(client, p, x, max_steps).reward for x in sel_set] for p in population]
+    return [[run_episode(client, p, x, max_steps, cfg.caller_schema).reward for x in sel_set]
+            for p in population]
 
 
 def _avg(row: list[float]) -> float:
@@ -38,7 +39,7 @@ def select_population(
     if strategy == "static" or len(population) == 1:
         return population, {population[0].policy_id: 1.0}
 
-    R = _reward_matrix(client, population, sel_set, cfg.max_steps)
+    R = _reward_matrix(client, cfg, population, sel_set, cfg.max_steps)
 
     if strategy == "greedy":
         best = max(range(len(population)), key=lambda i: _avg(R[i]))
@@ -68,7 +69,7 @@ def best_policy(client: LLMClient, cfg: EvoToolConfig, population: list[Policy],
                 sel_set: list[dict]) -> Policy:
     if len(population) == 1:
         return population[0]
-    R = _reward_matrix(client, population, sel_set, cfg.max_steps)
+    R = _reward_matrix(client, cfg, population, sel_set, cfg.max_steps)
     best = max(range(len(population)), key=lambda i: _avg(R[i]))
     return population[best]
 
@@ -81,7 +82,7 @@ def sel_stats(client: LLMClient, cfg: EvoToolConfig, population: list[Policy],
     Win counts mirror the diversity rule: W(x) = argmax_Theta r_x(Theta)."""
     if not population:
         return {}, {}
-    R = _reward_matrix(client, population, sel_set, cfg.max_steps)
+    R = _reward_matrix(client, cfg, population, sel_set, cfg.max_steps)
     means = {p.policy_id: _avg(R[i]) for i, p in enumerate(population)}
     wins = {p.policy_id: 0 for p in population}
     for j in range(len(sel_set)):

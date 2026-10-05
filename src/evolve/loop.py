@@ -156,7 +156,7 @@ def evolve(client: LLMClient, cfg: EvoToolConfig, train: list[dict], sel: list[d
 
         parent = _sample_parent(
             population, _parent_weights(ev.parent_select, weights, sel_means, population), rng)
-        episodes = [run_episode(client, parent, x, cfg.max_steps) for x in batch]
+        episodes = [run_episode(client, parent, x, cfg.max_steps, cfg.caller_schema) for x in batch]
         diag_list = [extract_diagnostics(e, e.instance) for e in episodes]
 
         rep, rep_diag = _representative(episodes, diag_list)
@@ -170,11 +170,11 @@ def evolve(client: LLMClient, cfg: EvoToolConfig, train: list[dict], sel: list[d
             # cached and reused by the select_population call below (no extra dedup needed).
             parent_avg = sel_means.get(parent.policy_id)
             if parent_avg is None:
-                parent_avg = mean_reward(client, parent, sel, cfg.max_steps)
-            child_avg = mean_reward(client, child, sel, cfg.max_steps)
+                parent_avg = mean_reward(client, parent, sel, cfg.max_steps, cfg.caller_schema)
+            child_avg = mean_reward(client, child, sel, cfg.max_steps, cfg.caller_schema)
         else:
             parent_avg = sum(e.reward for e in episodes) / len(episodes)
-            child_avg = mean_reward(client, child, batch, cfg.max_steps)
+            child_avg = mean_reward(client, child, batch, cfg.max_steps, cfg.caller_schema)
         accepted = child_avg > parent_avg
         if accepted:
             population.append(child)
@@ -203,7 +203,7 @@ def evolve(client: LLMClient, cfg: EvoToolConfig, train: list[dict], sel: list[d
                 # token counter so it cannot inflate the headline result['tokens'] —
                 # disabling logging must not change a run's reported numbers.
                 _tok = client.total_tokens
-                test_score = mean_reward(client, best_pol, test, cfg.max_steps)
+                test_score = mean_reward(client, best_pol, test, cfg.max_steps, cfg.caller_schema)
                 client.total_tokens = _tok
             runlog.log_generation(
                 gen=g, epoch=epoch, parent=parent, batch_ids=[x.get("id") for x in batch],

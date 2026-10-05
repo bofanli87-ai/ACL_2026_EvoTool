@@ -76,7 +76,7 @@ def extract_query(question) -> str:
 
 
 def flatten_tools(function_specs: list[dict]) -> list[dict]:
-    """BFCL `function` spec -> template tool shape {name, description, parameters:{arg: desc}}."""
+    """BFCL tool shape, preserving source JSON Schema for caller ablations."""
     tools = []
     for fn in function_specs:
         params = fn.get("parameters", {}) or {}
@@ -86,6 +86,8 @@ def flatten_tools(function_specs: list[dict]) -> list[dict]:
             "name": fn.get("name", ""),
             "description": fn.get("description", "") or "",
             "parameters": flat,
+            # Source schema only; never derive from possible_answer/gold_match.
+            "parameter_schema": params,
         })
     return tools
 
@@ -123,6 +125,8 @@ def main():
                          "https://github.com/ShishirPatil/gorilla (berkeley-function-call-leaderboard)")
     ap.add_argument("--bfcl-gt", default=None,
                     help="path to the possible_answer dir (default: <bfcl-raw>/possible_answer)")
+    ap.add_argument("--out", default=OUT,
+                    help=f"output samples.json path (default: {OUT})")
     args = ap.parse_args()
     if not args.bfcl_raw or not os.path.isdir(args.bfcl_raw):
         ap.error("point --bfcl-raw (or the BFCL_RAW_DIR env var) at the bfcl_eval/data dir of a "
@@ -168,10 +172,11 @@ def main():
     print(f"  total selected = {len(selected)}")
     assert len(selected) == TARGET, f"expected {TARGET}, got {len(selected)}"
 
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    with open(OUT, "w", encoding="utf-8") as f:
+    out_path = os.path.abspath(args.out)
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump(selected, f, indent=2)
-    print(f"  wrote {len(selected)} instances -> {OUT}")
+    print(f"  wrote {len(selected)} instances -> {out_path}")
 
 
 if __name__ == "__main__":
