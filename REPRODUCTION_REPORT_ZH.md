@@ -719,3 +719,54 @@ static 对照，例如 seed 1、7、21、42、100，以验证稳定性。完整�
 `local_ollama` 决定，因此实验二的三个同名日志已被实验三覆盖；实验二的最终 JSON 仍保留。
 表中 runlog 校验值均对应实验三。后续实验应使用不同 config 文件名或在运行后立即归档整个
 `results/`，并持续记录 seed、命令、Git commit 和文件哈希。
+
+## 14. 实验七：静态策略 + JSON Schema 提示
+
+### 14.1 实验目的与实现
+
+本实验开始验证 JSON Schema 是否能帮助 Caller 正确构造工具参数。当前实现仅将工具原始
+`parameters` JSON Schema 放入 Caller 提示词；不进行本地参数校验、不触发修复调用，也不使用
+受约束解码，因此不会因校验或修复增加模型调用。实验开关为 `caller_schema: true`。
+
+原始 BFCL 工具定义由 Gorilla/BFCL 仓库读取，schema 版数据单独写入
+`data_schema/bfcl/samples.json`，不覆盖既有 `data/bfcl/samples.json`。重建后，150 个任务的
+ID、query、gold_plan 和 gold_match 均与既有数据一致；333/333 个可用工具保留了参数 schema。
+
+运行配置：`configs/local_ollama_static_schema.yaml`。命令：
+
+```powershell
+.\.venv\Scripts\python.exe run.py `
+  --config configs/local_ollama_static_schema.yaml `
+  --benchmark bfcl `
+  --out results\bfcl__static_schema.json
+```
+
+### 14.2 结果
+
+| 指标 | 静态 + Schema（本实验） | 静态无 Schema（实验六） |
+|---|---:|---:|
+| BFCL 成功数 | 14/30 | 3/30 |
+| 成功率 | 46.67% | 10.00% |
+| 平均 reward | 44.74 | 19.08 |
+| tokens | 90,910 | 78,533 |
+| 耗时 | 257.6 秒（约 4 分 18 秒） | 234.5 秒（约 3 分 55 秒） |
+
+相较实验六，静态 + Schema 多成功 11 题，成功率提高 36.67 个百分点，平均 reward 提高
+25.66；tokens 增加约 15.8%，耗时增加约 9.9%。两个结果均为 seed 42、90/30/30 划分、30 条
+held-out test，且 held-out leak=0。数据核对确认两个版本的任务和 gold 完全相同，主要处理差异是
+本实验向 Caller 提供了原始工具参数 schema。
+
+### 14.3 阶段性解释与限制
+
+这是单次本地运行，结果显示 Schema 提示有很强的正向信号，但尚不足以证明提升稳定或可泛化。
+目前只完成静态策略条件下的对照；还需运行 EvoTool + Schema，判断进化是否能在 schema 已提供时
+继续带来增益。后续可补跑多个 seed，并保存逐题预测与调用参数，分析被修复的失败是否主要属于
+类型、必填参数或额外参数错误。
+
+| 文件 | 用途 | SHA-256 |
+|---|---|---|
+| `data_schema/bfcl/samples.json` | 保留原始工具参数 schema 的 150 条 BFCL 样本 | `420DE7DE354868067B77CEE605507FA424232B4F612EB5E5D5A8698DF5F86D1D` |
+| `results/bfcl__static_schema.json` | 实验七最终指标 | `E0630EB9BB64AC0485A869DB9139DD3A0FF1C8F57001234D208E3F0967546CFF` |
+| `results/logs/bfcl__local_ollama_static_schema.runlog.jsonl` | 实验七结构化 runlog | `E5B55C7151D94F73B9A30D8FA02542ACC948CD869F5F7E0347C95FAE9022EB4C` |
+| `results/logs/bfcl__local_ollama_static_schema.runlog.summary.json` | 实验七汇总 | `B8D6F7F513DA14C1E1E714263353DE2A26F63E5417D069E1F14BC060CA8C2001` |
+
