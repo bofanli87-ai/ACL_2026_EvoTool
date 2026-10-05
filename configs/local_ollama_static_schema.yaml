@@ -1,0 +1,18 @@
+# Static-policy control with source tool JSON Schema shown to the Caller.
+# Prompt guidance only: no post-hoc validation, repair call, or constrained decoding.
+llm:
+  model_name: evotool-qwen3:8b
+  backend: ollama
+  base_url: http://127.0.0.1:11434/v1
+  api_key: ollama
+  temperature: 0.0
+  max_tokens: 512
+
+caller_schema: true
+data_path: data_schema
+
+evolve:
+  mutation_target: none
+  selection: static
+  epochs: 0
+
