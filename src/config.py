@@ -81,6 +81,8 @@ class EvoToolConfig:
     output_path: str = "results/"
     seed: int = 42
     max_steps: int = 6            # max tool-call steps per episode
+    # Caller ablation: expose the source JSON Schema as prompt guidance only.
+    caller_schema: bool = False
     n_train: int = 12             # |S_train|
     n_sel: int = 8                # |S_sel|
     n_test: int = 20              # |S_test| held-out, DISJOINT from train/sel
@@ -131,3 +133,4 @@ def apply_overrides(cfg: EvoToolConfig, overrides: list[str]) -> None:
         else:
             cast = value
         setattr(target, leaf, cast)
+
