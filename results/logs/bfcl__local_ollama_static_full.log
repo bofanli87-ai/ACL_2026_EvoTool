@@ -1,0 +1,5 @@
+# local_ollama_static_full on bfcl  (mutation=none, selection=static)
+# split: train=90 sel=30 test=30 leak=0
+
+# FINAL held-out test success=10.0 mean_reward=19.08 pop=1 ids=['init']
+# deploy=single deployed_ids=['init']

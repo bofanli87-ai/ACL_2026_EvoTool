@@ -1,0 +1,18 @@
+# Windows/macOS/Linux 本机 Ollama 配置。
+# 先执行：ollama pull qwen3:8b
+# 再执行：ollama serve（桌面版 Ollama 通常会自动启动服务）
+# 本文件会自动叠加在 configs/base.yaml 之上。
+llm:
+  model_name: evotool-qwen3:8b
+  backend: ollama
+  base_url: http://127.0.0.1:11434/v1
+  api_key: ollama
+  temperature: 0.0
+  max_tokens: 512
+
+# 首次验证只跑 1 个 epoch。正式复现论文预算时通过命令行改回 3：
+#   --override evolve.epochs=3
+evolve:
+  mutation_target: blame
+  selection: diversity
+  epochs: 1

@@ -1,0 +1,25 @@
+{
+  "preset": "local_ollama",
+  "benchmark": "bfcl",
+  "mutation_target": "blame",
+  "selection": "diversity",
+  "score": 33.33,
+  "success_rate": 33.33,
+  "mean_reward": 36.67,
+  "tokens": 11550,
+  "seconds": 41.5,
+  "n_train": 3,
+  "n_sel": 3,
+  "n_test": 3,
+  "held_out_leak": 0,
+  "population_size": 1,
+  "population_ids": [
+    "init"
+  ],
+  "test_ensemble": false,
+  "deployed_policy_ids": [
+    "init"
+  ],
+  "runlog": "results/logs\\bfcl__local_ollama.runlog.jsonl",
+  "runlog_summary": "results/logs\\bfcl__local_ollama.runlog.summary.json"
+}

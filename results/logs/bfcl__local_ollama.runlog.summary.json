@@ -1,0 +1,160 @@
+{
+  "type": "summary",
+  "preset": "local_ollama",
+  "benchmark": "bfcl",
+  "mutation_target": "blame",
+  "selection": "diversity",
+  "seed": 42,
+  "epochs": 1,
+  "batch_size": 2,
+  "n_train": 20,
+  "n_sel": 10,
+  "n_test": 20,
+  "n_generations": 10,
+  "n_accepted": 3,
+  "n_rejected": 7,
+  "cumulative_mutations": {
+    "planner": 1,
+    "selector": 1,
+    "caller": 8,
+    "synthesizer": 0,
+    "all": 0
+  },
+  "cumulative_accepted_mutations": {
+    "planner": 1,
+    "selector": 1,
+    "caller": 1,
+    "synthesizer": 0,
+    "all": 0
+  },
+  "total_tokens": 225536,
+  "final_population": [
+    {
+      "id": "init",
+      "sel_wins": 6,
+      "weight": 0.6,
+      "sel_mean": 0.203
+    },
+    {
+      "id": "g3-caller",
+      "sel_wins": 3,
+      "weight": 0.3,
+      "sel_mean": 0.413
+    },
+    {
+      "id": "g4-planner",
+      "sel_wins": 1,
+      "weight": 0.1,
+      "sel_mean": 0.206
+    }
+  ],
+  "learning_curves": {
+    "gen": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "epoch": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "parent_batch_reward": [
+      0.125,
+      0.095,
+      0.1179,
+      0.15,
+      0.1125,
+      0.15,
+      0.125,
+      0.15,
+      0.85,
+      0.1162
+    ],
+    "child_batch_reward": [
+      0.125,
+      0.095,
+      0.1179,
+      0.5,
+      0.135,
+      0.15,
+      0.15,
+      0.15,
+      0.85,
+      0.1162
+    ],
+    "train_batch_reward": [
+      0.125,
+      0.095,
+      0.1179,
+      0.5,
+      0.135,
+      0.15,
+      0.15,
+      0.15,
+      0.85,
+      0.1162
+    ],
+    "val_sel_score": [
+      0.203,
+      0.203,
+      0.203,
+      0.413,
+      0.413,
+      0.413,
+      0.413,
+      0.413,
+      0.413,
+      0.413
+    ],
+    "tokens_cumulative": [
+      37947,
+      54828,
+      71770,
+      107095,
+      140846,
+      151113,
+      191549,
+      201546,
+      210747,
+      225536
+    ],
+    "test": {
+      "gen": [
+        9
+      ],
+      "epoch": [
+        0
+      ],
+      "score": [
+        0.1967
+      ]
+    }
+  },
+  "final_test_success": 10.0,
+  "final_test_mean_reward": 19.67,
+  "deploy": "single",
+  "deployed_policy_ids": [
+    "g3-caller"
+  ],
+  "population_ids": [
+    "init",
+    "g3-caller",
+    "g4-planner"
+  ],
+  "seconds": 689.5
+}

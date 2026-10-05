@@ -1,0 +1,25 @@
+{
+  "preset": "local_ollama_static",
+  "benchmark": "bfcl",
+  "mutation_target": "none",
+  "selection": "static",
+  "score": 5.0,
+  "success_rate": 5.0,
+  "mean_reward": 16.17,
+  "tokens": 53556,
+  "seconds": 167.2,
+  "n_train": 20,
+  "n_sel": 10,
+  "n_test": 20,
+  "held_out_leak": 0,
+  "population_size": 1,
+  "population_ids": [
+    "init"
+  ],
+  "test_ensemble": false,
+  "deployed_policy_ids": [
+    "init"
+  ],
+  "runlog": "results/logs\\bfcl__local_ollama_static.runlog.jsonl",
+  "runlog_summary": "results/logs\\bfcl__local_ollama_static.runlog.summary.json"
+}
