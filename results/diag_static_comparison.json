@@ -1,0 +1,96 @@
+{
+  "n_samples": 30,
+  "conditions": {
+    "baseline": {
+      "success": 2,
+      "primary_failures": {
+        "schema_interface": 14,
+        "planning": 14
+      },
+      "all_failure_labels": {
+        "schema_interface": 21,
+        "semantic_argument": 3,
+        "planning": 14,
+        "selection": 14
+      }
+    },
+    "schema": {
+      "success": 13,
+      "primary_failures": {
+        "semantic_argument": 3,
+        "planning": 14
+      },
+      "all_failure_labels": {
+        "semantic_argument": 3,
+        "planning": 14,
+        "selection": 14
+      }
+    },
+    "repair_offline": {
+      "success": 13,
+      "primary_failures": {
+        "semantic_argument": 2,
+        "planning": 14,
+        "schema_interface": 1
+      },
+      "all_failure_labels": {
+        "semantic_argument": 3,
+        "planning": 14,
+        "selection": 14,
+        "schema_interface": 5
+      }
+    },
+    "repair_rerun_old": {
+      "success": 8,
+      "primary_failures": {
+        "semantic_argument": 2,
+        "planning": 14,
+        "schema_interface": 6
+      },
+      "all_failure_labels": {
+        "semantic_argument": 3,
+        "planning": 14,
+        "selection": 14,
+        "schema_interface": 12
+      }
+    },
+    "schema_repair_offline": {
+      "success": 13,
+      "primary_failures": {
+        "semantic_argument": 3,
+        "planning": 14
+      },
+      "all_failure_labels": {
+        "semantic_argument": 3,
+        "planning": 14,
+        "selection": 14
+      }
+    }
+  },
+  "paired_vs_baseline": {
+    "schema": {
+      "both_correct": 2,
+      "baseline_only": 0,
+      "treatment_only": 11,
+      "both_wrong": 17
+    },
+    "repair_offline": {
+      "both_correct": 2,
+      "baseline_only": 0,
+      "treatment_only": 11,
+      "both_wrong": 17
+    },
+    "repair_rerun_old": {
+      "both_correct": 2,
+      "baseline_only": 0,
+      "treatment_only": 6,
+      "both_wrong": 22
+    },
+    "schema_repair_offline": {
+      "both_correct": 2,
+      "baseline_only": 0,
+      "treatment_only": 11,
+      "both_wrong": 17
+    }
+  }
+}

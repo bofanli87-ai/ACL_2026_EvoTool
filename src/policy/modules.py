@@ -81,7 +81,7 @@ def run_selector(client: LLMClient, spec: str, query: str, substep: str,
 
 
 def run_caller(client: LLMClient, spec: str, tool: dict, query: str, substep: str,
-               state: dict, use_schema: bool = False) -> dict:
+               state: dict, use_schema: bool = False, trace_out: dict | None = None) -> dict:
     # The Caller constructs valid arguments for the selected tool of the CURRENT
     # substep, resolving values from the task and from earlier observations in STATE.
     fmt = '\n\nReturn JSON only: {"arguments": {"<param>": "<value>", ...}}.'
@@ -105,8 +105,17 @@ def run_caller(client: LLMClient, spec: str, tool: dict, query: str, substep: st
             f"OBSERVATIONS SO FAR:\n{_state_brief(state)}"
         )},
     ]
-    out = client.generate_json(messages)
+    if hasattr(client, "generate_json_with_trace"):
+        out, trace = client.generate_json_with_trace(messages)
+        if trace_out is not None:
+            trace_out.update(trace)
+    else:
+        out = client.generate_json(messages)
+        if trace_out is not None:
+            trace_out.update({"raw_output": None, "parse_success": None})
     args = out.get("arguments")
+    if trace_out is not None:
+        trace_out["arguments_is_object"] = isinstance(args, dict)
     return args if isinstance(args, dict) else {}
 
 

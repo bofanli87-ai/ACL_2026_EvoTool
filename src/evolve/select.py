@@ -21,7 +21,8 @@ from src.policy.modules import Policy
 def _reward_matrix(client, cfg, population, sel_set, max_steps) -> list[list[float]]:
     # rows = policies, cols = selection instances (episodes are cached, so this
     # only actually runs LLM calls for policy/instance pairs not seen before).
-    return [[run_episode(client, p, x, max_steps, cfg.caller_schema).reward for x in sel_set]
+    return [[run_episode(client, p, x, max_steps, cfg.caller_schema,
+                         cfg.caller_repair).reward for x in sel_set]
             for p in population]
 
 

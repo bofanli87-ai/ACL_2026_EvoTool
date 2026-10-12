@@ -1,0 +1,17 @@
+# Paired BFCL diagnostic: static policy + source schema in the Caller prompt.
+llm:
+  model_name: evotool-qwen3:8b
+  backend: ollama
+  base_url: http://127.0.0.1:11434/v1
+  api_key: ollama
+  temperature: 0.0
+  max_tokens: 512
+
+data_path: data_schema
+caller_schema: true
+caller_repair: false
+
+evolve:
+  mutation_target: none
+  selection: static
+  epochs: 0

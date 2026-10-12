@@ -18,6 +18,7 @@ import time
 import yaml
 
 from src.benchmarks import load_instances, split_instances
+from src.bfcl_error_analysis import diagnose_bfcl
 from src.config import EvoToolConfig, _merge_into_dataclass, apply_overrides
 from src.evolve.loop import evolve
 from src.evolve.select import best_policy
@@ -54,6 +55,7 @@ def main() -> None:
     random.seed(cfg.seed)
 
     name = os.path.splitext(os.path.basename(args.config))[0]
+    out = args.out or os.path.join(cfg.output_path, f"{cfg.benchmark}__{name}.json")
     print(f"=== {name} on {cfg.benchmark} "
           f"(mutation={cfg.evolve.mutation_target}, selection={cfg.evolve.selection}) ===")
 
@@ -64,6 +66,8 @@ def main() -> None:
                            for item in instances for t in item.get("available_tools", []))
         all_tools = sum(len(item.get("available_tools", [])) for item in instances)
         print(f"caller JSON Schema prompt: enabled ({schema_tools}/{all_tools} tools have schema)")
+    if cfg.caller_repair:
+        print("caller deterministic schema repair: enabled")
     train, sel, test = split_instances(instances, cfg)
     # held-out test must be disjoint from train/sel
     _ids = lambda xs: {x["id"] for x in xs}
@@ -85,6 +89,7 @@ def main() -> None:
         "preset": name, "benchmark": cfg.benchmark,
         "mutation_target": cfg.evolve.mutation_target, "selection": cfg.evolve.selection,
         "caller_schema": cfg.caller_schema,
+        "caller_repair": cfg.caller_repair,
         "seed": cfg.seed, "epochs": cfg.evolve.epochs, "batch_size": cfg.evolve.batch_size,
         "n_train": len(train), "n_sel": len(sel), "n_test": len(test),
     })
@@ -97,14 +102,44 @@ def main() -> None:
     # kept ONLY as the named optional ablation evolve.test_ensemble (never headline).
     if cfg.evolve.test_ensemble:
         deployed_ids = [p.policy_id for p in population]
-        episodes = [route_episode(client, population, x, cfg.max_steps, cfg.caller_schema) for x in test]
+        episodes = [route_episode(client, population, x, cfg.max_steps, cfg.caller_schema,
+                                  cfg.caller_repair) for x in test]
     else:
         theta_star = best_policy(client, cfg, population, sel)
         deployed_ids = [theta_star.policy_id]
-        episodes = [run_episode(client, theta_star, x, cfg.max_steps, cfg.caller_schema) for x in test]
+        episodes = [run_episode(client, theta_star, x, cfg.max_steps, cfg.caller_schema,
+                                cfg.caller_repair) for x in test]
     success = success_rate([e.success for e in episodes])
     mean_reward = headline_score([e.reward for e in episodes])
     elapsed = time.time() - t0
+
+    # Per-instance held-out artifacts are essential for paired error analysis.
+    # They are observational only and are written beside --out to avoid config-name
+    # collisions between runs.
+    details_path = os.path.splitext(out)[0] + ".episodes.jsonl"
+    details_dir = os.path.dirname(details_path)
+    if details_dir:
+        os.makedirs(details_dir, exist_ok=True)
+    with open(details_path, "w", encoding="utf-8") as details_file:
+        for episode in episodes:
+            traces = [step.caller_trace for step in episode.steps]
+            diagnosis = (diagnose_bfcl(episode.instance, episode.predicted_plan, traces)
+                         if cfg.benchmark == "bfcl" else None)
+            record = {
+                "sample_id": episode.instance.get("id"),
+                "query": episode.instance.get("query"),
+                "policy_id": episode.policy_id,
+                "plan": episode.plan,
+                "predicted_calls": episode.predicted_plan,
+                "gold_calls": episode.instance.get("gold_match"),
+                "success": episode.success,
+                "reward": episode.reward,
+                "caller_schema": cfg.caller_schema,
+                "caller_repair": cfg.caller_repair,
+                "caller_traces": traces,
+                "error_analysis": diagnosis,
+            }
+            details_file.write(json.dumps(record, ensure_ascii=False) + "\n")
 
     log_dir = os.path.join(cfg.output_path, "logs")
     os.makedirs(log_dir, exist_ok=True)
@@ -125,6 +160,7 @@ def main() -> None:
         "mutation_target": cfg.evolve.mutation_target,
         "selection": cfg.evolve.selection,
         "caller_schema": cfg.caller_schema,
+        "caller_repair": cfg.caller_repair,
         "score": round(success, 2),          # headline = task success rate (paper metric)
         "success_rate": round(success, 2),
         "mean_reward": round(mean_reward, 2),
@@ -138,6 +174,7 @@ def main() -> None:
         "population_ids": [p.policy_id for p in population],
         "test_ensemble": cfg.evolve.test_ensemble,        # §7: default single Theta*
         "deployed_policy_ids": deployed_ids,              # what actually ran at test
+        "test_episodes": details_path,
     }
     print(f"--> success={result['success_rate']} mean_reward={result['mean_reward']} "
           f"tokens={result['tokens']} time={result['seconds']}s")
@@ -157,9 +194,10 @@ def main() -> None:
     result["runlog_summary"] = getattr(run_log, "summary_path", None)
     print(f"runlog -> {runlog_path} ({summary['n_generations']} generations)")
 
-    out = args.out or os.path.join(cfg.output_path, f"{cfg.benchmark}__{name}.json")
-    os.makedirs(os.path.dirname(out), exist_ok=True)
-    with open(out, "w") as f:
+    out_dir = os.path.dirname(out)
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
+    with open(out, "w", encoding="utf-8") as f:
         json.dump(result, f, indent=2)
     print(f"saved -> {out}")
 

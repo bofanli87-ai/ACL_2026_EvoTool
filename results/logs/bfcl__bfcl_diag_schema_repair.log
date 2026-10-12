@@ -1,0 +1,5 @@
+# bfcl_diag_schema_repair on bfcl  (mutation=none, selection=static)
+# split: train=90 sel=30 test=30 leak=0
+
+# FINAL held-out test success=43.33 mean_reward=42.48 pop=1 ids=['init']
+# deploy=single deployed_ids=['init']

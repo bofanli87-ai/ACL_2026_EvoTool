@@ -30,6 +30,7 @@ from src.llm.client import LLMClient
 from src.metrics import progress
 from src.policy import modules
 from src.policy.modules import Policy
+from src.schema_repair import repair_arguments
 
 
 def env_for(instance: dict):
@@ -52,6 +53,7 @@ class Step:
     tool: str
     args: dict
     observation: dict       # {tool, args, output, status[, output_available]}
+    caller_trace: dict = field(default_factory=dict)
 
 
 @dataclass
@@ -63,6 +65,7 @@ class Episode:
     reward: float
     success: bool = False
     predicted_plan: list[dict] = field(default_factory=list)
+    policy_id: str = ""
 
 
 # Episodes are deterministic (temperature=0), so identical (policy, instance)
@@ -93,8 +96,8 @@ def _step_summary(sub: str, tool: str, obs: dict) -> str:
 
 
 def run_episode(client: LLMClient, policy: Policy, instance: dict, max_steps: int,
-                caller_schema: bool = False) -> Episode:
-    key = (_policy_key(policy), instance.get("id"), caller_schema)
+                caller_schema: bool = False, caller_repair: bool = False) -> Episode:
+    key = (_policy_key(policy), instance.get("id"), caller_schema, caller_repair)
     if key in _EPISODE_CACHE:
         return _EPISODE_CACHE[key]
 
@@ -114,15 +117,23 @@ def run_episode(client: LLMClient, policy: Policy, instance: dict, max_steps: in
         if tool.upper() in _NO_TOOL:
             continue                      # this substep requires no tool call
         card = registry.find_tool(tools, tool)
+        caller_trace: dict = {}
         args = modules.run_caller(client, policy.caller, card, query, sub, state,
-                                  use_schema=caller_schema) if card else {}
+                                  use_schema=caller_schema, trace_out=caller_trace) if card else {}
+        caller_trace["arguments_before_repair"] = args
+        if caller_repair and card:
+            args, repair_edits = repair_arguments(args, card.get("parameter_schema"))
+            caller_trace["repair_edits"] = repair_edits
+        else:
+            caller_trace["repair_edits"] = []
+        caller_trace["arguments_after_repair"] = args
         if executor is None:
             # bfcl: NO execution — record the chosen call, no observation produced.
             obs = {"tool": tool, "args": args, "output": None,
                    "status": "no_execution", "output_available": False}
         else:
             obs = executor.execute(tool, args)
-        steps.append(Step(sub, tool, args, obs))
+        steps.append(Step(sub, tool, args, obs, caller_trace))
         state[f"step_{len(steps)}"] = _step_summary(sub, tool, obs)
 
     # 3. Synthesizer -> final answer from the (sub, tool, args, output) tuples + query.
@@ -137,16 +148,17 @@ def run_episode(client: LLMClient, policy: Policy, instance: dict, max_steps: in
     # (toolbench: ToolEval-style LLM judge, offline approx).
     success = is_success(instance, steps, answer, client)
     reward = 0.7 * (1.0 if success else 0.0) + 0.3 * progress(predicted_plan, instance)
-    episode = Episode(instance, plan, steps, answer, reward, success, predicted_plan)
+    episode = Episode(instance, plan, steps, answer, reward, success, predicted_plan,
+                      policy.policy_id)
     _EPISODE_CACHE[key] = episode
     return episode
 
 
 def mean_reward(client: LLMClient, policy: Policy, instances: list[dict], max_steps: int,
-                caller_schema: bool = False) -> float:
+                caller_schema: bool = False, caller_repair: bool = False) -> float:
     if not instances:
         return 0.0
-    return sum(run_episode(client, policy, x, max_steps, caller_schema).reward
+    return sum(run_episode(client, policy, x, max_steps, caller_schema, caller_repair).reward
                for x in instances) / len(instances)
 
 
@@ -155,9 +167,10 @@ def _error_count(ep: Episode) -> int:
 
 
 def route_episode(client: LLMClient, policies: list[Policy], instance: dict, max_steps: int,
-                  caller_schema: bool = False) -> Episode:
+                  caller_schema: bool = False, caller_repair: bool = False) -> Episode:
     """Optional best-of-population routing (ablation only — SPEC.md §7 keeps
     the single Theta* at test time). Runs every retained policy and keeps the rollout
     with the fewest execution errors, breaking ties by reward."""
-    eps = [run_episode(client, p, instance, max_steps, caller_schema) for p in policies]
+    eps = [run_episode(client, p, instance, max_steps, caller_schema, caller_repair)
+           for p in policies]
     return min(eps, key=lambda e: (_error_count(e), -e.reward))

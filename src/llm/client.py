@@ -68,6 +68,20 @@ class LLMClient:
         text = self.generate(messages, json_mode=True)
         return _parse_json(text)
 
+    def generate_json_with_trace(self, messages: list[dict[str, str]]) -> tuple[dict, dict]:
+        """Return parsed JSON plus an observational parsing trace.
+
+        Policy behavior is identical to ``generate_json``.  The trace exists so
+        experiment artifacts can distinguish malformed serialization from an
+        otherwise valid but empty object.
+        """
+        text = self.generate(messages, json_mode=True)
+        parsed = _parse_json(text)
+        return parsed, {
+            "raw_output": text,
+            "parse_success": _is_json_object(text),
+        }
+
 
 def _truncate_messages(messages: list[dict], char_budget: int = 24000) -> list[dict]:
     """Shrink messages to fit the model context when a prompt overflows. Keeps the
@@ -92,12 +106,28 @@ def _truncate_messages(messages: list[dict], char_budget: int = 24000) -> list[d
 
 def _parse_json(text: str) -> dict:
     try:
-        return json.loads(text)
+        parsed = json.loads(text)
+        return parsed if isinstance(parsed, dict) else {}
     except json.JSONDecodeError:
         m = re.search(r"\{.*\}", text, re.DOTALL)
         if m:
             try:
-                return json.loads(m.group(0))
+                parsed = json.loads(m.group(0))
+                return parsed if isinstance(parsed, dict) else {}
             except json.JSONDecodeError:
                 pass
     return {}
+
+
+def _is_json_object(text: str) -> bool:
+    """Whether the same tolerant path as ``_parse_json`` found a JSON object."""
+    try:
+        return isinstance(json.loads(text), dict)
+    except json.JSONDecodeError:
+        m = re.search(r"\{.*\}", text, re.DOTALL)
+        if not m:
+            return False
+        try:
+            return isinstance(json.loads(m.group(0)), dict)
+        except json.JSONDecodeError:
+            return False

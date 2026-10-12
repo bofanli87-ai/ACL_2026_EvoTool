@@ -1,0 +1,28 @@
+{
+  "preset": "bfcl_diag_baseline",
+  "benchmark": "bfcl",
+  "mutation_target": "none",
+  "selection": "static",
+  "caller_schema": false,
+  "caller_repair": false,
+  "score": 6.67,
+  "success_rate": 6.67,
+  "mean_reward": 16.77,
+  "tokens": 78656,
+  "seconds": 188.5,
+  "n_train": 90,
+  "n_sel": 30,
+  "n_test": 30,
+  "held_out_leak": 0,
+  "population_size": 1,
+  "population_ids": [
+    "init"
+  ],
+  "test_ensemble": false,
+  "deployed_policy_ids": [
+    "init"
+  ],
+  "test_episodes": "results/diag_baseline.episodes.jsonl",
+  "runlog": "results/logs\\bfcl__bfcl_diag_baseline.runlog.jsonl",
+  "runlog_summary": "results/logs\\bfcl__bfcl_diag_baseline.runlog.summary.json"
+}
