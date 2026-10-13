@@ -1,0 +1,97 @@
+{
+  "n_samples": 30,
+  "conditions": {
+    "baseline": {
+      "success": 2,
+      "primary_failures": {
+        "schema_interface": 14,
+        "planning": 14
+      },
+      "all_failure_labels": {
+        "schema_interface": 21,
+        "semantic_argument": 3,
+        "planning": 14,
+        "selection": 14
+      }
+    },
+    "schema": {
+      "success": 13,
+      "primary_failures": {
+        "semantic_argument": 3,
+        "planning": 14
+      },
+      "all_failure_labels": {
+        "semantic_argument": 3,
+        "planning": 14,
+        "selection": 14
+      }
+    },
+    "repair_offline": {
+      "success": 13,
+      "primary_failures": {
+        "semantic_argument": 2,
+        "planning": 14,
+        "schema_interface": 1
+      },
+      "all_failure_labels": {
+        "semantic_argument": 3,
+        "planning": 14,
+        "selection": 14,
+        "schema_interface": 5
+      }
+    },
+    "evotool": {
+      "success": 13,
+      "primary_failures": {
+        "semantic_argument": 2,
+        "planning": 13,
+        "schema_interface": 2
+      },
+      "all_failure_labels": {
+        "semantic_argument": 3,
+        "planning": 13,
+        "selection": 13,
+        "schema_interface": 8
+      }
+    },
+    "evotool_schema": {
+      "success": 16,
+      "primary_failures": {
+        "semantic_argument": 3,
+        "planning": 11
+      },
+      "all_failure_labels": {
+        "semantic_argument": 3,
+        "planning": 11,
+        "selection": 11
+      }
+    }
+  },
+  "paired_vs_baseline": {
+    "schema": {
+      "both_correct": 2,
+      "baseline_only": 0,
+      "treatment_only": 11,
+      "both_wrong": 17
+    },
+    "repair_offline": {
+      "both_correct": 2,
+      "baseline_only": 0,
+      "treatment_only": 11,
+      "both_wrong": 17
+    },
+    "evotool": {
+      "both_correct": 2,
+      "baseline_only": 0,
+      "treatment_only": 11,
+      "both_wrong": 17
+    },
+    "evotool_schema": {
+      "both_correct": 2,
+      "baseline_only": 0,
+      "treatment_only": 14,
+      "both_wrong": 14
+    }
+  },
+  "factorial_interaction": -0.2666666666666667
+}

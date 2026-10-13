@@ -769,3 +769,141 @@ held-out test，且 held-out leak=0。数据核对确认两个版本的任务和
 | `results/bfcl__static_schema.json` | 实验七最终指标 | `E0630EB9BB64AC0485A869DB9139DD3A0FF1C8F57001234D208E3F0967546CFF` |
 | `results/logs/bfcl__local_ollama_static_schema.runlog.jsonl` | 实验七结构化 runlog | `E5B55C7151D94F73B9A30D8FA02542ACC948CD869F5F7E0347C95FAE9022EB4C` |
 | `results/logs/bfcl__local_ollama_static_schema.runlog.summary.json` | 实验七汇总 | `B8D6F7F513DA14C1E1E714263353DE2A26F63E5417D069E1F14BC060CA8C2001` |
+
+## 15. 实验八：BFCL 错误机制诊断与 EvoTool × Schema 析因实验
+
+### 15.1 研究问题
+
+前述实验表明，一轮 EvoTool 和静态 Schema prompt 都能显著提高 BFCL 严格成功率，但仅看总分
+无法判断 EvoTool 的提升来自更好的任务推理，还是来自对输出格式、参数类型和工具接口约束的
+修复。本实验因此比较五个严格同划分条件：
+
+1. `Baseline`：初始策略，不提供 Schema；
+2. `Schema`：初始策略，向 Caller 提供原始工具参数 Schema；
+3. `Offline Repair`：在同一次 Baseline 输出上执行无 LLM、无 gold 的确定性参数修复；
+4. `EvoTool`：一轮 30-generation 进化，不提供 Schema；
+5. `EvoTool + Schema`：相同进化预算，同时向 Caller 提供 Schema。
+
+五个条件均使用 seed 42、90/30/30 划分、batch size 3、30 条相同 held-out 测试样本，且
+`held_out_leak=0`。Repair 只做 schema 可确定的类型转换与字段处理，不补全缺失值、不猜测参数，
+gold 仅在输出完成后用于离线评分和错误分类。
+
+### 15.2 总体结果
+
+| 条件 | 成功数 | 成功率 | 失败中的主要剩余问题 |
+|---|---:|---:|---|
+| Baseline | 2/30 | 6.67% | schema/interface 及 planning/selection |
+| Schema | 13/30 | 43.33% | planning 14，semantic argument 3 |
+| Offline Repair | 13/30 | 43.33% | planning 14，semantic argument 2，interface 1 |
+| EvoTool | 13/30 | 43.33% | planning 13，semantic argument 2，interface 2 |
+| EvoTool + Schema | 16/30 | 53.33% | planning 11，semantic argument 3 |
+
+核心 2×2 interaction 为：
+
+```text
+(EvoTool+Schema - Schema) - (EvoTool - Baseline)
+= (53.33% - 43.33%) - (43.33% - 6.67%)
+= -26.67 percentage points
+```
+
+负交互说明两种干预的主要收益高度重叠。EvoTool 在没有 Schema 时带来 +36.67 个百分点，
+但当 Schema 已经提供后，EvoTool 的边际收益缩小为 +10 个百分点。结果不支持将两者视为完全
+独立、可以简单相加的改进。
+
+### 15.3 逐题重叠与回归
+
+Schema 和 EvoTool 均成功 13 题，其中 12 题相同：
+
+```text
+Schema 独有：  bfcl_24
+EvoTool 独有： bfcl_21
+共同成功：     12 题
+```
+
+两者几乎相同的成功集合进一步表明，无 Schema 时 EvoTool 学到的主要有效规则与 Schema 所解决的
+接口/参数约束高度重合，而不是在大量不同样本上产生独立 reasoning 收益。
+
+EvoTool + Schema 相对 Schema 保留了原有全部 13 个成功样本，没有 observed regression，并新增：
+
+```text
+bfcl_108
+bfcl_21
+bfcl_63
+```
+
+三个新增成功均对应规划阶段的过度拆分或重复调用：
+
+- `bfcl_108`：原预测将三个公司的 price 和 volume 拆成 6 次调用；进化后合并为正确的 3 次；
+- `bfcl_21`：原预测重复调用 median；进化后保留 median、variance、mode 各一次；
+- `bfcl_63`：原预测重复调用 displacement；进化后保留 displacement 和 final speed 各一次。
+
+这三个变化与错误分布中 planning/selection 失败从 14 个降至 11 个完全对应，为 Schema 已解决
+接口约束后仍存在小规模、可定位的 planning 增益提供了直接证据。
+
+### 15.4 进化路径与模块转移
+
+| 设置 | Planner 尝试/接受 | Selector 尝试/接受 | Caller 尝试/接受 | 最终部署策略 |
+|---|---:|---:|---:|---|
+| EvoTool | 9 / 6 | 2 / 0 | 19 / 2 | `g26-caller` |
+| EvoTool + Schema | 16 / 10 | 2 / 1 | 12 / 0 | `g12-planner` |
+
+无 Schema 时，63.33% 的 mutation 指向 Caller，最终部署策略也是 Caller 变异；Schema 开启后，
+Caller 的 12 次变异没有一次被接受，最终部署策略转为 Planner 变异。这说明显式接口约束改变了
+失败归因和搜索方向，使进化预算更多用于处理规划问题。
+
+EvoTool + Schema 最终部署的 `g12-planner` 在初始 Planner prompt 上增加：
+
+```text
+Avoid over-decomposition by ensuring each subgoal directly addresses a specific
+part of the task and aligns with the available tools' expected arguments.
+```
+
+该规则与三个新增成功样本中观察到的重复调用消除一致。最终 population 为 `init`、
+`g0-planner`、`g12-planner`，其中 `g12-planner` 的 selection mean reward 为 0.6068，略高于
+`g0-planner` 的 0.6056，因此作为单策略部署。
+
+### 15.5 成本
+
+| 条件 | Tokens | 时间 | 接受 mutation |
+|---|---:|---:|---:|
+| EvoTool | 1,107,334 | 3,000.2 秒（约 50.0 分钟） | 8/30 |
+| EvoTool + Schema | 1,463,943 | 3,490.4 秒（约 58.2 分钟） | 11/30 |
+
+EvoTool + Schema 比 EvoTool 多消耗 356,609 tokens 和 490.2 秒。Schema 提高了训练 batch 上
+可接受 mutation 的数量，也会导致更多完整 selection 集评估，因此总成本随接受次数增加。
+
+### 15.6 统计边界与结论
+
+相对 Schema，EvoTool + Schema 在 30 个配对样本上有 3 个改善、0 个回归。对应的双侧精确
+McNemar 检验 p 值为 0.25，因此当前结果可以作为方向明确的机制证据，但尚不足以声称增量具有
+统计显著性。实验仍受单模型、单 seed、30 条 held-out 样本和 Ollama 潜在运行波动限制。
+
+本轮最合适的结论是：
+
+> EvoTool 在无 Schema 时取得的绝大部分 BFCL 收益与 Schema/Repair 的接口修复收益重叠；
+> 当 Schema 已消除接口错误后，EvoTool 仍额外修复了 3 个过度拆分或重复调用样本，使成功率
+> 从 43.33% 提高到 53.33%。进化的归因和最终部署模块也从 Caller 转向 Planner。这支持
+> “格式和确定性接口问题由 Schema/code 处理，剩余 planning 问题由 prompt evolution 处理”
+> 的分层干预方案，但 +10 个百分点的 planning 增益仍需多 seed 验证。
+
+### 15.7 后续实验优先级
+
+下一阶段优先做多 seed 的四条件 2×2 实验，而不是立即增加到 3 epochs。建议至少补充 seed 1
+和 7，与现有 seed 42 合并报告每个条件的成功数、均值、标准差、配对转移、interaction、mutation
+模块分布、tokens 和耗时。
+
+开始多 seed 前必须避免日志覆盖：当前 runlog 文件名由 config basename 决定，直接使用同一配置
+切换 seed 会覆盖现有 seed 42 日志。应为每个 seed 使用独立配置名，或先修改 `run.py`，使 runlog
+名称跟随 `--out`。当前 seed 42 的结果和日志应先归档并记录校验值。
+
+### 15.8 新增产物与完整性校验
+
+| 文件 | 用途 | SHA-256 |
+|---|---|---|
+| `results/diag_evotool.json` | EvoTool 汇总 | `B504DB20C194A8E10F633AFA7555504C7E22A5814A4B7965C5179643F63F2005` |
+| `results/diag_evotool.episodes.jsonl` | EvoTool 逐题结果 | `778BB7CC7360E2BB2E262DCECDF8B6A3E7AECC09C539AB5384E6B3EA0F758C18` |
+| `results/diag_evotool_schema.json` | EvoTool + Schema 汇总 | `875893368A05F3260DB9840194FBE7ECADD19211AD8E66E094BC7B8C7838EBDD` |
+| `results/diag_evotool_schema.episodes.jsonl` | EvoTool + Schema 逐题结果 | `FDED2E9806465415796729998DA1479567289D30EDA8B3BB9E3DF52F12D9EEF0` |
+| `results/diag_full_comparison.json` | 五条件配对汇总与 interaction | `0FC9E6C724AE8B8439F4C79E2E2E41652F05B15104DE17E45F284DF023C7F774` |
+| `results/logs/bfcl__bfcl_diag_evotool.runlog.summary.json` | EvoTool 进化汇总 | `8A1480E8AFD5C9C1C69FDA65A50AC98F9E8037B9375CD40FDADAAC425A40F04B` |
+| `results/logs/bfcl__bfcl_diag_evotool_schema.runlog.summary.json` | EvoTool + Schema 进化汇总 | `D2A7F8B197E4B2FBC560A2CDDB31C238BC44F34F3F557C7DD8069EBA3E48D6F0` |

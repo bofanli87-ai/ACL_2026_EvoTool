@@ -1,0 +1,34 @@
+# bfcl_diag_evotool_schema on bfcl  (mutation=blame, selection=diversity)
+# split: train=90 sel=30 test=30 leak=0
+gen 0 (epoch 0): parent=init target=planner parent_avg=0.129 child_avg=0.383 ACCEPT | pop=2
+gen 1 (epoch 0): parent=init target=selector parent_avg=0.350 child_avg=0.373 ACCEPT | pop=2
+gen 2 (epoch 0): parent=g0-planner target=planner parent_avg=0.107 child_avg=0.350 ACCEPT | pop=2
+gen 3 (epoch 0): parent=init target=caller parent_avg=0.367 child_avg=0.367 reject | pop=2
+gen 4 (epoch 0): parent=init target=caller parent_avg=0.101 child_avg=0.101 reject | pop=2
+gen 5 (epoch 0): parent=init target=planner parent_avg=0.376 child_avg=0.376 reject | pop=2
+gen 6 (epoch 0): parent=init target=planner parent_avg=0.337 child_avg=0.588 ACCEPT | pop=2
+gen 7 (epoch 0): parent=g0-planner target=planner parent_avg=0.362 child_avg=0.612 ACCEPT | pop=2
+gen 8 (epoch 0): parent=init target=planner parent_avg=0.140 child_avg=0.373 ACCEPT | pop=3
+gen 9 (epoch 0): parent=init target=planner parent_avg=0.850 child_avg=0.850 reject | pop=3
+gen 10 (epoch 0): parent=init target=caller parent_avg=0.117 child_avg=0.117 reject | pop=3
+gen 11 (epoch 0): parent=g0-planner target=planner parent_avg=0.344 child_avg=0.340 reject | pop=3
+gen 12 (epoch 0): parent=init target=planner parent_avg=0.345 child_avg=0.357 ACCEPT | pop=3
+gen 13 (epoch 0): parent=g0-planner target=caller parent_avg=0.373 child_avg=0.373 reject | pop=3
+gen 14 (epoch 0): parent=init target=selector parent_avg=0.607 child_avg=0.607 reject | pop=3
+gen 15 (epoch 0): parent=init target=caller parent_avg=0.617 child_avg=0.617 reject | pop=3
+gen 16 (epoch 0): parent=init target=caller parent_avg=0.373 child_avg=0.373 reject | pop=3
+gen 17 (epoch 0): parent=g12-planner target=planner parent_avg=0.595 child_avg=0.362 reject | pop=3
+gen 18 (epoch 0): parent=init target=planner parent_avg=0.140 child_avg=0.140 reject | pop=3
+gen 19 (epoch 0): parent=init target=planner parent_avg=0.600 child_avg=0.850 ACCEPT | pop=3
+gen 20 (epoch 0): parent=g0-planner target=caller parent_avg=0.850 child_avg=0.850 reject | pop=3
+gen 21 (epoch 0): parent=g0-planner target=caller parent_avg=0.337 child_avg=0.337 reject | pop=3
+gen 22 (epoch 0): parent=init target=planner parent_avg=0.607 child_avg=0.607 reject | pop=3
+gen 23 (epoch 0): parent=init target=caller parent_avg=0.350 child_avg=0.350 reject | pop=3
+gen 24 (epoch 0): parent=init target=caller parent_avg=0.590 child_avg=0.590 reject | pop=3
+gen 25 (epoch 0): parent=init target=caller parent_avg=0.347 child_avg=0.347 reject | pop=3
+gen 26 (epoch 0): parent=init target=planner parent_avg=0.595 child_avg=0.617 ACCEPT | pop=3
+gen 27 (epoch 0): parent=init target=caller parent_avg=0.594 child_avg=0.594 reject | pop=3
+gen 28 (epoch 0): parent=init target=planner parent_avg=0.373 child_avg=0.592 ACCEPT | pop=3
+gen 29 (epoch 0): parent=init target=planner parent_avg=0.352 child_avg=0.600 ACCEPT | pop=3
+# FINAL held-out test success=53.33 mean_reward=49.77 pop=3 ids=['init', 'g0-planner', 'g12-planner']
+# deploy=single deployed_ids=['g12-planner']
