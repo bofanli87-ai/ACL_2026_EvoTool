@@ -1,0 +1,38 @@
+{
+  "scope": "post-hoc mechanism diagnostics, not new held-out results",
+  "repo_commit": "4d8a24cfee9473629a99839e74ba6a1bf689671d",
+  "model": "evotool-qwen3:8b",
+  "base_url": "http://127.0.0.1:11434/v1",
+  "temperature": 0.0,
+  "max_tokens": 512,
+  "max_steps": 6,
+  "ids": [
+    "bfcl_58",
+    "bfcl_130",
+    "bfcl_149",
+    "bfcl_29"
+  ],
+  "variants": [
+    "control",
+    "strong_prompt",
+    "planner_tools",
+    "history_args",
+    "tools_and_history"
+  ],
+  "repeats": 3,
+  "episodes": 60,
+  "caller_schema": true,
+  "caller_repair": false,
+  "policy": {
+    "planner": "You are a planning agent. Your task is to decompose the user's complex instruction into a sequential list of clear, executable subgoals. Avoid over-decomposition by ensuring each subgoal directly addresses a specific part of the task and aligns with the available tools' expected arguments.",
+    "selector": "You are a tool selection agent. Given the current subgoal and the list of available tools, select the most appropriate tool.",
+    "caller": "You are a tool calling agent. Given the selected tool and its documentation, generate the specific arguments required to execute it.",
+    "synthesizer": "You are a synthesis agent. Review the user's original query and the history of tool executions, then synthesize this information to provide the answer."
+  },
+  "input_hashes": {
+    "src/policy/agent.py": "ab2e234e4e248d126efe30412b15f0e8e2ae1612ad1f9e93df09cf2fccf2ecbf",
+    "src/policy/modules.py": "d9f9f3e56766a59e623bf86c762281f86df2b130493529615906811544520c5e",
+    "data_schema/bfcl/samples.json": "420de7de354868067b77cee605507fa424232b4f612eb5e5d5a8698df5f86d1d",
+    "results/logs/bfcl__bfcl_diag_evotool_schema.runlog.jsonl": "5fc9bc9bba2a9eec324709d721ad89d6726e78fb36401807092e53e12a603248"
+  }
+}

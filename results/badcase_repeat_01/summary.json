@@ -1,0 +1,27 @@
+{
+  "control": {
+    "success": 0,
+    "episodes": 12,
+    "tokens": 37356
+  },
+  "strong_prompt": {
+    "success": 5,
+    "episodes": 12,
+    "tokens": 22894
+  },
+  "planner_tools": {
+    "success": 3,
+    "episodes": 12,
+    "tokens": 37017
+  },
+  "history_args": {
+    "success": 2,
+    "episodes": 12,
+    "tokens": 40394
+  },
+  "tools_and_history": {
+    "success": 6,
+    "episodes": 12,
+    "tokens": 38917
+  }
+}
