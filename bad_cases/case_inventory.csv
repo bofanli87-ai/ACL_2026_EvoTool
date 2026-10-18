@@ -1,0 +1,15 @@
+sample_id,category,observation,next_check,calls,gold_calls,baseline_success,schema_success,evotool_success,schema_evo_success,offline_results
+bfcl_145,评测等价疑点,"GCD 的 a=36,b=48 与参考值顺序相反；数学结果相同。",不适合作为 reasoning 失败的主案例；保留原严格评分。,2,2,False,False,False,False,exact_dedup:False; swap_gcd_equivalent:True
+bfcl_44,多余调用与参数问题并存,5 次调用而参考为 2 次；额外查 sculpture_id=0，纽约参数含 museum。,去重不足；逐项核对工具选择和实体规范化，不证明必须多模块修改。,5,2,False,False,False,False,exact_dedup:False
+bfcl_55,可选参数过度指定,Battle Reign 的查询额外指定 type=strategy；用户只对 Shadow Fall 明确要求 strategy。,Schema 合法不保证参数符合当前子任务；验证 Caller 对可选参数的处理。,3,3,False,False,False,False,exact_dedup:False; omit_unrequested_type:True
+bfcl_104,完全重复,sample_size=50 的正确置信区间调用重复；3 次而参考为 2 次。,检查计划粒度和重复调用约束；已有正确调用。,3,2,False,False,False,False,exact_dedup:True
+bfcl_115,查询覆盖冗余,两个案件的历史和当事人信息被拆为 6 次查询；完整查询已经存在。,要识别参数覆盖关系，而不仅是完全重复。,6,2,False,False,False,False,exact_dedup:False; drop_subsumed_case_queries:True
+bfcl_51,查询冗余与名称匹配并存,6 次调用，参考 2 次；team=L.A. Lakers 不在参考名称集合。,合并字段后仍可能因标点命名失败，需人工判断评分合理性。,6,2,False,False,False,False,exact_dedup:False; merge_details:False
+bfcl_149,重复并遗漏需求,3 次 Music 查询，缺少 Theater。,既需去重又需需求覆盖；验证携带调用参数的历史是否有帮助。,3,2,False,False,False,False,exact_dedup:False; replace_one_music:False; dedup_add_theater:True
+bfcl_130,可合并字段被拆开,每城市分别查询三项 details，总计 6 次；工具支持一次查询数组。,Planner 不见工具能力是候选解释；需控制提示和输入信息分别验证。,6,2,False,False,False,False,exact_dedup:False; merge_details:True
+bfcl_56,名称等价或实体绑定疑点,recipe 名称不在允许字符串中；BFCL 没有实际 recipe_search 返回。,无法确认真实搜索结果引用关系；不要宣称执行依赖已验证。,3,3,False,False,False,False,exact_dedup:False; recipe_name_reference_probe:True
+bfcl_23,重复与名称差异并存,4 次调用，含 company XYZ 与 XYZ 两种 company_name。,纯去重不够；需审核名称等价和子目标冗余。,4,2,False,False,False,False,exact_dedup:False
+bfcl_140,重复与工具选择差异,搜索重复；选 generate_human_image，参考为 generate_image，参数契约不同。,两个工具说明存在语义重叠；先核对工具选择歧义，再做联合修复。,3,2,False,False,False,False,exact_dedup:False
+bfcl_58,完全重复,两个城市的酒店查询各重复一次；4 次而参考为 2 次。,优先案例：验证输入历史与确定性去重。,4,2,False,False,False,False,exact_dedup:True
+bfcl_71,完全重复,太阳能和风能查询各重复一次；4 次而参考为 2 次。,采集信息和计算被拆分后调用相同工具；正确调用已齐全。,4,2,False,False,False,False,exact_dedup:True
+bfcl_29,重复与可选参数并存,状态查询重复；optional_param=true 不被参考接受。,分别移除重复和可选参数均不足，联合修改可检验多错误共存。,3,2,False,False,False,False,exact_dedup:False; omit_optional:False; dedup_and_omit_optional:True

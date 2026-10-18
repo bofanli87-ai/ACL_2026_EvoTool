@@ -1,0 +1,1922 @@
+{
+  "scope": "Post-hoc offline diagnostics; no new LLM experiments",
+  "commit": "ede2328b8e54eafa6c91e8e0c8e9d42adb238c46",
+  "checks": [
+    {
+      "sample_id": "bfcl_145",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": false,
+      "before_calls": 2,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "math_gcd",
+          "args": {
+            "a": 36,
+            "b": 48
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "estimate_derivative",
+          "args": {
+            "function": "lambda x: x**2",
+            "x": 5.0
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "semantic_argument"
+        ],
+        "primary_label": "semantic_argument",
+        "details": [
+          {
+            "category": "semantic_argument",
+            "call_index": 0,
+            "argument": "a",
+            "issue": "wrong_value"
+          },
+          {
+            "category": "semantic_argument",
+            "call_index": 0,
+            "argument": "b",
+            "issue": "wrong_value"
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_44",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": false,
+      "before_calls": 5,
+      "after_calls": 4,
+      "calls": [
+        {
+          "tool": "get_sculpture_details",
+          "args": {
+            "museum_location": "Philadelphia",
+            "sculpture_id": 0
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "get_sculpture_details",
+          "args": {
+            "museum_location": "New York museum",
+            "sculpture_id": 0
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "get_artwork_price",
+          "args": {
+            "museum_location": "Philadelphia",
+            "sculpture_material": "marble",
+            "sculpture_size": [
+              4,
+              4
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "get_artwork_price",
+          "args": {
+            "museum_location": "New York museum",
+            "sculpture_material": "bronze",
+            "sculpture_size": [
+              6,
+              3
+            ]
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "planning",
+          "selection"
+        ],
+        "primary_label": "planning",
+        "details": [
+          {
+            "category": "planning",
+            "issue": "call_count_mismatch",
+            "predicted": 4,
+            "gold": 2
+          },
+          {
+            "category": "selection",
+            "issue": "tool_multiset_mismatch",
+            "predicted": [
+              "get_sculpture_details",
+              "get_sculpture_details",
+              "get_artwork_price",
+              "get_artwork_price"
+            ],
+            "gold": [
+              "get_artwork_price",
+              "get_artwork_price"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_55",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": false,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "BattleReignGameAPI.update_player_equipment",
+          "args": {
+            "attribute": "armor",
+            "level": 5
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "GameGuideAPI.search_guide",
+          "args": {
+            "game": "Battle Reign",
+            "condition": "snowy weather",
+            "type": "strategy"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "GameGuideAPI.search_guide",
+          "args": {
+            "game": "Shadow Fall",
+            "type": "strategy"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "semantic_argument"
+        ],
+        "primary_label": "semantic_argument",
+        "details": [
+          {
+            "category": "semantic_argument",
+            "call_index": 1,
+            "argument": "type",
+            "issue": "optional_parameter_should_be_omitted"
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_90",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 4,
+      "after_calls": 4,
+      "calls": [
+        {
+          "tool": "ride_hailing.get_rides",
+          "args": {
+            "source": "123 Main Street",
+            "destination": "456 Park Avenue",
+            "max_cost": 30.0
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "grocery_delivery.order",
+          "args": {
+            "location": "789 Broadway",
+            "items": [
+              "milk",
+              "bread",
+              "eggs",
+              "apples"
+            ],
+            "max_delivery_cost": 10.0
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "ride_hailing.get_rides",
+          "args": {
+            "source": "456 Park Avenue",
+            "destination": "321 Elm Street",
+            "max_cost": 20.0
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "ride_hailing.get_rides",
+          "args": {
+            "source": "321 Elm Street",
+            "destination": "123 Main Street",
+            "max_cost": 25.0
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_21",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "statistics.median",
+          "args": {
+            "data": [
+              3,
+              4,
+              5,
+              2,
+              8,
+              5
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "statistics.variance",
+          "args": {
+            "data": [
+              3,
+              4,
+              5,
+              2,
+              8,
+              5
+            ],
+            "population": true
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "statistics.mode",
+          "args": {
+            "data": [
+              3,
+              4,
+              5,
+              2,
+              8,
+              5
+            ]
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_104",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 3,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "confidence_interval.calculate",
+          "args": {
+            "sample_std_dev": 10,
+            "sample_size": 50,
+            "sample_mean": 25,
+            "confidence_level": 0.95
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "confidence_interval.calculate",
+          "args": {
+            "sample_std_dev": 10,
+            "sample_size": 150,
+            "sample_mean": 25,
+            "confidence_level": 0.95
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_98",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "math.factorial",
+          "args": {
+            "number": 5
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "math.factorial",
+          "args": {
+            "number": 10
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "math.factorial",
+          "args": {
+            "number": 15
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_2",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 2,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "area_rectangle.calculate",
+          "args": {
+            "length": 7.0,
+            "breadth": 3.0
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "area_circle.calculate",
+          "args": {
+            "radius": 5
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_72",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "sculpture_availability.check",
+          "args": {
+            "sculpture_name": "The Thinker",
+            "material": "bronze"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "sculptor_info.get",
+          "args": {
+            "name": "Auguste Rodin"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "sculpture_price.calculate",
+          "args": {
+            "material": "marble",
+            "size": 10,
+            "complexity": "high"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_115",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": false,
+      "before_calls": 6,
+      "after_calls": 4,
+      "calls": [
+        {
+          "tool": "law_case.get_details",
+          "args": {
+            "case_number": "28473",
+            "include_history": true,
+            "include_litigants": true
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "law_case.get_details",
+          "args": {
+            "case_number": "64725",
+            "include_history": true,
+            "include_litigants": true
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "law_case.get_details",
+          "args": {
+            "case_number": "64725",
+            "include_history": true
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "law_case.get_details",
+          "args": {
+            "case_number": "64725",
+            "include_litigants": true
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "planning",
+          "selection"
+        ],
+        "primary_label": "planning",
+        "details": [
+          {
+            "category": "planning",
+            "issue": "call_count_mismatch",
+            "predicted": 4,
+            "gold": 2
+          },
+          {
+            "category": "selection",
+            "issue": "tool_multiset_mismatch",
+            "predicted": [
+              "law_case.get_details",
+              "law_case.get_details",
+              "law_case.get_details",
+              "law_case.get_details"
+            ],
+            "gold": [
+              "law_case.get_details",
+              "law_case.get_details"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_57",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "time_zones.get_current_time",
+          "args": {
+            "location": "Beijing"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "time_zones.get_current_time",
+          "args": {
+            "location": "Tokyo"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "time_zones.get_time_difference",
+          "args": {
+            "city_1": "Beijing",
+            "city_2": "Tokyo"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_108",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "get_stock_data",
+          "args": {
+            "symbol": "AAPL",
+            "data_points": [
+              "price",
+              "volume"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "get_stock_data",
+          "args": {
+            "symbol": "GOOGL",
+            "data_points": [
+              "price",
+              "volume"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "get_stock_data",
+          "args": {
+            "symbol": "MSFT",
+            "data_points": [
+              "price",
+              "volume"
+            ]
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_51",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": false,
+      "before_calls": 6,
+      "after_calls": 4,
+      "calls": [
+        {
+          "tool": "sport_analysis.last_game_performance",
+          "args": {
+            "team": "L.A. Lakers",
+            "details": [
+              "field goal %",
+              "free throw %"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "sport_analysis.last_game_performance",
+          "args": {
+            "team": "L.A. Lakers",
+            "details": [
+              "field goal %"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "sport_analysis.last_game_performance",
+          "args": {
+            "team": "L.A. Lakers",
+            "details": [
+              "free throw %"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "sport_analysis.compare_ppg",
+          "args": {
+            "team": "L.A. Lakers",
+            "seasons": [
+              "2018-2019",
+              "2019-2020"
+            ]
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "planning",
+          "selection"
+        ],
+        "primary_label": "planning",
+        "details": [
+          {
+            "category": "planning",
+            "issue": "call_count_mismatch",
+            "predicted": 4,
+            "gold": 2
+          },
+          {
+            "category": "selection",
+            "issue": "tool_multiset_mismatch",
+            "predicted": [
+              "sport_analysis.last_game_performance",
+              "sport_analysis.last_game_performance",
+              "sport_analysis.last_game_performance",
+              "sport_analysis.compare_ppg"
+            ],
+            "gold": [
+              "sport_analysis.last_game_performance",
+              "sport_analysis.compare_ppg"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_149",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": false,
+      "before_calls": 3,
+      "after_calls": 1,
+      "calls": [
+        {
+          "tool": "Events_3_FindEvents",
+          "args": {
+            "event_type": "Music",
+            "city": "San Diego, CA",
+            "date": "2023-03-01"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "planning",
+          "selection"
+        ],
+        "primary_label": "planning",
+        "details": [
+          {
+            "category": "planning",
+            "issue": "call_count_mismatch",
+            "predicted": 1,
+            "gold": 2
+          },
+          {
+            "category": "selection",
+            "issue": "tool_multiset_mismatch",
+            "predicted": [
+              "Events_3_FindEvents"
+            ],
+            "gold": [
+              "Events_3_FindEvents",
+              "Events_3_FindEvents"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_130",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": false,
+      "before_calls": 6,
+      "after_calls": 6,
+      "calls": [
+        {
+          "tool": "museum_info.get_info",
+          "args": {
+            "location": "Washington D.C.",
+            "details": [
+              "Opening hours"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "museum_info.get_info",
+          "args": {
+            "location": "Washington D.C.",
+            "details": [
+              "Adult tickets"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "museum_info.get_info",
+          "args": {
+            "location": "Washington D.C.",
+            "details": [
+              "Child tickets"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "museum_info.get_info",
+          "args": {
+            "location": "Paris",
+            "details": [
+              "Opening hours"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "museum_info.get_info",
+          "args": {
+            "location": "Paris",
+            "details": [
+              "Adult tickets"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "museum_info.get_info",
+          "args": {
+            "location": "Paris",
+            "details": [
+              "Child tickets"
+            ]
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "planning",
+          "selection"
+        ],
+        "primary_label": "planning",
+        "details": [
+          {
+            "category": "planning",
+            "issue": "call_count_mismatch",
+            "predicted": 6,
+            "gold": 2
+          },
+          {
+            "category": "selection",
+            "issue": "tool_multiset_mismatch",
+            "predicted": [
+              "museum_info.get_info",
+              "museum_info.get_info",
+              "museum_info.get_info",
+              "museum_info.get_info",
+              "museum_info.get_info",
+              "museum_info.get_info"
+            ],
+            "gold": [
+              "museum_info.get_info",
+              "museum_info.get_info"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_60",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "math.triangle_area_heron",
+          "args": {
+            "side1": 7.0,
+            "side2": 10.0,
+            "side3": 5.0
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "math.triangle_area_base_height",
+          "args": {
+            "base": 8.0,
+            "height": 6.0
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "math.circle_area",
+          "args": {
+            "radius": 4.0
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_56",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": false,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "recipe_search",
+          "args": {
+            "ingredient": "spaghetti",
+            "dietary_requirements": [
+              "gluten_free"
+            ],
+            "isHomemade": true
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "recipe_prep_time",
+          "args": {
+            "recipe": "homemade gluten free spaghetti"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "recipe_nutrition_info",
+          "args": {
+            "recipe": "homemade gluten free spaghetti"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "semantic_argument"
+        ],
+        "primary_label": "semantic_argument",
+        "details": [
+          {
+            "category": "semantic_argument",
+            "call_index": 2,
+            "argument": "recipe",
+            "issue": "wrong_value"
+          },
+          {
+            "category": "semantic_argument",
+            "call_index": 1,
+            "argument": "recipe",
+            "issue": "wrong_value"
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_24",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 2,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "financial_ratio.net_profit_margin",
+          "args": {
+            "net_income": 20000,
+            "total_revenue": 100000
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "financial_ratio.debt_ratio",
+          "args": {
+            "total_liabilities": 10000,
+            "total_assets": 30000
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_8",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 2,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "kinematics.calculate_time",
+          "args": {
+            "velocity": 50,
+            "distance": 600
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "kinematics.calculate_time",
+          "args": {
+            "velocity": 400,
+            "distance": 1000
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_9",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 2,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "kinematics.final_velocity",
+          "args": {
+            "initial_velocity": 20.0,
+            "acceleration": 5.0,
+            "time": 6.0
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "kinematics.distance_traveled",
+          "args": {
+            "initial_velocity": 20.0,
+            "acceleration": 5.0,
+            "time": 6.0
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_109",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "financials.calculate_future_value",
+          "args": {
+            "present_value": 1000,
+            "annual_interest_rate": 0.05,
+            "number_of_years": 1
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "financials.calculate_future_value",
+          "args": {
+            "present_value": 1000,
+            "annual_interest_rate": 0.05,
+            "number_of_years": 5
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "financials.calculate_future_value",
+          "args": {
+            "present_value": 1000,
+            "annual_interest_rate": 0.05,
+            "number_of_years": 10
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_23",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": false,
+      "before_calls": 4,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "sales_growth.calculate",
+          "args": {
+            "company": "XYZ",
+            "years": 3
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "financial_ratios.interest_coverage",
+          "args": {
+            "company_name": "company XYZ",
+            "years": 3
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "financial_ratios.interest_coverage",
+          "args": {
+            "company_name": "XYZ",
+            "years": 3
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "planning",
+          "selection"
+        ],
+        "primary_label": "planning",
+        "details": [
+          {
+            "category": "planning",
+            "issue": "call_count_mismatch",
+            "predicted": 3,
+            "gold": 2
+          },
+          {
+            "category": "selection",
+            "issue": "tool_multiset_mismatch",
+            "predicted": [
+              "sales_growth.calculate",
+              "financial_ratios.interest_coverage",
+              "financial_ratios.interest_coverage"
+            ],
+            "gold": [
+              "financial_ratios.interest_coverage",
+              "sales_growth.calculate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_140",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": false,
+      "before_calls": 3,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "search_engine.query",
+          "args": {
+            "prompt": "significant events, news articles, and developments that since October 2021",
+            "include_after_year": true
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "generate_human_image",
+          "args": {
+            "prompt": "a masked woman with bright peacock feathers, complex and elegant, with green highlighted lines and complex patterns, reminiscent of cyberpunk Alphonse Mucha's style",
+            "image_quality": "high",
+            "image_format": "PNG",
+            "include_metadata": false
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "selection"
+        ],
+        "primary_label": "selection",
+        "details": [
+          {
+            "category": "selection",
+            "issue": "tool_multiset_mismatch",
+            "predicted": [
+              "search_engine.query",
+              "generate_human_image"
+            ],
+            "gold": [
+              "search_engine.query",
+              "generate_image"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_27",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 2,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "bank.get_transaction_history",
+          "args": {
+            "account": "00125648",
+            "days": 7
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "bank.calculate_balance",
+          "args": {
+            "account": "00125648",
+            "transactions": [],
+            "starting_balance": 0.0
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_36",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 2,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "image_processing.object_identification",
+          "args": {
+            "image_url": "my_backyard_image_url"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "text_analysis.sentiment_analysis",
+          "args": {
+            "text": "my_journal_entry_text"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_58",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 4,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "hotel.find",
+          "args": {
+            "location": "Paris",
+            "stars": 4,
+            "amenities": [
+              "Free WiFi",
+              "Breakfast Included",
+              "Gym"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "hotel.find",
+          "args": {
+            "location": "New York",
+            "stars": 4,
+            "amenities": [
+              "Free WiFi",
+              "Breakfast Included",
+              "Gym"
+            ]
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_63",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 2,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "kinematics.calculate_displacement",
+          "args": {
+            "initial_speed": 5.0,
+            "acceleration": 2.0,
+            "time": 10.0,
+            "rounding": 2
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "kinematics.calculate_final_speed",
+          "args": {
+            "initial_speed": 5.0,
+            "acceleration": 2.0,
+            "time": 10.0,
+            "rounding": 2
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_71",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 4,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "solarFarm.potential",
+          "args": {
+            "coordinates": [
+              37.7749,
+              -122.4194
+            ],
+            "panelArea": 50000,
+            "month": "July"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "windFarm.potential",
+          "args": {
+            "coordinates": [
+              40.7128,
+              -74.006
+            ],
+            "turbineCount": 100,
+            "month": "July"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_7",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": true,
+      "before_calls": 2,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "find_prime_numbers",
+          "args": {
+            "start": 50,
+            "end": 150
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "get_fibonacci_sequence",
+          "args": {
+            "count": 150
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_29",
+      "intervention": "exact_dedup",
+      "scope": "same_rule_all_30_posthoc_diagnostic",
+      "success": false,
+      "before_calls": 3,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "criminal_record.get_status",
+          "args": {
+            "criminal_name": "John Doe",
+            "region": "New York"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "criminal_record.get_offense_nature",
+          "args": {
+            "criminal_name": "John Doe",
+            "optional_param": true
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "semantic_argument"
+        ],
+        "primary_label": "semantic_argument",
+        "details": [
+          {
+            "category": "semantic_argument",
+            "call_index": 1,
+            "argument": "optional_param",
+            "issue": "wrong_value"
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_130",
+      "intervention": "merge_details",
+      "scope": "case_specific_gold_inspected_not_generalization",
+      "success": true,
+      "before_calls": 6,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "museum_info.get_info",
+          "args": {
+            "location": "Washington D.C.",
+            "details": [
+              "Opening hours",
+              "Adult tickets",
+              "Child tickets"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "museum_info.get_info",
+          "args": {
+            "location": "Paris",
+            "details": [
+              "Opening hours",
+              "Adult tickets",
+              "Child tickets"
+            ]
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_51",
+      "intervention": "merge_details",
+      "scope": "case_specific_gold_inspected_not_generalization",
+      "success": false,
+      "before_calls": 6,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "sport_analysis.last_game_performance",
+          "args": {
+            "team": "L.A. Lakers",
+            "details": [
+              "field goal %",
+              "free throw %"
+            ]
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "sport_analysis.compare_ppg",
+          "args": {
+            "team": "L.A. Lakers",
+            "seasons": [
+              "2018-2019",
+              "2019-2020"
+            ]
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "semantic_argument"
+        ],
+        "primary_label": "semantic_argument",
+        "details": [
+          {
+            "category": "semantic_argument",
+            "call_index": 1,
+            "argument": "team",
+            "issue": "wrong_value"
+          },
+          {
+            "category": "semantic_argument",
+            "call_index": 0,
+            "argument": "team",
+            "issue": "wrong_value"
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_115",
+      "intervention": "drop_subsumed_case_queries",
+      "scope": "case_specific_gold_inspected_not_generalization",
+      "success": true,
+      "before_calls": 6,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "law_case.get_details",
+          "args": {
+            "case_number": "28473",
+            "include_history": true,
+            "include_litigants": true
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "law_case.get_details",
+          "args": {
+            "case_number": "64725",
+            "include_history": true,
+            "include_litigants": true
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_55",
+      "intervention": "omit_unrequested_type",
+      "scope": "case_specific_gold_inspected_not_generalization",
+      "success": true,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "BattleReignGameAPI.update_player_equipment",
+          "args": {
+            "attribute": "armor",
+            "level": 5
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "GameGuideAPI.search_guide",
+          "args": {
+            "game": "Battle Reign",
+            "condition": "snowy weather"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "GameGuideAPI.search_guide",
+          "args": {
+            "game": "Shadow Fall",
+            "type": "strategy"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_149",
+      "intervention": "replace_one_music",
+      "scope": "case_specific_gold_inspected_not_generalization",
+      "success": false,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "Events_3_FindEvents",
+          "args": {
+            "event_type": "Music",
+            "city": "San Diego, CA",
+            "date": "2023-03-01"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "Events_3_FindEvents",
+          "args": {
+            "event_type": "Theater",
+            "city": "San Diego, CA",
+            "date": "2023-03-01"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "Events_3_FindEvents",
+          "args": {
+            "event_type": "Music",
+            "city": "San Diego, CA",
+            "date": "2023-03-01"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "planning",
+          "selection"
+        ],
+        "primary_label": "planning",
+        "details": [
+          {
+            "category": "planning",
+            "issue": "call_count_mismatch",
+            "predicted": 3,
+            "gold": 2
+          },
+          {
+            "category": "selection",
+            "issue": "tool_multiset_mismatch",
+            "predicted": [
+              "Events_3_FindEvents",
+              "Events_3_FindEvents",
+              "Events_3_FindEvents"
+            ],
+            "gold": [
+              "Events_3_FindEvents",
+              "Events_3_FindEvents"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_149",
+      "intervention": "dedup_add_theater",
+      "scope": "case_specific_gold_inspected_not_generalization",
+      "success": true,
+      "before_calls": 3,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "Events_3_FindEvents",
+          "args": {
+            "event_type": "Music",
+            "city": "San Diego, CA",
+            "date": "2023-03-01"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "Events_3_FindEvents",
+          "args": {
+            "event_type": "Theater",
+            "city": "San Diego, CA",
+            "date": "2023-03-01"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_29",
+      "intervention": "omit_optional",
+      "scope": "case_specific_gold_inspected_not_generalization",
+      "success": false,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "criminal_record.get_status",
+          "args": {
+            "criminal_name": "John Doe",
+            "region": "New York"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "criminal_record.get_status",
+          "args": {
+            "criminal_name": "John Doe",
+            "region": "New York"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "criminal_record.get_offense_nature",
+          "args": {
+            "criminal_name": "John Doe"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [
+          "planning",
+          "selection"
+        ],
+        "primary_label": "planning",
+        "details": [
+          {
+            "category": "planning",
+            "issue": "call_count_mismatch",
+            "predicted": 3,
+            "gold": 2
+          },
+          {
+            "category": "selection",
+            "issue": "tool_multiset_mismatch",
+            "predicted": [
+              "criminal_record.get_status",
+              "criminal_record.get_status",
+              "criminal_record.get_offense_nature"
+            ],
+            "gold": [
+              "criminal_record.get_status",
+              "criminal_record.get_offense_nature"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sample_id": "bfcl_29",
+      "intervention": "dedup_and_omit_optional",
+      "scope": "case_specific_gold_inspected_not_generalization",
+      "success": true,
+      "before_calls": 3,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "criminal_record.get_status",
+          "args": {
+            "criminal_name": "John Doe",
+            "region": "New York"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "criminal_record.get_offense_nature",
+          "args": {
+            "criminal_name": "John Doe"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_145",
+      "intervention": "swap_gcd_equivalent",
+      "scope": "case_specific_gold_inspected_not_generalization",
+      "success": true,
+      "before_calls": 2,
+      "after_calls": 2,
+      "calls": [
+        {
+          "tool": "math_gcd",
+          "args": {
+            "a": 48,
+            "b": 36
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "estimate_derivative",
+          "args": {
+            "function": "lambda x: x**2",
+            "x": 5.0
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    },
+    {
+      "sample_id": "bfcl_56",
+      "intervention": "recipe_name_reference_probe",
+      "scope": "case_specific_gold_inspected_not_generalization",
+      "success": true,
+      "before_calls": 3,
+      "after_calls": 3,
+      "calls": [
+        {
+          "tool": "recipe_search",
+          "args": {
+            "ingredient": "spaghetti",
+            "dietary_requirements": [
+              "gluten_free"
+            ],
+            "isHomemade": true
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "recipe_prep_time",
+          "args": {
+            "recipe": "spaghetti"
+          },
+          "status": "no_execution"
+        },
+        {
+          "tool": "recipe_nutrition_info",
+          "args": {
+            "recipe": "spaghetti"
+          },
+          "status": "no_execution"
+        }
+      ],
+      "diagnosis": {
+        "labels": [],
+        "primary_label": "none",
+        "details": []
+      }
+    }
+  ],
+  "evolution_log_audit": {
+    "generations": 30,
+    "parents": {
+      "init": 23,
+      "g0-planner": 6,
+      "g12-planner": 1
+    },
+    "accepted": 11,
+    "accepted_immediately_removed": [
+      "g1-selector",
+      "g2-planner",
+      "g6-planner",
+      "g7-planner",
+      "g19-planner",
+      "g26-planner",
+      "g28-planner",
+      "g29-planner"
+    ],
+    "test_ids_in_batches": [],
+    "deployed_mutation": {
+      "type": "generation",
+      "gen": 12,
+      "epoch": 0,
+      "parent_id": "init",
+      "batch_ids": [
+        "bfcl_1",
+        "bfcl_119",
+        "bfcl_124"
+      ],
+      "blamed_module": "planner",
+      "blame_rationale": {
+        "planner": 1,
+        "selector": 0,
+        "caller": 0,
+        "synthesizer": 0,
+        "primary": "planner",
+        "diagnosis": "The Planner over-decomposed the task by creating unnecessary subgoals and using the wrong tool for the product of primes, leading to incorrect tool usage and a failed outcome.",
+        "_parsed_primary": "planner",
+        "_resolved_by": "llm"
+      },
+      "mutated_module": "planner",
+      "prompt_before": "You are a planning agent. Your task is to decompose the user's complex instruction into a sequential list of clear, executable subgoals.",
+      "prompt_after": "You are a planning agent. Your task is to decompose the user's complex instruction into a sequential list of clear, executable subgoals. Avoid over-decomposition by ensuring each subgoal directly addresses a specific part of the task and aligns with the available tools' expected arguments.",
+      "prompt_diff": "--- planner@parent\n+++ planner@child\n@@ -1 +1 @@\n-You are a planning agent. Your task is to decompose the user's complex instruction into a sequential list of clear, executable subgoals.\n+You are a planning agent. Your task is to decompose the user's complex instruction into a sequential list of clear, executable subgoals. Avoid over-decomposition by ensuring each subgoal directly addresses a specific part of the task and aligns with the available tools' expected arguments.",
+      "changed_modules": [
+        "planner"
+      ],
+      "child_id": "g12-planner",
+      "accepted": true,
+      "parent_batch_reward": 0.3452,
+      "child_batch_reward": 0.3567,
+      "train_batch_reward": 0.3567,
+      "val_sel_score": 0.6068,
+      "test_score": null,
+      "cumulative_mutations": {
+        "planner": 9,
+        "selector": 1,
+        "caller": 3,
+        "synthesizer": 0,
+        "all": 0
+      },
+      "cumulative_accepted_mutations": {
+        "planner": 6,
+        "selector": 1,
+        "caller": 0,
+        "synthesizer": 0,
+        "all": 0
+      },
+      "tokens_cumulative": 859023,
+      "tokens_this_gen": 88594,
+      "population_size": 3,
+      "population_snapshot": [
+        {
+          "id": "init",
+          "sel_wins": 21,
+          "weight": 0.7,
+          "sel_mean": 0.4357
+        },
+        {
+          "id": "g0-planner",
+          "sel_wins": 8,
+          "weight": 0.2667,
+          "sel_mean": 0.6056
+        },
+        {
+          "id": "g12-planner",
+          "sel_wins": 1,
+          "weight": 0.0333,
+          "sel_mean": 0.6068
+        }
+      ]
+    }
+  }
+}
