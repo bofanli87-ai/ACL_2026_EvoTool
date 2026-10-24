@@ -86,6 +86,13 @@ class EvoToolConfig:
     # Deterministic code-layer ablation: conservatively repair Caller arguments
     # against the source schema. This never sees gold answers and makes no LLM call.
     caller_repair: bool = False
+    # Planner information-flow ablation: expose each available tool's exact name,
+    # capability description, and complete source parameter schema. The legacy
+    # paper-code behaviour remains the default so earlier results are reproducible.
+    planner_tool_context: bool = False
+    # State/history ablation: retain the exact arguments of completed calls in the
+    # state passed to Selector and Caller, rather than only subgoal/tool/output.
+    structured_history: bool = False
     n_train: int = 12             # |S_train|
     n_sel: int = 8                # |S_sel|
     n_test: int = 20              # |S_test| held-out, DISJOINT from train/sel

@@ -90,6 +90,8 @@ def main() -> None:
         "mutation_target": cfg.evolve.mutation_target, "selection": cfg.evolve.selection,
         "caller_schema": cfg.caller_schema,
         "caller_repair": cfg.caller_repair,
+        "planner_tool_context": cfg.planner_tool_context,
+        "structured_history": cfg.structured_history,
         "seed": cfg.seed, "epochs": cfg.evolve.epochs, "batch_size": cfg.evolve.batch_size,
         "n_train": len(train), "n_sel": len(sel), "n_test": len(test),
     })
@@ -103,12 +105,14 @@ def main() -> None:
     if cfg.evolve.test_ensemble:
         deployed_ids = [p.policy_id for p in population]
         episodes = [route_episode(client, population, x, cfg.max_steps, cfg.caller_schema,
-                                  cfg.caller_repair) for x in test]
+                                  cfg.caller_repair, cfg.planner_tool_context,
+                                  cfg.structured_history) for x in test]
     else:
         theta_star = best_policy(client, cfg, population, sel)
         deployed_ids = [theta_star.policy_id]
         episodes = [run_episode(client, theta_star, x, cfg.max_steps, cfg.caller_schema,
-                                cfg.caller_repair) for x in test]
+                                cfg.caller_repair, cfg.planner_tool_context,
+                                cfg.structured_history) for x in test]
     success = success_rate([e.success for e in episodes])
     mean_reward = headline_score([e.reward for e in episodes])
     elapsed = time.time() - t0
@@ -136,6 +140,8 @@ def main() -> None:
                 "reward": episode.reward,
                 "caller_schema": cfg.caller_schema,
                 "caller_repair": cfg.caller_repair,
+                "planner_tool_context": cfg.planner_tool_context,
+                "structured_history": cfg.structured_history,
                 "caller_traces": traces,
                 "error_analysis": diagnosis,
             }
@@ -161,6 +167,8 @@ def main() -> None:
         "selection": cfg.evolve.selection,
         "caller_schema": cfg.caller_schema,
         "caller_repair": cfg.caller_repair,
+        "planner_tool_context": cfg.planner_tool_context,
+        "structured_history": cfg.structured_history,
         "score": round(success, 2),          # headline = task success rate (paper metric)
         "success_rate": round(success, 2),
         "mean_reward": round(mean_reward, 2),

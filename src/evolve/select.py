@@ -22,7 +22,8 @@ def _reward_matrix(client, cfg, population, sel_set, max_steps) -> list[list[flo
     # rows = policies, cols = selection instances (episodes are cached, so this
     # only actually runs LLM calls for policy/instance pairs not seen before).
     return [[run_episode(client, p, x, max_steps, cfg.caller_schema,
-                         cfg.caller_repair).reward for x in sel_set]
+                         cfg.caller_repair, cfg.planner_tool_context,
+                         cfg.structured_history).reward for x in sel_set]
             for p in population]
 
 

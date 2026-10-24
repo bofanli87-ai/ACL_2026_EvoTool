@@ -82,7 +82,7 @@ def _policy_key(policy: Policy) -> int:
 _NO_TOOL = ("STOP", "NONE", "DONE", "FINISH", "SKIP", "NO_TOOL", "")
 
 
-def _step_summary(sub: str, tool: str, obs: dict) -> str:
+def _step_summary(sub: str, tool: str, obs: dict, include_args: bool = False) -> str:
     out = obs.get("output")
     status = obs.get("status")
     if status == "unavailable":
@@ -92,12 +92,27 @@ def _step_summary(sub: str, tool: str, obs: dict) -> str:
         # bfcl: the chosen call is recorded but never executed (AST-matching
         # paradigm produces no observation) -> status "no_execution".
         out = "(no output)"
-    return f"[{sub}] {tool} -> {out}"
+    args = f" args={obs.get('args', {})}" if include_args else ""
+    return f"[{sub}] {tool}{args} -> {out}"
+
+
+def _structured_step(sub: str, tool: str, obs: dict) -> dict:
+    """Lossless, explicit history record for downstream modules."""
+    return {
+        "subgoal": sub,
+        "tool": tool,
+        "arguments": obs.get("args", {}),
+        "status": obs.get("status"),
+        "output": obs.get("output"),
+    }
 
 
 def run_episode(client: LLMClient, policy: Policy, instance: dict, max_steps: int,
-                caller_schema: bool = False, caller_repair: bool = False) -> Episode:
-    key = (_policy_key(policy), instance.get("id"), caller_schema, caller_repair)
+                caller_schema: bool = False, caller_repair: bool = False,
+                planner_tool_context: bool = False,
+                structured_history: bool = False) -> Episode:
+    key = (_policy_key(policy), instance.get("id"), caller_schema, caller_repair,
+           planner_tool_context, structured_history)
     if key in _EPISODE_CACHE:
         return _EPISODE_CACHE[key]
 
@@ -105,8 +120,15 @@ def run_episode(client: LLMClient, policy: Policy, instance: dict, max_steps: in
     tools = instance["available_tools"]
     executor = env_for(instance)          # None for bfcl (no execution)
 
-    # 1. Planner -> ordered abstract substeps (decomposition only).
-    plan = modules.run_planner(client, policy.planner, query)
+    # 1. Planner -> ordered substeps. The opt-in information-flow treatment lets
+    # it align step granularity with actual tool capabilities and schemas.
+    if planner_tool_context:
+        plan = modules.run_planner(client, policy.planner, query, tools,
+                                   use_tool_context=True)
+    else:
+        # Preserve the legacy three-argument call path for old experiments and
+        # diagnostic runners that wrap run_planner.
+        plan = modules.run_planner(client, policy.planner, query)
 
     # 2. STRICT SEQUENCE: for each substep, Selector chooses its tool, Caller fills
     #    its args, and the tool is executed per the benchmark's §2 output wiring.
@@ -134,7 +156,10 @@ def run_episode(client: LLMClient, policy: Policy, instance: dict, max_steps: in
         else:
             obs = executor.execute(tool, args)
         steps.append(Step(sub, tool, args, obs, caller_trace))
-        state[f"step_{len(steps)}"] = _step_summary(sub, tool, obs)
+        state[f"step_{len(steps)}"] = (
+            _structured_step(sub, tool, obs) if structured_history
+            else _step_summary(sub, tool, obs)
+        )
 
     # 3. Synthesizer -> final answer from the (sub, tool, args, output) tuples + query.
     answer = modules.run_synthesizer(client, policy.synthesizer, query, steps)
@@ -155,10 +180,13 @@ def run_episode(client: LLMClient, policy: Policy, instance: dict, max_steps: in
 
 
 def mean_reward(client: LLMClient, policy: Policy, instances: list[dict], max_steps: int,
-                caller_schema: bool = False, caller_repair: bool = False) -> float:
+                caller_schema: bool = False, caller_repair: bool = False,
+                planner_tool_context: bool = False,
+                structured_history: bool = False) -> float:
     if not instances:
         return 0.0
-    return sum(run_episode(client, policy, x, max_steps, caller_schema, caller_repair).reward
+    return sum(run_episode(client, policy, x, max_steps, caller_schema, caller_repair,
+                           planner_tool_context, structured_history).reward
                for x in instances) / len(instances)
 
 
@@ -167,10 +195,13 @@ def _error_count(ep: Episode) -> int:
 
 
 def route_episode(client: LLMClient, policies: list[Policy], instance: dict, max_steps: int,
-                  caller_schema: bool = False, caller_repair: bool = False) -> Episode:
+                  caller_schema: bool = False, caller_repair: bool = False,
+                  planner_tool_context: bool = False,
+                  structured_history: bool = False) -> Episode:
     """Optional best-of-population routing (ablation only — SPEC.md §7 keeps
     the single Theta* at test time). Runs every retained policy and keeps the rollout
     with the fewest execution errors, breaking ties by reward."""
-    eps = [run_episode(client, p, instance, max_steps, caller_schema, caller_repair)
+    eps = [run_episode(client, p, instance, max_steps, caller_schema, caller_repair,
+                       planner_tool_context, structured_history)
            for p in policies]
     return min(eps, key=lambda e: (_error_count(e), -e.reward))

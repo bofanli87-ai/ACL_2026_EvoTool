@@ -9,6 +9,7 @@ fixed so that evolving the spec never breaks parsing.
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
+import json
 
 from src.env import registry
 from src.llm.client import LLMClient
@@ -38,20 +39,44 @@ def initial_policy() -> Policy:
 
 # --- per-module calls -------------------------------------------------------
 
-def run_planner(client: LLMClient, spec: str, query: str) -> list[str]:
-    # The planner does NOT see the tool index: it produces ABSTRACT subgoals
-    # (what to accomplish), leaving the actual tool choice to the Selector. This
-    # keeps the four modules as balanced, independent levers (planner=decompose,
-    # selector=choose tool, caller=build args) rather than the planner dictating
-    # the whole tool sequence.
-    fmt = (
-        '\n\nReturn JSON only: {"plan": ["subgoal 1", "subgoal 2", ...]}. '
-        "Each subgoal is one short ABSTRACT step describing WHAT to accomplish "
-        "(e.g. 'find the movie', 'get its credits'). Do NOT name specific tools or APIs."
-    )
+def run_planner(client: LLMClient, spec: str, query: str,
+                tools: list[dict] | None = None,
+                use_tool_context: bool = False) -> list[str]:
+    fmt = '\n\nReturn JSON only: {"plan": ["subgoal 1", "subgoal 2", ...]}.'
+    tool_section = ""
+    if use_tool_context:
+        # Keep exactly the fields needed to understand tool capability and call
+        # boundaries. No gold plan, answer, or observed test outcome is exposed.
+        catalog = [
+            {
+                "name": tool.get("name", ""),
+                "description": tool.get("description", ""),
+                "parameter_schema": tool.get("parameter_schema") or {},
+            }
+            for tool in (tools or [])
+        ]
+        fmt += (
+            " Plan at the granularity of executable tool operations. Each subgoal "
+            "must correspond to one necessary tool call and may name that exact tool. "
+            "If one tool call can satisfy several requested fields or constraints, "
+            "combine them in one subgoal; split only when distinct calls are required. "
+            "Cover every requested entity exactly once, preserve dependencies, and do "
+            "not add collection, filtering, formatting, or duplicate steps already "
+            "covered by a tool's capability."
+        )
+        tool_section = (
+            "\n\nAVAILABLE_TOOLS_WITH_FULL_PARAMETER_SCHEMA:\n"
+            + json.dumps(catalog, ensure_ascii=False, separators=(",", ":"))
+        )
+    else:
+        # Legacy public-code behaviour retained as the control condition.
+        fmt += (
+            " Each subgoal is one short ABSTRACT step describing WHAT to accomplish "
+            "(e.g. 'find the movie', 'get its credits'). Do NOT name specific tools or APIs."
+        )
     messages = [
         {"role": "system", "content": spec + fmt},
-        {"role": "user", "content": f"USER_TASK:\n{query}"},
+        {"role": "user", "content": f"USER_TASK:\n{query}{tool_section}"},
     ]
     out = client.generate_json(messages)
     plan = out.get("plan") or []
@@ -150,7 +175,11 @@ def _render_step(s) -> str:
 def _state_brief(state: dict) -> str:
     if not state:
         return "(nothing done yet)"
-    return "\n".join(f"{k}: {v}" for k, v in state.items())
+    return "\n".join(
+        f"{k}: " + (json.dumps(v, ensure_ascii=False, separators=(",", ":"))
+                     if isinstance(v, (dict, list)) else str(v))
+        for k, v in state.items()
+    )
 
 
 def _tool_doc(tool: dict) -> str:
