@@ -1,0 +1,102 @@
+{
+  "audit_date": "2026-10-26",
+  "scope": "Read-only source snapshots for offline review; .txt files are not runtime replacements",
+  "paper": "https://aclanthology.org/2026.acl-long.2016.pdf",
+  "official_commit": "6a82719ea6e22cf23f963078e2527094e50b47f6",
+  "user_commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+  "school_uncommitted_changes": "not inspected",
+  "planner100_manifest": "GitHub path returned 404; scores not recomputed",
+  "files": [
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "src/policy/modules.py",
+      "snapshot": "docs/evotool_alignment/reference_code/src/policy/modules.py.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/src/policy/modules.py"
+    },
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "src/policy/agent.py",
+      "snapshot": "docs/evotool_alignment/reference_code/src/policy/agent.py.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/src/policy/agent.py"
+    },
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "src/evolve/loop.py",
+      "snapshot": "docs/evotool_alignment/reference_code/src/evolve/loop.py.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/src/evolve/loop.py"
+    },
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "src/evolve/blame.py",
+      "snapshot": "docs/evotool_alignment/reference_code/src/evolve/blame.py.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/src/evolve/blame.py"
+    },
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "src/evolve/mutate.py",
+      "snapshot": "docs/evotool_alignment/reference_code/src/evolve/mutate.py.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/src/evolve/mutate.py"
+    },
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "src/evolve/diagnostics.py",
+      "snapshot": "docs/evotool_alignment/reference_code/src/evolve/diagnostics.py.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/src/evolve/diagnostics.py"
+    },
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "src/evolve/select.py",
+      "snapshot": "docs/evotool_alignment/reference_code/src/evolve/select.py.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/src/evolve/select.py"
+    },
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "src/config.py",
+      "snapshot": "docs/evotool_alignment/reference_code/src/config.py.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/src/config.py"
+    },
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "src/llm/client.py",
+      "snapshot": "docs/evotool_alignment/reference_code/src/llm/client.py.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/src/llm/client.py"
+    },
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "run.py",
+      "snapshot": "docs/evotool_alignment/reference_code/run.py.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/run.py"
+    },
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "configs/bfcl_planner100_tools_history.yaml",
+      "snapshot": "docs/evotool_alignment/reference_code/configs/bfcl_planner100_tools_history.yaml.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/configs/bfcl_planner100_tools_history.yaml"
+    },
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "BFCL_PLANNER100_EXPERIMENT_ZH.md",
+      "snapshot": "docs/evotool_alignment/reference_code/BFCL_PLANNER100_EXPERIMENT_ZH.md.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/BFCL_PLANNER100_EXPERIMENT_ZH.md"
+    },
+    {
+      "repository": "bofanli87-ai/ACL_2026_EvoTool",
+      "commit": "4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9",
+      "path": "BFCL_PLANNER100_RESULTS_ZH.md",
+      "snapshot": "docs/evotool_alignment/reference_code/BFCL_PLANNER100_RESULTS_ZH.md.txt",
+      "url": "https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/4fb3fbb8d35874e4dc0aa50e5de9c9f3816c61c9/BFCL_PLANNER100_RESULTS_ZH.md"
+    }
+  ]
+}
