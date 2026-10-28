@@ -5,7 +5,7 @@ $Python = Join-Path $RepoRoot ".venv\Scripts\python.exe"
 $Endpoint = "http://127.0.0.1:11434/v1/models"
 
 if (-not (Test-Path -LiteralPath $Python)) {
-    throw ".venv not found. Run: py -3.13 -m venv .venv"
+    throw ".venv not found. Run: py -3.11 -m venv .venv"
 }
 
 Write-Host "[1/3] Python environment"

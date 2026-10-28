@@ -57,6 +57,10 @@ MODEL=Qwen/Qwen3-8B bash scripts/launch_vllm.sh
 
 ## Quick Start / Demo
 
+For the `bofanli87-ai` fork's paper/code alignment status, school-machine setup,
+and exact BFCL Static-vs-Evolution commands, see
+[SCHOOL_HANDOFF_AND_RUNBOOK_ZH.md](SCHOOL_HANDOFF_AND_RUNBOOK_ZH.md).
+
 `data/` ships small demo subsets (150 instances per benchmark; τ-bench is built locally in one command, below) so the evolution loop runs out of the box. ***The paper evaluates on the four full official benchmarks***:
 
 | Benchmark | Official source | Evaluation subsets | Metric |
