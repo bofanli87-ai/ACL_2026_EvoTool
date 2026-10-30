@@ -1,0 +1,11 @@
+{
+  "static_success_rate": 76.67,
+  "evolution_success_rate": 83.33,
+  "evolution_minus_static": 6.66,
+  "static_tokens": 72687,
+  "evolution_tokens": 1487395,
+  "static_result": "D:\\Evotool\\results\\feedback_fixed_1ep\\static.json",
+  "evolution_result": "D:\\Evotool\\results\\feedback_fixed_1ep\\evolution.json",
+  "static_episodes": "D:\\Evotool\\results\\feedback_fixed_1ep\\static.episodes.jsonl",
+  "evolution_episodes": "D:\\Evotool\\results\\feedback_fixed_1ep\\evolution.episodes.jsonl"
+}
