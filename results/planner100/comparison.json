@@ -1,0 +1,201 @@
+{
+  "n_samples": 100,
+  "conditions": {
+    "control": {
+      "success": 36,
+      "primary_failures": {
+        "selection": 2,
+        "planning": 45,
+        "semantic_argument": 12,
+        "schema_interface": 5
+      },
+      "all_failure_labels": {
+        "selection": 47,
+        "planning": 45,
+        "semantic_argument": 14,
+        "schema_interface": 7
+      }
+    },
+    "planner_tools": {
+      "success": 43,
+      "primary_failures": {
+        "semantic_argument": 35,
+        "selection": 4,
+        "planning": 10,
+        "schema_interface": 8
+      },
+      "all_failure_labels": {
+        "semantic_argument": 39,
+        "selection": 14,
+        "planning": 10,
+        "schema_interface": 9
+      }
+    },
+    "history": {
+      "success": 38,
+      "primary_failures": {
+        "semantic_argument": 10,
+        "planning": 47,
+        "schema_interface": 4,
+        "selection": 1
+      },
+      "all_failure_labels": {
+        "semantic_argument": 11,
+        "planning": 47,
+        "selection": 48,
+        "schema_interface": 5
+      }
+    },
+    "tools_history": {
+      "success": 57,
+      "primary_failures": {
+        "semantic_argument": 22,
+        "selection": 4,
+        "planning": 10,
+        "schema_interface": 7
+      },
+      "all_failure_labels": {
+        "semantic_argument": 25,
+        "selection": 14,
+        "planning": 10,
+        "schema_interface": 7
+      }
+    }
+  },
+  "paired_vs_baseline": {
+    "planner_tools": {
+      "both_correct": 19,
+      "baseline_only": 17,
+      "treatment_only": 24,
+      "both_wrong": 40,
+      "mcnemar_exact_p": 0.34888887944907765,
+      "baseline_only_ids": [
+        "bfcl_105",
+        "bfcl_107",
+        "bfcl_110",
+        "bfcl_112",
+        "bfcl_124",
+        "bfcl_129",
+        "bfcl_133",
+        "bfcl_15",
+        "bfcl_35",
+        "bfcl_62",
+        "bfcl_64",
+        "bfcl_65",
+        "bfcl_68",
+        "bfcl_79",
+        "bfcl_86",
+        "bfcl_93",
+        "bfcl_95"
+      ],
+      "treatment_only_ids": [
+        "bfcl_1",
+        "bfcl_101",
+        "bfcl_106",
+        "bfcl_11",
+        "bfcl_118",
+        "bfcl_119",
+        "bfcl_125",
+        "bfcl_136",
+        "bfcl_138",
+        "bfcl_18",
+        "bfcl_22",
+        "bfcl_26",
+        "bfcl_38",
+        "bfcl_41",
+        "bfcl_42",
+        "bfcl_47",
+        "bfcl_50",
+        "bfcl_53",
+        "bfcl_74",
+        "bfcl_82",
+        "bfcl_87",
+        "bfcl_89",
+        "bfcl_96",
+        "bfcl_97"
+      ]
+    },
+    "history": {
+      "both_correct": 35,
+      "baseline_only": 1,
+      "treatment_only": 3,
+      "both_wrong": 61,
+      "mcnemar_exact_p": 0.625,
+      "baseline_only_ids": [
+        "bfcl_103"
+      ],
+      "treatment_only_ids": [
+        "bfcl_113",
+        "bfcl_41",
+        "bfcl_76"
+      ]
+    },
+    "tools_history": {
+      "both_correct": 26,
+      "baseline_only": 10,
+      "treatment_only": 31,
+      "both_wrong": 33,
+      "mcnemar_exact_p": 0.0014504910141113214,
+      "baseline_only_ids": [
+        "bfcl_105",
+        "bfcl_110",
+        "bfcl_124",
+        "bfcl_15",
+        "bfcl_35",
+        "bfcl_62",
+        "bfcl_64",
+        "bfcl_65",
+        "bfcl_79",
+        "bfcl_86"
+      ],
+      "treatment_only_ids": [
+        "bfcl_1",
+        "bfcl_101",
+        "bfcl_102",
+        "bfcl_106",
+        "bfcl_11",
+        "bfcl_111",
+        "bfcl_116",
+        "bfcl_118",
+        "bfcl_119",
+        "bfcl_125",
+        "bfcl_136",
+        "bfcl_138",
+        "bfcl_143",
+        "bfcl_18",
+        "bfcl_22",
+        "bfcl_26",
+        "bfcl_31",
+        "bfcl_41",
+        "bfcl_42",
+        "bfcl_47",
+        "bfcl_50",
+        "bfcl_52",
+        "bfcl_53",
+        "bfcl_74",
+        "bfcl_82",
+        "bfcl_87",
+        "bfcl_89",
+        "bfcl_91",
+        "bfcl_92",
+        "bfcl_96",
+        "bfcl_97"
+      ]
+    }
+  },
+  "factorial": {
+    "labels": {
+      "base": "control",
+      "a": "planner_tools",
+      "b": "history",
+      "ab": "tools_history"
+    },
+    "rates": {
+      "control": 0.36,
+      "planner_tools": 0.43,
+      "history": 0.38,
+      "tools_history": 0.57
+    },
+    "interaction": 0.11999999999999994
+  }
+}

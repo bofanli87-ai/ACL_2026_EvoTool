@@ -17,6 +17,9 @@ The advisory routing of an event to a module:
 
 from __future__ import annotations
 
+from collections import Counter
+from src.eval_bfcl_ast import _call_matches_gold
+
 from src.policy.agent import Episode
 from src.policy.modules import MODULES
 
@@ -39,7 +42,7 @@ def extract_diagnostics(episode: Episode, instance: dict) -> dict:
 
     # Selector: WHICH tools got called (it drives the loop). Missing required tools
     # or hallucinated tools are selection failures.
-    missing = [t for t in gold_tools if t not in pred_tools]
+    missing = list((Counter(gold_tools) - Counter(pred_tools)).elements())
     if missing:
         events["selector"].append(f"required tools were never selected: {missing}")
     invalid = [t for t in pred_tools if t not in available]
@@ -48,22 +51,46 @@ def extract_diagnostics(episode: Episode, instance: dict) -> dict:
 
     # Caller: execution failures, empty arguments, and arguments that differ from
     # the expected gold values (the latter is what breaks tau-bench's DB state).
-    gold_args = {s.get("tool"): (s.get("args") or {}) for s in instance.get("gold_plan", [])}
-    for s in episode.steps:
+    # Maximum one-to-one matching preserves repeated calls and overlapping BFCL
+    # allowed-value sets. Unmatched calls are symptoms, not causal attribution.
+    gold = instance.get("gold_match")
+    if gold is None:
+        gold = [{s.get("tool"): {k: [v] for k, v in (s.get("args") or {}).items()}}
+                for s in instance.get("gold_plan", [])]
+    owners = {}
+
+    def assign(pi, seen):
+        step = episode.steps[pi]
+        for gi, spec in enumerate(gold):
+            if gi in seen or not _call_matches_gold({"tool": step.tool, "args": step.args}, spec):
+                continue
+            seen.add(gi)
+            if gi not in owners or assign(owners[gi], seen):
+                owners[gi] = pi
+                return True
+        return False
+
+    for pi in range(len(episode.steps)):
+        assign(pi, set())
+    matched = set(owners.values())
+    gold_names = [next(iter(spec)) for spec in gold]
+    excess = list((Counter(pred_tools) - Counter(gold_names)).elements())
+    if excess:
+        events["planner"].append(f"extra call occurrences (check plan/selection): {excess}")
+    for pi, s in enumerate(episode.steps):
         out = str(s.observation.get("output", ""))
         if s.observation.get("status") == "error" and s.tool in available:
             events["caller"].append(f"call to '{s.tool}' failed -> {out}")
-        elif s.tool in available and not s.args and gold_args.get(s.tool):
-            events["caller"].append(f"empty arguments for '{s.tool}'")
-        elif (s.tool in gold_args and gold_args[s.tool]
-              and s.args != gold_args[s.tool]
+        elif (pi not in matched and s.tool in gold_names
               and s.observation.get("status") != "success"):
             # Only blame the caller for an argument mismatch when the gold args are
             # non-empty AND the call did NOT succeed. The paper's Caller criterion is
             # malformed/wrong calls that *cause* failure; a successful call (or a tool
             # whose gold args are empty, e.g. RestBench, whose metric ignores args) is
             # not a caller fault, so flagging it just misroutes blame.
-            events["caller"].append(f"arguments for '{s.tool}' differ from the expected values")
+            events["caller"].append(
+                f"step {pi + 1}: '{s.tool}' has no distinct matching reference call; "
+                "check arguments or duplicate call (not proof of Caller causality)")
 
     # Synthesizer: grounding of the final answer.
     gold_answer = (instance.get("gold_answer") or "").lower()
@@ -80,6 +107,10 @@ def extract_diagnostics(episode: Episode, instance: dict) -> dict:
         "gold_tools": gold_tools,
         "reward": episode.reward,
         "statuses": [s.observation.get("status") for s in episode.steps],
+        "call_matches": [{"predicted_index": pi, "gold_index": gi}
+                         for gi, pi in sorted(owners.items())],
+        "unmatched_predicted": [i for i in range(len(episode.steps)) if i not in matched],
+        "unmatched_gold": [i for i in range(len(gold)) if i not in owners],
     }
 
 

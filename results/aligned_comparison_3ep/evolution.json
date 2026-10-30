@@ -1,0 +1,34 @@
+{
+  "preset": "bfcl_aligned_evolution",
+  "benchmark": "bfcl",
+  "mutation_target": "blame",
+  "selection": "diversity",
+  "caller_schema": true,
+  "caller_repair": false,
+  "planner_tool_context": true,
+  "structured_history": true,
+  "score": 73.33,
+  "success_rate": 73.33,
+  "mean_reward": 65.19,
+  "tokens": 2704706,
+  "seconds": 5365.7,
+  "n_train": 90,
+  "n_sel": 30,
+  "n_test": 30,
+  "held_out_leak": 0,
+  "population_size": 5,
+  "population_ids": [
+    "init",
+    "g16-planner",
+    "g19-planner",
+    "g24-caller",
+    "g44-planner"
+  ],
+  "test_ensemble": false,
+  "deployed_policy_ids": [
+    "g44-planner"
+  ],
+  "test_episodes": "D:\\Evotool\\results\\aligned_comparison_3ep\\evolution.episodes.jsonl",
+  "runlog": "D:\\Evotool\\results\\aligned_comparison_3ep\\logs\\bfcl__bfcl_aligned_evolution.runlog.jsonl",
+  "runlog_summary": "D:\\Evotool\\results\\aligned_comparison_3ep\\logs\\bfcl__bfcl_aligned_evolution.runlog.summary.json"
+}

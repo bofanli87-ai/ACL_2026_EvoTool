@@ -1,0 +1,11 @@
+{
+  "static_success_rate": 76.67,
+  "evolution_success_rate": 73.33,
+  "evolution_minus_static": -3.34,
+  "static_tokens": 72687,
+  "evolution_tokens": 2704706,
+  "static_result": "D:\\Evotool\\results\\aligned_comparison_3ep\\static.json",
+  "evolution_result": "D:\\Evotool\\results\\aligned_comparison_3ep\\evolution.json",
+  "static_episodes": "D:\\Evotool\\results\\aligned_comparison_3ep\\static.episodes.jsonl",
+  "evolution_episodes": "D:\\Evotool\\results\\aligned_comparison_3ep\\evolution.episodes.jsonl"
+}

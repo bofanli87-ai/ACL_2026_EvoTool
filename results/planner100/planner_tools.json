@@ -1,0 +1,30 @@
+{
+  "preset": "bfcl_planner100_tools",
+  "benchmark": "bfcl",
+  "mutation_target": "none",
+  "selection": "static",
+  "caller_schema": true,
+  "caller_repair": false,
+  "planner_tool_context": true,
+  "structured_history": false,
+  "score": 43.0,
+  "success_rate": 43.0,
+  "mean_reward": 43.95,
+  "tokens": 251538,
+  "seconds": 521.0,
+  "n_train": 0,
+  "n_sel": 0,
+  "n_test": 100,
+  "held_out_leak": 0,
+  "population_size": 1,
+  "population_ids": [
+    "init"
+  ],
+  "test_ensemble": false,
+  "deployed_policy_ids": [
+    "init"
+  ],
+  "test_episodes": "D:\\Evotool\\results\\planner100\\planner_tools.episodes.jsonl",
+  "runlog": "D:\\Evotool\\results\\planner100\\logs\\bfcl__bfcl_planner100_tools.runlog.jsonl",
+  "runlog_summary": "D:\\Evotool\\results\\planner100\\logs\\bfcl__bfcl_planner100_tools.runlog.summary.json"
+}

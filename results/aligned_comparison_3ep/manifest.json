@@ -1,0 +1,80 @@
+{
+  "purpose": "matched BFCL comparison after implemented interface alignment",
+  "benchmark": "bfcl",
+  "evolution_epochs": 3,
+  "treatment_fields": [
+    "evolve.mutation_target",
+    "evolve.selection",
+    "evolve.epochs"
+  ],
+  "matched_settings": {
+    "llm": {
+      "model_name": "evotool-qwen3:8b",
+      "backend": "ollama",
+      "temperature": 0.0,
+      "max_tokens": 512,
+      "api_key": "ollama",
+      "base_url": "http://127.0.0.1:11434/v1"
+    },
+    "evolve": {
+      "batch_size": 3,
+      "generations": 0,
+      "topk": 2,
+      "test_ensemble": false,
+      "use_trajectory": true,
+      "use_feedback": true,
+      "log_test_eval": false,
+      "parent_select": "win",
+      "accept_on": "batch"
+    },
+    "benchmark": "dummy",
+    "data_path": "data_schema",
+    "output_path": "results/aligned_comparison",
+    "seed": 42,
+    "max_steps": 6,
+    "caller_schema": true,
+    "caller_repair": false,
+    "planner_tool_context": true,
+    "structured_history": true,
+    "n_train": 90,
+    "n_sel": 30,
+    "n_test": 30,
+    "n_eval": 30,
+    "verbose": false
+  },
+  "configs": {
+    "static": "configs\\bfcl_aligned_static.yaml",
+    "evolution": "configs\\bfcl_aligned_evolution.yaml"
+  },
+  "outputs": {
+    "static": "D:\\Evotool\\results\\aligned_comparison_3ep\\static.json",
+    "evolution": "D:\\Evotool\\results\\aligned_comparison_3ep\\evolution.json"
+  },
+  "commands": {
+    "static": [
+      "D:\\Evotool\\.venv\\Scripts\\python.exe",
+      "run.py",
+      "--config",
+      "D:\\Evotool\\configs\\bfcl_aligned_static.yaml",
+      "--benchmark",
+      "bfcl",
+      "--out",
+      "D:\\Evotool\\results\\aligned_comparison_3ep\\static.json",
+      "--override",
+      "output_path=D:\\Evotool\\results\\aligned_comparison_3ep"
+    ],
+    "evolution": [
+      "D:\\Evotool\\.venv\\Scripts\\python.exe",
+      "run.py",
+      "--config",
+      "D:\\Evotool\\configs\\bfcl_aligned_evolution.yaml",
+      "--benchmark",
+      "bfcl",
+      "--out",
+      "D:\\Evotool\\results\\aligned_comparison_3ep\\evolution.json",
+      "--override",
+      "output_path=D:\\Evotool\\results\\aligned_comparison_3ep",
+      "evolve.epochs=3"
+    ]
+  }
+}

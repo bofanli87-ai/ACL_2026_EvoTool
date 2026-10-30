@@ -1,0 +1,60 @@
+{
+  "type": "summary",
+  "preset": "bfcl_planner100_history",
+  "benchmark": "bfcl",
+  "mutation_target": "none",
+  "selection": "static",
+  "caller_schema": true,
+  "caller_repair": false,
+  "planner_tool_context": false,
+  "structured_history": true,
+  "seed": 42,
+  "epochs": 0,
+  "batch_size": 3,
+  "n_train": 0,
+  "n_sel": 0,
+  "n_test": 100,
+  "n_generations": 0,
+  "n_accepted": 0,
+  "n_rejected": 0,
+  "cumulative_mutations": {
+    "planner": 0,
+    "selector": 0,
+    "caller": 0,
+    "synthesizer": 0,
+    "all": 0
+  },
+  "cumulative_accepted_mutations": {
+    "planner": 0,
+    "selector": 0,
+    "caller": 0,
+    "synthesizer": 0,
+    "all": 0
+  },
+  "total_tokens": 330458,
+  "final_population": [],
+  "learning_curves": {
+    "gen": [],
+    "epoch": [],
+    "parent_batch_reward": [],
+    "child_batch_reward": [],
+    "train_batch_reward": [],
+    "val_sel_score": [],
+    "tokens_cumulative": [],
+    "test": {
+      "gen": [],
+      "epoch": [],
+      "score": []
+    }
+  },
+  "final_test_success": 38.0,
+  "final_test_mean_reward": 39.31,
+  "deploy": "single",
+  "deployed_policy_ids": [
+    "init"
+  ],
+  "population_ids": [
+    "init"
+  ],
+  "seconds": 689.9
+}

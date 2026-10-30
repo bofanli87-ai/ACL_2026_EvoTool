@@ -124,6 +124,7 @@ class RunLog:
         sel_means: dict,
         sel_wins: dict,
         total_tokens: int,
+        mutation_trace: dict | None = None,
     ) -> None:
         # cumulative mutation bookkeeping (count the attempt by target module)
         key = target if target in self.mut_attempts else "all"
@@ -153,6 +154,7 @@ class RunLog:
         mut = _mutation_view(parent, child, target)
         record = {
             "type": "generation",
+            "mutation_trace": mutation_trace or {},
             "gen": gen,
             "epoch": epoch,
             "parent_id": parent.policy_id,

@@ -1,0 +1,30 @@
+{
+  "preset": "bfcl_aligned_static",
+  "benchmark": "bfcl",
+  "mutation_target": "none",
+  "selection": "static",
+  "caller_schema": true,
+  "caller_repair": false,
+  "planner_tool_context": true,
+  "structured_history": true,
+  "score": 76.67,
+  "success_rate": 76.67,
+  "mean_reward": 67.58,
+  "tokens": 72687,
+  "seconds": 188.1,
+  "n_train": 90,
+  "n_sel": 30,
+  "n_test": 30,
+  "held_out_leak": 0,
+  "population_size": 1,
+  "population_ids": [
+    "init"
+  ],
+  "test_ensemble": false,
+  "deployed_policy_ids": [
+    "init"
+  ],
+  "test_episodes": "D:\\Evotool\\results\\aligned_comparison_1ep\\static.episodes.jsonl",
+  "runlog": "D:\\Evotool\\results\\aligned_comparison_1ep\\logs\\bfcl__bfcl_aligned_static.runlog.jsonl",
+  "runlog_summary": "D:\\Evotool\\results\\aligned_comparison_1ep\\logs\\bfcl__bfcl_aligned_static.runlog.summary.json"
+}

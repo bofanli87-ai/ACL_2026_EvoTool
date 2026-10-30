@@ -38,26 +38,41 @@ def mutate(
     use_trajectory: bool,
     use_feedback: bool,
     child_id: str,
+    blame_rationale: dict | None = None,
+    trace_out: dict | None = None,
 ) -> Policy:
     parts = [
         f"# TARGET MODULE\n{target}",
         f"# CURRENT SPECIFICATION\n{policy.spec(target)}",
         f"# TASK\n{episode.instance['query']}",
-        f"# OUTCOME\nreward={episode.reward:.2f}",
+        f"# OUTCOME\nsuccess={episode.success}; reward={episode.reward:.2f}",
     ]
     if use_trajectory:
         parts.insert(3, f"# TRAJECTORY (evidence)\n{_trajectory_text(episode)}")
         parts.append(f"# MODULE EVENTS\n{render_events(diagnostics)}")
 
+    if use_feedback:
+        parts.append("# BLAMER RATIONALE AND SCORES\n" + json.dumps(blame_rationale or {}, ensure_ascii=False))
     system = MUTATOR_META_PROMPT if use_feedback else _PLAIN_SYSTEM
     messages = [
         {"role": "system", "content": system},
         {"role": "user", "content": "\n\n".join(parts)},
     ]
     out = client.generate_json(messages)
-    revised = str(out.get("revised_spec", "")).strip()
-    if not revised:
-        return policy  # no-op: keep parent spec if the mutator produced nothing
+    revised = out.get("revised_spec")
+    reason = None
+    if out.get("target_module") != target:
+        reason = "target_mismatch"
+    elif not isinstance(revised, str) or not revised.strip():
+        reason = "invalid_spec"
+    elif revised.strip() == policy.spec(target).strip():
+        reason = "unchanged_spec"
+    if trace_out is not None:
+        trace_out.update(messages=messages, response=out, validation_error=reason,
+                         valid=reason is None)
+    if reason:
+        return policy
+    revised = revised.strip()
     return policy.with_module(target, revised, child_id)
 
 

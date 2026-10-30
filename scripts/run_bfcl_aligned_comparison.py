@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 STATIC_CONFIG = ROOT / "configs" / "bfcl_aligned_static.yaml"
 EVOLUTION_CONFIG = ROOT / "configs" / "bfcl_aligned_evolution.yaml"
-TREATMENT_FIELDS = ("mutation_target", "selection", "epochs")
+TREATMENT_FIELDS = ("mutation_target", "selection", "epochs", "generations")
 
 
 def _load_config(path: Path) -> dict:
@@ -46,12 +46,16 @@ def main() -> None:
         "--epochs",
         type=int,
         default=1,
-        help="Evolution epochs; use 1 for smoke/first comparison and 3 for paper budget.",
+        help="Evolution epochs (repository budget, not a claim of paper equivalence).",
     )
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--generations", type=int, default=0,
+                        help="Positive value overrides the epoch-derived generation count.")
     args = parser.parse_args()
     if args.epochs < 1:
         raise SystemExit("--epochs must be at least 1")
+    if args.generations < 0:
+        raise SystemExit("--generations must be nonnegative")
 
     static_config = _load_config(STATIC_CONFIG)
     evolution_config = _load_config(EVOLUTION_CONFIG)
@@ -69,6 +73,7 @@ def main() -> None:
     commands = {
         "static": [
             sys.executable,
+            "-u",
             "run.py",
             "--config",
             str(STATIC_CONFIG),
@@ -81,6 +86,7 @@ def main() -> None:
         ],
         "evolution": [
             sys.executable,
+            "-u",
             "run.py",
             "--config",
             str(EVOLUTION_CONFIG),
@@ -91,12 +97,15 @@ def main() -> None:
             "--override",
             f"output_path={outdir}",
             f"evolve.epochs={args.epochs}",
+            f"evolve.generations={args.generations}",
         ],
     }
     manifest = {
         "purpose": "matched BFCL comparison after implemented interface alignment",
         "benchmark": "bfcl",
         "evolution_epochs": args.epochs,
+        "evolution_generations_override": args.generations,
+        "implementation_revision": "feedback_and_call_matching_v1",
         "treatment_fields": [f"evolve.{field}" for field in TREATMENT_FIELDS],
         "matched_settings": _matched_snapshot(static_config),
         "configs": {
@@ -106,7 +115,7 @@ def main() -> None:
         "outputs": {name: str(path) for name, path in outputs.items()},
         "commands": commands,
     }
-    print(json.dumps(manifest, ensure_ascii=False, indent=2))
+    print(json.dumps(manifest, ensure_ascii=False, indent=2), flush=True)
     if args.dry_run:
         return
 

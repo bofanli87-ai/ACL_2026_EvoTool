@@ -1,0 +1,30 @@
+{
+  "preset": "bfcl_planner100_history",
+  "benchmark": "bfcl",
+  "mutation_target": "none",
+  "selection": "static",
+  "caller_schema": true,
+  "caller_repair": false,
+  "planner_tool_context": false,
+  "structured_history": true,
+  "score": 38.0,
+  "success_rate": 38.0,
+  "mean_reward": 39.31,
+  "tokens": 330458,
+  "seconds": 689.9,
+  "n_train": 0,
+  "n_sel": 0,
+  "n_test": 100,
+  "held_out_leak": 0,
+  "population_size": 1,
+  "population_ids": [
+    "init"
+  ],
+  "test_ensemble": false,
+  "deployed_policy_ids": [
+    "init"
+  ],
+  "test_episodes": "results/planner100/history.episodes.jsonl",
+  "runlog": "results/planner100\\logs\\bfcl__bfcl_planner100_history.runlog.jsonl",
+  "runlog_summary": "results/planner100\\logs\\bfcl__bfcl_planner100_history.runlog.summary.json"
+}

@@ -1,0 +1,5 @@
+# bfcl_planner100_history on bfcl  (mutation=none, selection=static)
+# split: train=0 sel=0 test=100 leak=0
+
+# FINAL held-out test success=38.0 mean_reward=39.31 pop=1 ids=['init']
+# deploy=single deployed_ids=['init']

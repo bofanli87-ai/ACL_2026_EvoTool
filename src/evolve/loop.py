@@ -54,12 +54,14 @@ def _representative(episodes: list, diag_list: list):
     return min(zip(episodes, diag_list), key=lambda p: p[0].reward)
 
 
-def _make_child(client, parent, target, episode, diagnostics, cfg, child_id) -> Policy:
+def _make_child(client, parent, target, episode, diagnostics, cfg, child_id,
+                blame_rationale=None, trace_out=None) -> Policy:
     ev = cfg.evolve
     if target == "all":  # monolithic: one score-guided global rewrite (no blame)
         return monolithic_mutate(client, parent, episode, child_id)
     return mutate(client, parent, target, episode, diagnostics,
-                  ev.use_trajectory, ev.use_feedback, child_id)
+                  ev.use_trajectory, ev.use_feedback, child_id,
+                  blame_rationale=blame_rationale, trace_out=trace_out)
 
 
 def _sample_parent(population, weights, rng) -> Policy:
@@ -164,7 +166,9 @@ def evolve(client: LLMClient, cfg: EvoToolConfig, train: list[dict], sel: list[d
         rep, rep_diag = _representative(episodes, diag_list)
         target, blame_rationale = _choose_target(ev.mutation_target, rep, rep_diag, client, rng)
         child_id = f"g{g}-{target}"
-        child = _make_child(client, parent, target, rep, rep_diag, cfg, child_id)
+        mutation_trace = {}
+        child = _make_child(client, parent, target, rep, rep_diag, cfg, child_id,
+                            blame_rationale=blame_rationale, trace_out=mutation_trace)
 
         if ev.accept_on == "sel":
             # CHANGE 2 (OPT-IN): compare on held-out S_sel. Parent baseline reads the
@@ -190,7 +194,7 @@ def evolve(client: LLMClient, cfg: EvoToolConfig, train: list[dict], sel: list[d
         population, weights = select.select_population(client, cfg, population, sel)
         if need_sel_means:  # refresh for next generation's parent sampling / accept gate
             sel_means, _ = select.sel_stats(client, cfg, population, sel)
-        log(f"  gen {g} (epoch {epoch}): parent={parent.policy_id} target={target} "
+        log(f"  gen {g} [{g + 1}/{total}] (epoch {epoch}): parent={parent.policy_id} target={target} "
             f"parent_avg={parent_avg:.3f} child_avg={child_avg:.3f} "
             f"{'ACCEPT' if accepted else 'reject'} | pop={len(population)}")
 
@@ -222,6 +226,7 @@ def evolve(client: LLMClient, cfg: EvoToolConfig, train: list[dict], sel: list[d
                 val_sel_score=val_sel_score, test_score=test_score,
                 population=population, weights=weights, sel_means=sel_means, sel_wins=sel_wins,
                 total_tokens=client.total_tokens,
+                mutation_trace=mutation_trace,
             )
         g += 1
 

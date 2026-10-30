@@ -8,12 +8,13 @@ rule-based diagnostic events. It judges which step(s) are wrong (or that all are
 correct) and names ONE module pi* = argmax_pi b_pi(e) from
 {planner, selector, caller, synthesizer}.
 
-We take the LLM's choice DIRECTLY. The gold reference and the rule events never
-override it (they are hints, not a gate). `rule_blame` is consulted ONLY as a
-last-resort fallback when the LLM output is unparseable.
+Valid finite module scores determine the target by argmax with a stable tie
+order. Primary conflicts are logged. Invalid scores use rule_blame fallback.
 """
 
 from __future__ import annotations
+
+import math
 
 from src.evolve.diagnostics import render_events, rule_blame
 from src.llm.client import LLMClient
@@ -85,8 +86,19 @@ def blame(client: LLMClient, episode: Episode, diagnostics: dict,
             rationale_out.update(out)
         rationale_out["_parsed_primary"] = primary
         rationale_out["_resolved_by"] = "llm" if primary in MODULES else "rule_fallback"
-    if primary in MODULES:
-        return primary  # take the LLM's arg-max choice DIRECTLY (no gold/event gate)
+    valid_scores = all(
+        isinstance(out.get(m), (int, float)) and not isinstance(out.get(m), bool)
+        and math.isfinite(out[m]) and 0 <= out[m] <= 1 for m in MODULES
+    )
+    if valid_scores:
+        # Stable MODULES order resolves ties, independent of JSON field order.
+        resolved = max(MODULES, key=lambda m: out[m])
+        if rationale_out is not None:
+            rationale_out.update(_resolved_by="score_argmax", _resolved_primary=resolved,
+                                 _primary_conflict=primary != resolved)
+        return resolved
+    if rationale_out is not None:
+        rationale_out.update(_resolved_by="rule_fallback", _score_error="invalid_or_missing_scores")
     # Fallback ONLY when the LLM output is unparseable.
     fallback = rule_blame(diagnostics)
     if rationale_out is not None:
