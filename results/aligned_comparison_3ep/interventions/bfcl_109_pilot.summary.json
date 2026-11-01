@@ -1,0 +1,23 @@
+{
+  "post_hoc_diagnostic": true,
+  "model": "evotool-qwen3:8b",
+  "temperature": 0.0,
+  "cases": [
+    "bfcl_109"
+  ],
+  "conditions": [
+    "caller_prompt",
+    "caller_rollback",
+    "caller_hint",
+    "oracle_plan"
+  ],
+  "total_tokens": 6762,
+  "results": {
+    "bfcl_109": {
+      "caller_prompt": false,
+      "caller_rollback": true,
+      "caller_hint": false,
+      "oracle_plan": true
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "post_hoc_diagnostic": true,
+  "model": "evotool-qwen3:8b",
+  "temperature": 0.0,
+  "cases": [
+    "bfcl_55",
+    "bfcl_149",
+    "bfcl_29",
+    "bfcl_56"
+  ],
+  "conditions": [
+    "caller_prompt",
+    "caller_rollback",
+    "caller_hint",
+    "oracle_plan",
+    "oracle_plan_query_anchor",
+    "simulated_state"
+  ],
+  "total_tokens": 25758,
+  "results": {
+    "bfcl_55": {
+      "caller_prompt": false,
+      "caller_rollback": false,
+      "caller_hint": true,
+      "oracle_plan": true,
+      "oracle_plan_query_anchor": null,
+      "simulated_state": false
+    },
+    "bfcl_149": {
+      "caller_prompt": true,
+      "caller_rollback": true,
+      "caller_hint": true,
+      "oracle_plan": false,
+      "oracle_plan_query_anchor": null,
+      "simulated_state": true
+    },
+    "bfcl_29": {
+      "caller_prompt": true,
+      "caller_rollback": false,
+      "caller_hint": false,
+      "oracle_plan": true,
+      "oracle_plan_query_anchor": null,
+      "simulated_state": false
+    },
+    "bfcl_56": {
+      "caller_prompt": false,
+      "caller_rollback": false,
+      "caller_hint": true,
+      "oracle_plan": false,
+      "oracle_plan_query_anchor": true,
+      "simulated_state": true
+    }
+  }
+}

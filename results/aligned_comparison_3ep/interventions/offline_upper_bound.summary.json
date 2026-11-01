@@ -1,0 +1,39 @@
+{
+  "post_hoc_diagnostic": true,
+  "model": "evotool-qwen3:8b",
+  "temperature": 0.0,
+  "cases": [
+    "bfcl_55",
+    "bfcl_109",
+    "bfcl_149",
+    "bfcl_29",
+    "bfcl_56"
+  ],
+  "conditions": [
+    "baseline_recorded",
+    "oracle_args"
+  ],
+  "total_tokens": 0,
+  "results": {
+    "bfcl_55": {
+      "baseline_recorded": false,
+      "oracle_args": true
+    },
+    "bfcl_109": {
+      "baseline_recorded": false,
+      "oracle_args": true
+    },
+    "bfcl_149": {
+      "baseline_recorded": false,
+      "oracle_args": true
+    },
+    "bfcl_29": {
+      "baseline_recorded": false,
+      "oracle_args": true
+    },
+    "bfcl_56": {
+      "baseline_recorded": false,
+      "oracle_args": true
+    }
+  }
+}

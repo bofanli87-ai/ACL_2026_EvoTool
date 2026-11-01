@@ -1,0 +1,39 @@
+{
+  "post_hoc_diagnostic": true,
+  "model": "evotool-qwen3:8b",
+  "temperature": 0.0,
+  "cases": [
+    "bfcl_55",
+    "bfcl_109",
+    "bfcl_149",
+    "bfcl_29",
+    "bfcl_56"
+  ],
+  "conditions": [
+    "planner_prompt",
+    "combined_prompt"
+  ],
+  "total_tokens": 26181,
+  "results": {
+    "bfcl_55": {
+      "planner_prompt": false,
+      "combined_prompt": false
+    },
+    "bfcl_109": {
+      "planner_prompt": false,
+      "combined_prompt": false
+    },
+    "bfcl_149": {
+      "planner_prompt": false,
+      "combined_prompt": true
+    },
+    "bfcl_29": {
+      "planner_prompt": false,
+      "combined_prompt": true
+    },
+    "bfcl_56": {
+      "planner_prompt": false,
+      "combined_prompt": false
+    }
+  }
+}
