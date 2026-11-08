@@ -1,0 +1,2162 @@
+{
+  "scope": "6 policies x 30 selection tasks; retrospective cached reevaluation",
+  "verified_cells": 180,
+  "counts": {
+    "init": 22,
+    "g4-planner": 24,
+    "g15-caller": 22,
+    "g44-planner": 24,
+    "g67-caller": 23,
+    "g89-planner": 22
+  },
+  "matrix": {
+    "init": {
+      "bfcl_11": {
+        "success": true,
+        "reward": 0.7749999999999999
+      },
+      "bfcl_114": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_12": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_122": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_126": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_127": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_13": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_14": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_141": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_143": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_148": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_16": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_20": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_25": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_28": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_34": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_38": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_45": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_46": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_47": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_49": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_59": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_6": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_69": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_74": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_78": {
+        "success": false,
+        "reward": 0.11249999999999999
+      },
+      "bfcl_80": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_81": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_91": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_94": {
+        "success": true,
+        "reward": 0.85
+      }
+    },
+    "g4-planner": {
+      "bfcl_11": {
+        "success": true,
+        "reward": 0.7749999999999999
+      },
+      "bfcl_114": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_12": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_122": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_126": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_127": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_13": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_14": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_141": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_143": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_148": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_16": {
+        "success": false,
+        "reward": 0.12857142857142856
+      },
+      "bfcl_20": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_25": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_28": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_34": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_38": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_45": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_46": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_47": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_49": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_59": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_6": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_69": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_74": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_78": {
+        "success": false,
+        "reward": 0.13333333333333333
+      },
+      "bfcl_80": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_81": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_91": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_94": {
+        "success": true,
+        "reward": 0.85
+      }
+    },
+    "g15-caller": {
+      "bfcl_11": {
+        "success": true,
+        "reward": 0.7749999999999999
+      },
+      "bfcl_114": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_12": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_122": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_126": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_127": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_13": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_14": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_141": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_143": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_148": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_16": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_20": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_25": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_28": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_34": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_38": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_45": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_46": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_47": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_49": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_59": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_6": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_69": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_74": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_78": {
+        "success": false,
+        "reward": 0.11249999999999999
+      },
+      "bfcl_80": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_81": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_91": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_94": {
+        "success": true,
+        "reward": 0.85
+      }
+    },
+    "g44-planner": {
+      "bfcl_11": {
+        "success": true,
+        "reward": 0.7749999999999999
+      },
+      "bfcl_114": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_12": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_122": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_126": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_127": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_13": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_14": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_141": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_143": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_148": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_16": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_20": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_25": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_28": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_34": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_38": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_45": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_46": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_47": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_49": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_59": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_6": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_69": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_74": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_78": {
+        "success": false,
+        "reward": 0.11249999999999999
+      },
+      "bfcl_80": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_81": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_91": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_94": {
+        "success": true,
+        "reward": 0.85
+      }
+    },
+    "g67-caller": {
+      "bfcl_11": {
+        "success": true,
+        "reward": 0.7749999999999999
+      },
+      "bfcl_114": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_12": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_122": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_126": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_127": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_13": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_14": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_141": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_143": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_148": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_16": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_20": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_25": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_28": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_34": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_38": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_45": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_46": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_47": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_49": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_59": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_6": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_69": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_74": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_78": {
+        "success": false,
+        "reward": 0.11249999999999999
+      },
+      "bfcl_80": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_81": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_91": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_94": {
+        "success": true,
+        "reward": 0.85
+      }
+    },
+    "g89-planner": {
+      "bfcl_11": {
+        "success": true,
+        "reward": 0.7749999999999999
+      },
+      "bfcl_114": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_12": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_122": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_126": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_127": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_13": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_14": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_141": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_143": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_148": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_16": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_20": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_25": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_28": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_34": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_38": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_45": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_46": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_47": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_49": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_59": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_6": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_69": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_74": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_78": {
+        "success": false,
+        "reward": 0.11249999999999999
+      },
+      "bfcl_80": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_81": {
+        "success": false,
+        "reward": 0.15
+      },
+      "bfcl_91": {
+        "success": true,
+        "reward": 0.85
+      },
+      "bfcl_94": {
+        "success": true,
+        "reward": 0.85
+      }
+    }
+  },
+  "edges": [
+    {
+      "run": "3ep",
+      "gen": 4,
+      "parent": "init",
+      "child": "g4-planner",
+      "fixed": [
+        "bfcl_127",
+        "bfcl_38"
+      ],
+      "lost": [],
+      "net": 2,
+      "retained": true,
+      "parent_fixes": 0,
+      "inherited_fixes": 0
+    },
+    {
+      "run": "3ep",
+      "gen": 15,
+      "parent": "init",
+      "child": "g15-caller",
+      "fixed": [],
+      "lost": [],
+      "net": 0,
+      "retained": true,
+      "parent_fixes": 0,
+      "inherited_fixes": 0
+    },
+    {
+      "run": "3ep",
+      "gen": 44,
+      "parent": "g15-caller",
+      "child": "g44-planner",
+      "fixed": [
+        "bfcl_127",
+        "bfcl_16"
+      ],
+      "lost": [],
+      "net": 2,
+      "retained": false,
+      "parent_fixes": 0,
+      "inherited_fixes": 0
+    },
+    {
+      "run": "3ep",
+      "gen": 67,
+      "parent": "init",
+      "child": "g67-caller",
+      "fixed": [
+        "bfcl_127"
+      ],
+      "lost": [],
+      "net": 1,
+      "retained": true,
+      "parent_fixes": 0,
+      "inherited_fixes": 0
+    },
+    {
+      "run": "3ep",
+      "gen": 89,
+      "parent": "g15-caller",
+      "child": "g89-planner",
+      "fixed": [],
+      "lost": [],
+      "net": 0,
+      "retained": false,
+      "parent_fixes": 0,
+      "inherited_fixes": 0
+    },
+    {
+      "run": "1ep",
+      "gen": 4,
+      "parent": "init",
+      "child": "g4-planner",
+      "fixed": [
+        "bfcl_127",
+        "bfcl_38"
+      ],
+      "lost": [],
+      "net": 2,
+      "retained": true,
+      "parent_fixes": 0,
+      "inherited_fixes": 0
+    },
+    {
+      "run": "1ep",
+      "gen": 15,
+      "parent": "init",
+      "child": "g15-caller",
+      "fixed": [],
+      "lost": [],
+      "net": 0,
+      "retained": true,
+      "parent_fixes": 0,
+      "inherited_fixes": 0
+    }
+  ],
+  "populations": {
+    "3ep": [
+      {
+        "gen": 0,
+        "policies": [
+          "init"
+        ],
+        "best": 22,
+        "union": 22,
+        "gap": 0
+      },
+      {
+        "gen": 1,
+        "policies": [
+          "init"
+        ],
+        "best": 22,
+        "union": 22,
+        "gap": 0
+      },
+      {
+        "gen": 2,
+        "policies": [
+          "init"
+        ],
+        "best": 22,
+        "union": 22,
+        "gap": 0
+      },
+      {
+        "gen": 3,
+        "policies": [
+          "init"
+        ],
+        "best": 22,
+        "union": 22,
+        "gap": 0
+      },
+      {
+        "gen": 4,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 5,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 6,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 7,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 8,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 9,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 10,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 11,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 12,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 13,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 14,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 15,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 16,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 17,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 18,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 19,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 20,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 21,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 22,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 23,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 24,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 25,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 26,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 27,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 28,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 29,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 30,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 31,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 32,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 33,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 34,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 35,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 36,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 37,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 38,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 39,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 40,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 41,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 42,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 43,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 44,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 45,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 46,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 47,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 48,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 49,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 50,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 51,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 52,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 53,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 54,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 55,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 56,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 57,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 58,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 59,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 60,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 61,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 62,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 63,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 64,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 65,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 66,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 67,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 68,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 69,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 70,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 71,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 72,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 73,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 74,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 75,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 76,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 77,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 78,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 79,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 80,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 81,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 82,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 83,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 84,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 85,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 86,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 87,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 88,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 89,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller",
+          "g67-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      }
+    ],
+    "1ep": [
+      {
+        "gen": 0,
+        "policies": [
+          "init"
+        ],
+        "best": 22,
+        "union": 22,
+        "gap": 0
+      },
+      {
+        "gen": 1,
+        "policies": [
+          "init"
+        ],
+        "best": 22,
+        "union": 22,
+        "gap": 0
+      },
+      {
+        "gen": 2,
+        "policies": [
+          "init"
+        ],
+        "best": 22,
+        "union": 22,
+        "gap": 0
+      },
+      {
+        "gen": 3,
+        "policies": [
+          "init"
+        ],
+        "best": 22,
+        "union": 22,
+        "gap": 0
+      },
+      {
+        "gen": 4,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 5,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 6,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 7,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 8,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 9,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 10,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 11,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 12,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 13,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 14,
+        "policies": [
+          "init",
+          "g4-planner"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 15,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 16,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 17,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 18,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 19,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 20,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 21,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 22,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 23,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 24,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 25,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 26,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 27,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 28,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      },
+      {
+        "gen": 29,
+        "policies": [
+          "init",
+          "g4-planner",
+          "g15-caller"
+        ],
+        "best": 24,
+        "union": 24,
+        "gap": 0
+      }
+    ]
+  },
+  "final_union": 24,
+  "candidate_union": 25,
+  "excluded_extra": [
+    "bfcl_16"
+  ],
+  "g44_extra": [
+    "bfcl_16"
+  ]
+}

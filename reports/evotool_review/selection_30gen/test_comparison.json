@@ -1,0 +1,66 @@
+{
+  "baseline_90gen": {
+    "policy": "g4-planner",
+    "source": "same run, identical deployed policy",
+    "success": 21,
+    "failed": [
+      "bfcl_145",
+      "bfcl_55",
+      "bfcl_90",
+      "bfcl_57",
+      "bfcl_108",
+      "bfcl_149",
+      "bfcl_56",
+      "bfcl_8",
+      "bfcl_27"
+    ]
+  },
+  "valacc_90gen": {
+    "policy": "g8-caller",
+    "source": "fresh held-out evaluation",
+    "success": 21,
+    "failed": [
+      "bfcl_145",
+      "bfcl_55",
+      "bfcl_90",
+      "bfcl_57",
+      "bfcl_108",
+      "bfcl_149",
+      "bfcl_56",
+      "bfcl_8",
+      "bfcl_27"
+    ]
+  },
+  "greedy_30gen": {
+    "policy": "g8-caller",
+    "source": "same run, identical deployed policy",
+    "success": 22,
+    "failed": [
+      "bfcl_145",
+      "bfcl_55",
+      "bfcl_90",
+      "bfcl_57",
+      "bfcl_108",
+      "bfcl_56",
+      "bfcl_8",
+      "bfcl_27"
+    ]
+  },
+  "topk2_30gen": {
+    "policy": "g4-planner",
+    "source": "same run, identical deployed policy",
+    "success": 20,
+    "failed": [
+      "bfcl_145",
+      "bfcl_44",
+      "bfcl_55",
+      "bfcl_90",
+      "bfcl_57",
+      "bfcl_108",
+      "bfcl_149",
+      "bfcl_56",
+      "bfcl_8",
+      "bfcl_27"
+    ]
+  }
+}

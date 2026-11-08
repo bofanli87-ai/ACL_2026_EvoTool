@@ -1,0 +1,34 @@
+[
+  {
+    "strategy": "baseline",
+    "evolved_parent": 2,
+    "accepted": 11,
+    "retained": 3,
+    "selection_reward": 0.7062,
+    "search_tokens": 1411568
+  },
+  {
+    "strategy": "val_acc",
+    "evolved_parent": 18,
+    "accepted": 4,
+    "retained": 2,
+    "selection_reward": 0.7296,
+    "search_tokens": 943084
+  },
+  {
+    "strategy": "greedy",
+    "evolved_parent": 25,
+    "accepted": 8,
+    "retained": 3,
+    "selection_reward": 0.7536,
+    "search_tokens": 1267966
+  },
+  {
+    "strategy": "topk",
+    "evolved_parent": 26,
+    "accepted": 5,
+    "retained": 4,
+    "selection_reward": 0.7062,
+    "search_tokens": 1008932
+  }
+]

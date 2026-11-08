@@ -1,0 +1,529 @@
+{
+  "one_epoch": {
+    "source": "E:\\langchain\\MUSE\\tmp\\evotool_latest_audit\\results\\feedback_fixed_1ep\\logs\\bfcl__bfcl_aligned_evolution.runlog.jsonl",
+    "sha256": "82ae9e26d77752fa316b6c93243e778ef386d155a3de8b7f8b2a571f45d74e2d",
+    "meta": {
+      "type": "run_meta",
+      "preset": "bfcl_aligned_evolution",
+      "benchmark": "bfcl",
+      "mutation_target": "blame",
+      "selection": "diversity",
+      "caller_schema": true,
+      "caller_repair": false,
+      "planner_tool_context": true,
+      "structured_history": true,
+      "seed": 42,
+      "epochs": 1,
+      "batch_size": 3,
+      "n_train": 90,
+      "n_sel": 30,
+      "n_test": 30
+    },
+    "generations": 30,
+    "parent_counts": {
+      "init": 27,
+      "g4-planner": 2,
+      "g15-caller": 1
+    },
+    "accepted": 11,
+    "accepted_retained": 2,
+    "accepted_eliminated": [
+      6,
+      13,
+      16,
+      19,
+      20,
+      21,
+      23,
+      24,
+      27
+    ],
+    "final_population": [
+      {
+        "id": "init",
+        "sel_wins": 25,
+        "weight": 0.8333,
+        "sel_mean": 0.6362
+      },
+      {
+        "id": "g4-planner",
+        "sel_wins": 4,
+        "weight": 0.1333,
+        "sel_mean": 0.7062
+      },
+      {
+        "id": "g15-caller",
+        "sel_wins": 1,
+        "weight": 0.0333,
+        "sel_mean": 0.7063
+      }
+    ],
+    "population_phases": [
+      {
+        "from_gen": 0,
+        "through_gen": 3,
+        "snapshot": [
+          {
+            "id": "init",
+            "sel_wins": 30,
+            "weight": 1.0,
+            "sel_mean": 0.6362
+          }
+        ]
+      },
+      {
+        "from_gen": 4,
+        "through_gen": 14,
+        "snapshot": [
+          {
+            "id": "init",
+            "sel_wins": 26,
+            "weight": 0.8667,
+            "sel_mean": 0.6362
+          },
+          {
+            "id": "g4-planner",
+            "sel_wins": 4,
+            "weight": 0.1333,
+            "sel_mean": 0.7062
+          }
+        ]
+      },
+      {
+        "from_gen": 15,
+        "through_gen": 29,
+        "snapshot": [
+          {
+            "id": "init",
+            "sel_wins": 25,
+            "weight": 0.8333,
+            "sel_mean": 0.6362
+          },
+          {
+            "id": "g4-planner",
+            "sel_wins": 4,
+            "weight": 0.1333,
+            "sel_mean": 0.7062
+          },
+          {
+            "id": "g15-caller",
+            "sel_wins": 1,
+            "weight": 0.0333,
+            "sel_mean": 0.7063
+          }
+        ]
+      }
+    ],
+    "g15_eligible_draws": 14,
+    "g15_expected_draws_given_observed_history": 0.4666666666666666,
+    "g15_parent_generations": [
+      17
+    ],
+    "g15_descendants": [
+      {
+        "gen": 17,
+        "epoch": 1,
+        "parent": "g15-caller",
+        "child": "g17-caller",
+        "target": "caller",
+        "accepted": false,
+        "retained": false,
+        "parent_reward": 0.6167,
+        "child_reward": 0.6167,
+        "selection_best": 0.7063,
+        "g15_probability_before": 0.03333333333333333,
+        "parent_weight_before": 0.0333,
+        "g15_wins_after": 1,
+        "g15_reward_after": 0.7063,
+        "depth": 2,
+        "g15_descendant": true,
+        "lineage": "init -> g15-caller -> g17-caller",
+        "changed_modules": "caller",
+        "validation_error": null,
+        "batch_ids": "bfcl_125;bfcl_129;bfcl_62",
+        "prompt_before": "You are a tool calling agent. Given the selected tool and its documentation, generate the specific arguments required to execute it. Ensure that each tool call is unique and distinct based on its arguments to prevent duplicate calls.",
+        "prompt_after": "You are a tool calling agent. Given the selected tool and its documentation, generate the specific arguments required to execute it. Ensure that each tool call is unique and distinct based on its arguments to prevent duplicate calls. If the same pair of points and subgoal are repeated, use a different identifier or context to differentiate the calls."
+      }
+    ],
+    "max_depth": 2,
+    "epoch_stats": [
+      {
+        "epoch": 1,
+        "parents": {
+          "init": 27,
+          "g4-planner": 2,
+          "g15-caller": 1
+        },
+        "accepted": 11,
+        "retained": 2
+      }
+    ],
+    "result": {
+      "preset": "bfcl_aligned_evolution",
+      "benchmark": "bfcl",
+      "mutation_target": "blame",
+      "selection": "diversity",
+      "caller_schema": true,
+      "caller_repair": false,
+      "planner_tool_context": true,
+      "structured_history": true,
+      "score": 83.33,
+      "success_rate": 83.33,
+      "mean_reward": 72.0,
+      "tokens": 1487395,
+      "seconds": 3023.0,
+      "n_train": 90,
+      "n_sel": 30,
+      "n_test": 30,
+      "held_out_leak": 0,
+      "population_size": 3,
+      "population_ids": [
+        "init",
+        "g4-planner",
+        "g15-caller"
+      ],
+      "test_ensemble": false,
+      "deployed_policy_ids": [
+        "g15-caller"
+      ],
+      "test_episodes": "D:\\Evotool\\results\\feedback_fixed_1ep\\evolution.episodes.jsonl",
+      "runlog": "D:\\Evotool\\results\\feedback_fixed_1ep\\logs\\bfcl__bfcl_aligned_evolution.runlog.jsonl",
+      "runlog_summary": "D:\\Evotool\\results\\feedback_fixed_1ep\\logs\\bfcl__bfcl_aligned_evolution.runlog.summary.json"
+    }
+  },
+  "three_epochs": {
+    "source": "E:\\langchain\\MUSE\\tmp\\evotool_latest_audit\\results\\aligned_comparison_3ep\\logs\\bfcl__bfcl_aligned_evolution.runlog.jsonl",
+    "sha256": "849b05b750cb2f3a5b3319dceeb8d9731b37575a3ac0fbbc122a009cd46af078",
+    "meta": {
+      "type": "run_meta",
+      "preset": "bfcl_aligned_evolution",
+      "benchmark": "bfcl",
+      "mutation_target": "blame",
+      "selection": "diversity",
+      "caller_schema": true,
+      "caller_repair": false,
+      "planner_tool_context": true,
+      "structured_history": true,
+      "seed": 42,
+      "epochs": 3,
+      "batch_size": 3,
+      "n_train": 90,
+      "n_sel": 30,
+      "n_test": 30
+    },
+    "generations": 90,
+    "parent_counts": {
+      "init": 74,
+      "g4-planner": 12,
+      "g15-caller": 3,
+      "g67-caller": 1
+    },
+    "accepted": 28,
+    "accepted_retained": 3,
+    "accepted_eliminated": [
+      6,
+      13,
+      16,
+      19,
+      20,
+      21,
+      23,
+      24,
+      27,
+      33,
+      39,
+      41,
+      42,
+      44,
+      45,
+      52,
+      56,
+      59,
+      66,
+      70,
+      74,
+      75,
+      81,
+      87,
+      89
+    ],
+    "final_population": [
+      {
+        "id": "init",
+        "sel_wins": 24,
+        "weight": 0.8,
+        "sel_mean": 0.6362
+      },
+      {
+        "id": "g4-planner",
+        "sel_wins": 4,
+        "weight": 0.1333,
+        "sel_mean": 0.7062
+      },
+      {
+        "id": "g15-caller",
+        "sel_wins": 1,
+        "weight": 0.0333,
+        "sel_mean": 0.7063
+      },
+      {
+        "id": "g67-caller",
+        "sel_wins": 1,
+        "weight": 0.0333,
+        "sel_mean": 0.7063
+      }
+    ],
+    "population_phases": [
+      {
+        "from_gen": 0,
+        "through_gen": 3,
+        "snapshot": [
+          {
+            "id": "init",
+            "sel_wins": 30,
+            "weight": 1.0,
+            "sel_mean": 0.6362
+          }
+        ]
+      },
+      {
+        "from_gen": 4,
+        "through_gen": 14,
+        "snapshot": [
+          {
+            "id": "init",
+            "sel_wins": 26,
+            "weight": 0.8667,
+            "sel_mean": 0.6362
+          },
+          {
+            "id": "g4-planner",
+            "sel_wins": 4,
+            "weight": 0.1333,
+            "sel_mean": 0.7062
+          }
+        ]
+      },
+      {
+        "from_gen": 15,
+        "through_gen": 66,
+        "snapshot": [
+          {
+            "id": "init",
+            "sel_wins": 25,
+            "weight": 0.8333,
+            "sel_mean": 0.6362
+          },
+          {
+            "id": "g4-planner",
+            "sel_wins": 4,
+            "weight": 0.1333,
+            "sel_mean": 0.7062
+          },
+          {
+            "id": "g15-caller",
+            "sel_wins": 1,
+            "weight": 0.0333,
+            "sel_mean": 0.7063
+          }
+        ]
+      },
+      {
+        "from_gen": 67,
+        "through_gen": 89,
+        "snapshot": [
+          {
+            "id": "init",
+            "sel_wins": 24,
+            "weight": 0.8,
+            "sel_mean": 0.6362
+          },
+          {
+            "id": "g4-planner",
+            "sel_wins": 4,
+            "weight": 0.1333,
+            "sel_mean": 0.7062
+          },
+          {
+            "id": "g15-caller",
+            "sel_wins": 1,
+            "weight": 0.0333,
+            "sel_mean": 0.7063
+          },
+          {
+            "id": "g67-caller",
+            "sel_wins": 1,
+            "weight": 0.0333,
+            "sel_mean": 0.7063
+          }
+        ]
+      }
+    ],
+    "g15_eligible_draws": 74,
+    "g15_expected_draws_given_observed_history": 2.4666666666666677,
+    "g15_parent_generations": [
+      17,
+      44,
+      89
+    ],
+    "g15_descendants": [
+      {
+        "gen": 17,
+        "epoch": 1,
+        "parent": "g15-caller",
+        "child": "g17-caller",
+        "target": "caller",
+        "accepted": false,
+        "retained": false,
+        "parent_reward": 0.6167,
+        "child_reward": 0.6167,
+        "selection_best": 0.7063,
+        "g15_probability_before": 0.03333333333333333,
+        "parent_weight_before": 0.0333,
+        "g15_wins_after": 1,
+        "g15_reward_after": 0.7063,
+        "depth": 2,
+        "g15_descendant": true,
+        "lineage": "init -> g15-caller -> g17-caller",
+        "changed_modules": "caller",
+        "validation_error": null,
+        "batch_ids": "bfcl_125;bfcl_129;bfcl_62",
+        "prompt_before": "You are a tool calling agent. Given the selected tool and its documentation, generate the specific arguments required to execute it. Ensure that each tool call is unique and distinct based on its arguments to prevent duplicate calls.",
+        "prompt_after": "You are a tool calling agent. Given the selected tool and its documentation, generate the specific arguments required to execute it. Ensure that each tool call is unique and distinct based on its arguments to prevent duplicate calls. If the same pair of points and subgoal are repeated, use a different identifier or context to differentiate the calls."
+      },
+      {
+        "gen": 44,
+        "epoch": 2,
+        "parent": "g15-caller",
+        "child": "g44-planner",
+        "target": "planner",
+        "accepted": true,
+        "retained": false,
+        "parent_reward": 0.6,
+        "child_reward": 0.85,
+        "selection_best": 0.7063,
+        "g15_probability_before": 0.03333333333333333,
+        "parent_weight_before": 0.0333,
+        "g15_wins_after": 1,
+        "g15_reward_after": 0.7063,
+        "depth": 2,
+        "g15_descendant": true,
+        "lineage": "init -> g15-caller -> g44-planner",
+        "changed_modules": "planner",
+        "validation_error": null,
+        "batch_ids": "bfcl_113;bfcl_41;bfcl_88",
+        "prompt_before": "You are a planning agent. Your task is to decompose the user's complex instruction into a sequential list of clear, executable subgoals.",
+        "prompt_after": "You are a planning agent. Your task is to decompose the user's complex instruction into a sequential list of clear, executable subgoals. For each case number and court, generate two distinct subgoals: one to retrieve the case status and another to retrieve the scheduled trial date."
+      },
+      {
+        "gen": 89,
+        "epoch": 3,
+        "parent": "g15-caller",
+        "child": "g89-planner",
+        "target": "planner",
+        "accepted": true,
+        "retained": false,
+        "parent_reward": 0.1208,
+        "child_reward": 0.3708,
+        "selection_best": 0.7063,
+        "g15_probability_before": 0.03333333333333333,
+        "parent_weight_before": 0.0333,
+        "g15_wins_after": 1,
+        "g15_reward_after": 0.7063,
+        "depth": 2,
+        "g15_descendant": true,
+        "lineage": "init -> g15-caller -> g89-planner",
+        "changed_modules": "planner",
+        "validation_error": null,
+        "batch_ids": "bfcl_86;bfcl_134;bfcl_79",
+        "prompt_before": "You are a planning agent. Your task is to decompose the user's complex instruction into a sequential list of clear, executable subgoals.",
+        "prompt_after": "You are a planning agent. Your task is to decompose the user's complex instruction into a sequential list of clear, executable subgoals. When selecting tools, use the following decision rubric: for weather information, use 'OpenWeatherMap.get_current_weather'; for controlling appliances, use 'ControlAppliance.execute'; for historical or up-to-date information on events, use 'HNA_WQA.search'."
+      }
+    ],
+    "max_depth": 2,
+    "epoch_stats": [
+      {
+        "epoch": 1,
+        "parents": {
+          "init": 27,
+          "g4-planner": 2,
+          "g15-caller": 1
+        },
+        "accepted": 11,
+        "retained": 2
+      },
+      {
+        "epoch": 2,
+        "parents": {
+          "init": 25,
+          "g4-planner": 4,
+          "g15-caller": 1
+        },
+        "accepted": 9,
+        "retained": 0
+      },
+      {
+        "epoch": 3,
+        "parents": {
+          "init": 22,
+          "g4-planner": 6,
+          "g67-caller": 1,
+          "g15-caller": 1
+        },
+        "accepted": 8,
+        "retained": 1
+      }
+    ],
+    "result": {
+      "preset": "bfcl_aligned_evolution",
+      "benchmark": "bfcl",
+      "mutation_target": "blame",
+      "selection": "diversity",
+      "caller_schema": true,
+      "caller_repair": false,
+      "planner_tool_context": true,
+      "structured_history": true,
+      "score": 83.33,
+      "success_rate": 83.33,
+      "mean_reward": 72.25,
+      "tokens": 3048933,
+      "seconds": 6209.4,
+      "n_train": 90,
+      "n_sel": 30,
+      "n_test": 30,
+      "held_out_leak": 0,
+      "population_size": 4,
+      "population_ids": [
+        "init",
+        "g4-planner",
+        "g15-caller",
+        "g67-caller"
+      ],
+      "test_ensemble": false,
+      "deployed_policy_ids": [
+        "g15-caller"
+      ],
+      "test_episodes": "results/aligned_comparison_3ep/evolution.episodes.jsonl",
+      "runlog": "results/aligned_comparison_3ep\\logs\\bfcl__bfcl_aligned_evolution.runlog.jsonl",
+      "runlog_summary": "results/aligned_comparison_3ep\\logs\\bfcl__bfcl_aligned_evolution.runlog.summary.json"
+    }
+  },
+  "comparison": {
+    "first_30_differences": {
+      "parent_id": [],
+      "child_id": [],
+      "batch_ids": [],
+      "accepted": [],
+      "prompt_before": [],
+      "prompt_after": [
+        0
+      ],
+      "population_snapshot": []
+    },
+    "g15_prompt_equal": true,
+    "success_differences": [],
+    "predicted_call_differences": [
+      "bfcl_149"
+    ]
+  }
+}

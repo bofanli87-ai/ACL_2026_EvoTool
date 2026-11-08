@@ -1,0 +1,217 @@
+{
+  "groups": {
+    "live_parallel_multiple_20-17-0": {
+      "A": {
+        "success": 3,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          6,
+          6,
+          6
+        ]
+      },
+      "B": {
+        "success": 3,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          6,
+          6,
+          6
+        ]
+      },
+      "AB": {
+        "success": 0,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          6,
+          6,
+          6
+        ]
+      }
+    },
+    "live_parallel_multiple_23-20-0": {
+      "A": {
+        "success": 3,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          10,
+          10,
+          10
+        ]
+      },
+      "B": {
+        "success": 0,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          10,
+          10,
+          10
+        ]
+      },
+      "AB": {
+        "success": 0,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          10,
+          10,
+          10
+        ]
+      }
+    },
+    "parallel_114": {
+      "A": {
+        "success": 3,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          14,
+          14,
+          14
+        ]
+      },
+      "B": {
+        "success": 0,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          14,
+          14,
+          14
+        ]
+      },
+      "AB": {
+        "success": 0,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          14,
+          14,
+          14
+        ]
+      }
+    },
+    "parallel_63": {
+      "A": {
+        "success": 3,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          6,
+          6,
+          6
+        ]
+      },
+      "B": {
+        "success": 0,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          6,
+          6,
+          6
+        ]
+      },
+      "AB": {
+        "success": 0,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          6,
+          6,
+          6
+        ]
+      }
+    },
+    "parallel_multiple_101": {
+      "A": {
+        "success": 3,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          10,
+          10,
+          10
+        ]
+      },
+      "B": {
+        "success": 2,
+        "missing": 0,
+        "plan_variants": 2,
+        "call_variants": 2,
+        "fresh_requests": [
+          8,
+          10,
+          10
+        ]
+      },
+      "AB": {
+        "success": 0,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          10,
+          10,
+          10
+        ]
+      }
+    },
+    "parallel_multiple_156": {
+      "A": {
+        "success": 3,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          8,
+          8,
+          8
+        ]
+      },
+      "B": {
+        "success": 2,
+        "missing": 0,
+        "plan_variants": 2,
+        "call_variants": 2,
+        "fresh_requests": [
+          8,
+          8,
+          8
+        ]
+      },
+      "AB": {
+        "success": 0,
+        "missing": 0,
+        "plan_variants": 1,
+        "call_variants": 1,
+        "fresh_requests": [
+          8,
+          8,
+          8
+        ]
+      }
+    }
+  },
+  "episodes": 54,
+  "tokens": 255633,
+  "seconds": 512.0567948818207
+}

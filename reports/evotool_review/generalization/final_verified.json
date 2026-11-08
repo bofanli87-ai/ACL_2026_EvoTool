@@ -1,0 +1,147 @@
+{
+  "paired": [
+    {
+      "seed": 42,
+      "diversity": 45,
+      "greedy": 42,
+      "greedy_only": [
+        "parallel_multiple_169",
+        "parallel_multiple_98"
+      ],
+      "diversity_only": [
+        "live_parallel_multiple_22-19-0",
+        "parallel_186",
+        "parallel_192",
+        "parallel_multiple_118",
+        "parallel_multiple_154"
+      ]
+    },
+    {
+      "seed": 43,
+      "diversity": 45,
+      "greedy": 45,
+      "greedy_only": [
+        "parallel_multiple_178",
+        "parallel_multiple_184"
+      ],
+      "diversity_only": [
+        "parallel_multiple_101",
+        "parallel_multiple_156"
+      ]
+    },
+    {
+      "seed": 44,
+      "diversity": 34,
+      "greedy": 35,
+      "greedy_only": [
+        "parallel_150",
+        "parallel_156",
+        "parallel_multiple_175",
+        "parallel_multiple_185"
+      ],
+      "diversity_only": [
+        "parallel_multiple_101",
+        "parallel_multiple_151",
+        "parallel_multiple_154"
+      ]
+    }
+  ],
+  "means": {
+    "diversity": 41.333333333333336,
+    "greedy": 40.666666666666664
+  },
+  "ranges": {
+    "diversity": [
+      34,
+      45
+    ],
+    "greedy": [
+      35,
+      45
+    ]
+  },
+  "common_n": 55,
+  "mutation": {
+    "initial": {
+      "success": 33,
+      "fixes": [],
+      "regressions": []
+    },
+    "planner_A": {
+      "success": 44,
+      "fixes": [
+        "live_parallel_multiple_23-20-0",
+        "parallel_114",
+        "parallel_150",
+        "parallel_154",
+        "parallel_168",
+        "parallel_186",
+        "parallel_63",
+        "parallel_multiple_173",
+        "parallel_multiple_175",
+        "parallel_multiple_180",
+        "parallel_multiple_184",
+        "parallel_multiple_185"
+      ],
+      "regressions": [
+        "parallel_multiple_178"
+      ]
+    },
+    "planner_B": {
+      "success": 43,
+      "fixes": [
+        "parallel_119",
+        "parallel_150",
+        "parallel_154",
+        "parallel_168",
+        "parallel_186",
+        "parallel_multiple_142",
+        "parallel_multiple_169",
+        "parallel_multiple_173",
+        "parallel_multiple_175",
+        "parallel_multiple_180",
+        "parallel_multiple_184",
+        "parallel_multiple_185",
+        "parallel_multiple_98"
+      ],
+      "regressions": [
+        "parallel_multiple_101",
+        "parallel_multiple_107",
+        "parallel_multiple_156"
+      ]
+    },
+    "planner_AB": {
+      "success": 43,
+      "fixes": [
+        "parallel_119",
+        "parallel_150",
+        "parallel_154",
+        "parallel_168",
+        "parallel_186",
+        "parallel_multiple_142",
+        "parallel_multiple_169",
+        "parallel_multiple_173",
+        "parallel_multiple_175",
+        "parallel_multiple_180",
+        "parallel_multiple_184",
+        "parallel_multiple_185",
+        "parallel_multiple_98"
+      ],
+      "regressions": [
+        "live_parallel_multiple_20-17-0",
+        "parallel_multiple_101",
+        "parallel_multiple_156"
+      ]
+    }
+  },
+  "union": 49,
+  "lost": [
+    "live_parallel_multiple_20-17-0",
+    "live_parallel_multiple_23-20-0",
+    "parallel_114",
+    "parallel_63",
+    "parallel_multiple_101",
+    "parallel_multiple_156"
+  ],
+  "extra": []
+}
