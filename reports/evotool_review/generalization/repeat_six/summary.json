@@ -1,0 +1,86 @@
+{
+  "live_parallel_multiple_20-17-0": {
+    "A": {
+      "success": 3,
+      "missing": 0
+    },
+    "B": {
+      "success": 3,
+      "missing": 0
+    },
+    "AB": {
+      "success": 0,
+      "missing": 0
+    }
+  },
+  "live_parallel_multiple_23-20-0": {
+    "A": {
+      "success": 3,
+      "missing": 0
+    },
+    "B": {
+      "success": 0,
+      "missing": 0
+    },
+    "AB": {
+      "success": 0,
+      "missing": 0
+    }
+  },
+  "parallel_114": {
+    "A": {
+      "success": 3,
+      "missing": 0
+    },
+    "B": {
+      "success": 0,
+      "missing": 0
+    },
+    "AB": {
+      "success": 0,
+      "missing": 0
+    }
+  },
+  "parallel_63": {
+    "A": {
+      "success": 3,
+      "missing": 0
+    },
+    "B": {
+      "success": 0,
+      "missing": 0
+    },
+    "AB": {
+      "success": 0,
+      "missing": 0
+    }
+  },
+  "parallel_multiple_101": {
+    "A": {
+      "success": 3,
+      "missing": 0
+    },
+    "B": {
+      "success": 2,
+      "missing": 0
+    },
+    "AB": {
+      "success": 0,
+      "missing": 0
+    }
+  },
+  "parallel_multiple_156": {
+    "A": {
+      "success": 3,
+      "missing": 0
+    },
+    "B": {
+      "success": 2,
+      "missing": 0
+    },
+    "AB": {
+      "success": 0,
+      "missing": 0
+    }
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "repeats": 3,
+  "episodes": 54,
+  "schedule": [
+    {
+      "repeat": 1,
+      "task": "live_parallel_multiple_20-17-0",
+      "policy": "A"
+    },
+    {
+      "repeat": 1,
+      "task": "live_parallel_multiple_20-17-0",
+      "policy": "B"
+    },
+    {
+      "repeat": 1,
+      "task": "live_parallel_multiple_20-17-0",
+      "policy": "AB"
+    },
+    {
+      "repeat": 1,
+      "task": "live_parallel_multiple_23-20-0",
+      "policy": "A"
+    },
+    {
+      "repeat": 1,
+      "task": "live_parallel_multiple_23-20-0",
+      "policy": "B"
+    },
+    {
+      "repeat": 1,
+      "task": "live_parallel_multiple_23-20-0",
+      "policy": "AB"
+    },
+    {
+      "repeat": 1,
+      "task": "parallel_114",
+      "policy": "A"
+    },
+    {
+      "repeat": 1,
+      "task": "parallel_114",
+      "policy": "B"
+    },
+    {
+      "repeat": 1,
+      "task": "parallel_114",
+      "policy": "AB"
+    },
+    {
+      "repeat": 1,
+      "task": "parallel_63",
+      "policy": "A"
+    },
+    {
+      "repeat": 1,
+      "task": "parallel_63",
+      "policy": "B"
+    },
+    {
+      "repeat": 1,
+      "task": "parallel_63",
+      "policy": "AB"
+    },
+    {
+      "repeat": 1,
+      "task": "parallel_multiple_101",
+      "policy": "A"
+    },
+    {
+      "repeat": 1,
+      "task": "parallel_multiple_101",
+      "policy": "B"
+    },
+    {
+      "repeat": 1,
+      "task": "parallel_multiple_101",
+      "policy": "AB"
+    },
+    {
+      "repeat": 1,
+      "task": "parallel_multiple_156",
+      "policy": "A"
+    },
+    {
+      "repeat": 1,
+      "task": "parallel_multiple_156",
+      "policy": "B"
+    },
+    {
+      "repeat": 1,
+      "task": "parallel_multiple_156",
+      "policy": "AB"
+    },
+    {
+      "repeat": 2,
+      "task": "live_parallel_multiple_20-17-0",
+      "policy": "B"
+    },
+    {
+      "repeat": 2,
+      "task": "live_parallel_multiple_20-17-0",
+      "policy": "AB"
+    },
+    {
+      "repeat": 2,
+      "task": "live_parallel_multiple_20-17-0",
+      "policy": "A"
+    },
+    {
+      "repeat": 2,
+      "task": "live_parallel_multiple_23-20-0",
+      "policy": "B"
+    },
+    {
+      "repeat": 2,
+      "task": "live_parallel_multiple_23-20-0",
+      "policy": "AB"
+    },
+    {
+      "repeat": 2,
+      "task": "live_parallel_multiple_23-20-0",
+      "policy": "A"
+    },
+    {
+      "repeat": 2,
+      "task": "parallel_114",
+      "policy": "B"
+    },
+    {
+      "repeat": 2,
+      "task": "parallel_114",
+      "policy": "AB"
+    },
+    {
+      "repeat": 2,
+      "task": "parallel_114",
+      "policy": "A"
+    },
+    {
+      "repeat": 2,
+      "task": "parallel_63",
+      "policy": "B"
+    },
+    {
+      "repeat": 2,
+      "task": "parallel_63",
+      "policy": "AB"
+    },
+    {
+      "repeat": 2,
+      "task": "parallel_63",
+      "policy": "A"
+    },
+    {
+      "repeat": 2,
+      "task": "parallel_multiple_101",
+      "policy": "B"
+    },
+    {
+      "repeat": 2,
+      "task": "parallel_multiple_101",
+      "policy": "AB"
+    },
+    {
+      "repeat": 2,
+      "task": "parallel_multiple_101",
+      "policy": "A"
+    },
+    {
+      "repeat": 2,
+      "task": "parallel_multiple_156",
+      "policy": "B"
+    },
+    {
+      "repeat": 2,
+      "task": "parallel_multiple_156",
+      "policy": "AB"
+    },
+    {
+      "repeat": 2,
+      "task": "parallel_multiple_156",
+      "policy": "A"
+    },
+    {
+      "repeat": 3,
+      "task": "live_parallel_multiple_20-17-0",
+      "policy": "AB"
+    },
+    {
+      "repeat": 3,
+      "task": "live_parallel_multiple_20-17-0",
+      "policy": "A"
+    },
+    {
+      "repeat": 3,
+      "task": "live_parallel_multiple_20-17-0",
+      "policy": "B"
+    },
+    {
+      "repeat": 3,
+      "task": "live_parallel_multiple_23-20-0",
+      "policy": "AB"
+    },
+    {
+      "repeat": 3,
+      "task": "live_parallel_multiple_23-20-0",
+      "policy": "A"
+    },
+    {
+      "repeat": 3,
+      "task": "live_parallel_multiple_23-20-0",
+      "policy": "B"
+    },
+    {
+      "repeat": 3,
+      "task": "parallel_114",
+      "policy": "AB"
+    },
+    {
+      "repeat": 3,
+      "task": "parallel_114",
+      "policy": "A"
+    },
+    {
+      "repeat": 3,
+      "task": "parallel_114",
+      "policy": "B"
+    },
+    {
+      "repeat": 3,
+      "task": "parallel_63",
+      "policy": "AB"
+    },
+    {
+      "repeat": 3,
+      "task": "parallel_63",
+      "policy": "A"
+    },
+    {
+      "repeat": 3,
+      "task": "parallel_63",
+      "policy": "B"
+    },
+    {
+      "repeat": 3,
+      "task": "parallel_multiple_101",
+      "policy": "AB"
+    },
+    {
+      "repeat": 3,
+      "task": "parallel_multiple_101",
+      "policy": "A"
+    },
+    {
+      "repeat": 3,
+      "task": "parallel_multiple_101",
+      "policy": "B"
+    },
+    {
+      "repeat": 3,
+      "task": "parallel_multiple_156",
+      "policy": "AB"
+    },
+    {
+      "repeat": 3,
+      "task": "parallel_multiple_156",
+      "policy": "A"
+    },
+    {
+      "repeat": 3,
+      "task": "parallel_multiple_156",
+      "policy": "B"
+    }
+  ],
+  "temperature": 0.0,
+  "model": "evotool-qwen3:8b",
+  "cache": "clear episode cache before each repeat; standard LLMClient, no request cache",
+  "policy_specs": {
+    "A": {
+      "planner": "You are a planning agent. Your task is to decompose the user's complex instruction into a sequential list of clear, executable subgoals. Ensure that each subgoal is explicitly defined, including the necessary parameters for each tool call. For tasks involving multiple materials or conditions, create separate subgoals for each distinct case.",
+      "selector": "You are a tool selection agent. Given the current subgoal and the list of available tools, select the most appropriate tool.",
+      "caller": "You are a tool calling agent. Given the selected tool and its documentation, generate the specific arguments required to execute it.",
+      "synthesizer": "You are a synthesis agent. Review the user's original query and the history of tool executions, then synthesize this information to provide the answer."
+    },
+    "B": {
+      "planner": "You are a planning agent. Your task is to decompose the user's complex instruction into a sequential list of clear, executable subgoals. For each case number and court, generate two distinct subgoals: one to retrieve the case status and another to retrieve the scheduled trial date.",
+      "selector": "You are a tool selection agent. Given the current subgoal and the list of available tools, select the most appropriate tool.",
+      "caller": "You are a tool calling agent. Given the selected tool and its documentation, generate the specific arguments required to execute it.",
+      "synthesizer": "You are a synthesis agent. Review the user's original query and the history of tool executions, then synthesize this information to provide the answer."
+    },
+    "AB": {
+      "planner": "You are a planning agent. Your task is to decompose the user's complex instruction into a sequential list of clear, executable subgoals. Ensure that each subgoal is explicitly defined, including the necessary parameters for each tool call. For tasks involving multiple materials or conditions, create separate subgoals for each distinct case. For each case number and court, generate two distinct subgoals: one to retrieve the case status and another to retrieve the scheduled trial date.",
+      "selector": "You are a tool selection agent. Given the current subgoal and the list of available tools, select the most appropriate tool.",
+      "caller": "You are a tool calling agent. Given the selected tool and its documentation, generate the specific arguments required to execute it.",
+      "synthesizer": "You are a synthesis agent. Review the user's original query and the history of tool executions, then synthesize this information to provide the answer."
+    }
+  },
+  "task_sha256": "77c21068f9d0064ef612835aa316f73f70892c6d9ec3520a7bf7ba32151d8bdb",
+  "limitations": "post-selected six tasks; repeated inference at fixed temperature, not new search seeds; no causal proof"
+}

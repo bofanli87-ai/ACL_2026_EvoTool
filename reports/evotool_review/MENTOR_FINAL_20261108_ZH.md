@@ -154,7 +154,7 @@ A和B单独使用时，成功任务的并集一共有49题，说明两条规则�
 3. **规则的作用范围缺少控制。** B是案件查询的专门规则，却影响了6道非案件任务，说明局部Mutation实际是以全局方式生效的。
 4. **Selection很难单独解决这个问题。** 即使选中了一个局部有效策略，继续往它的Prompt里加规则，也可能破坏已有能力。
 
-六道题的重复结果和逐题调用分析保存在[重复验证结论](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/repeat_six/FINDINGS_ZH.md)和[逐题调用报告](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/repeat_six/TRACE_REPORT_ZH.md)中。
+六道题的重复结果可直接查看[54条完整推理记录](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/repeat_six/episodes.jsonl)和[逐题核验数据](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/repeat_six/verified.json)。
 
 ## 五、Blame、实际修复和回归之间的关系
 
@@ -195,13 +195,34 @@ g15由一个重复参数案例触发。原任务要求分别计算15年、20年�
 因此，g15更像是：**Blame找对了模块，Mutation也修对了一类问题，但规则写得太全局，修复一个局部错误模式时改变了Caller在其他任务上的参数处理方式。**
 ## 数据和记录位置
 
+### g15轨迹与Blame原始记录
+
+- [3 epochs逐代Parent、Child、接受和留存记录](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/g15_trace_20261103/3ep_generations.csv)
+- [3 epochs每代Population、Reward和Win Count](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/g15_trace_20261103/3ep_population.csv)
+- [g15三个直接后代及Prompt修改](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/g15_trace_20261103/3ep_g15_descendants.csv)
+- [轨迹审计结构化数据](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/g15_trace_20261103/audit.json)
+- [原始3 epochs进化runlog](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/results/aligned_comparison_3ep/logs/bfcl__bfcl_aligned_evolution.runlog.jsonl)
+- [Static逐题原始episodes](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/results/aligned_comparison_3ep/static.episodes.jsonl)
+- [Evolution逐题原始episodes](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/results/aligned_comparison_3ep/evolution.episodes.jsonl)
+
+### Policy × Task矩阵原始记录
+
 - [6策略×30题成功矩阵](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/policy_matrix/pilot_success.csv)
-- [矩阵逐题核验、亲子差异与Population并集](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/policy_matrix/pilot_verified.json)
-- [56道新题逐题结果和组合修复、退化列表](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/final_verified.json)
-- [56道新题与组合实验汇总](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/FINAL_REPORT_ZH.md)
-- [6道组合丢失题重复验证结论](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/repeat_six/FINDINGS_ZH.md)
-- [6道组合丢失题逐题调用报告](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/repeat_six/TRACE_REPORT_ZH.md)
-- [g15的Blame触发、4道修复、2道回归及Caller回滚](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/g15_trace_20261103/BLAME_SIX_CASES_ZH.md)
-- [g15完整轨迹、抽样概率和三个后代去向](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/g15_trace_20261103/REPORT_ZH.md)
-- [四种Selection方式对照](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/selection_30gen/comparison.json)
-- [四种Selection方式测试结果](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/selection_30gen/test_comparison.json)
+- [Parent→Child逐题修复和退化](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/policy_matrix/pilot_edges.csv)
+- [每代Population成功任务并集](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/policy_matrix/pilot_population.csv)
+- [180格逐题Success与Reward](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/policy_matrix/pilot_verified.json)
+
+### Selection与56道新题原始记录
+
+- [四种Selection方式Parent使用情况](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/selection_30gen/comparison.json)
+- [四种Selection方式逐题测试结果](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/selection_30gen/test_comparison.json)
+- [56道新题实验协议](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/protocol.json)
+- [六组搜索与组合实验分数](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/scores.json)
+- [56道新题逐题配对结果](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/final_verified.json)
+
+### 6道组合丢失题重复实验原始记录
+
+- [重复实验协议与Prompt哈希](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/repeat_six/protocol.json)
+- [54条完整模型响应、计划、调用和评分](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/repeat_six/episodes.jsonl)
+- [三轮汇总数据](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/repeat_six/summary.json)
+- [逐题核验结果](https://github.com/bofanli87-ai/ACL_2026_EvoTool/blob/main/reports/evotool_review/generalization/repeat_six/verified.json)

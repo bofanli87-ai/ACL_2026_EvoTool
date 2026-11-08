@@ -1,0 +1,82 @@
+[
+  {
+    "label": "initial",
+    "policy": "init",
+    "key": "3d81f643bd154ac3e2c6e34cd3ff3e9f5d3f2a8a1a252bb5e74c6854ab016ddf",
+    "n": 56,
+    "success": 34,
+    "missing": 0
+  },
+  {
+    "label": "planner_A",
+    "policy": "planner_A",
+    "key": "a487b8e36026147ca55fbc09522379efca03f07d866b0bebc52226b02a0868e8",
+    "n": 56,
+    "success": 45,
+    "missing": 0
+  },
+  {
+    "label": "planner_B",
+    "policy": "planner_B",
+    "key": "c7379d08a8a924f4afcfe2cf08b73898232186841769dda0f484f3f5cab40f93",
+    "n": 56,
+    "success": 43,
+    "missing": 1
+  },
+  {
+    "label": "planner_AB",
+    "policy": "planner_AB",
+    "key": "a35ac2553696d81d8f94abcea6e23c2a8f21338649086565c6c756e019f35402",
+    "n": 56,
+    "success": 44,
+    "missing": 0
+  },
+  {
+    "label": "42_diversity",
+    "policy": "g4-planner",
+    "key": "a487b8e36026147ca55fbc09522379efca03f07d866b0bebc52226b02a0868e8",
+    "n": 56,
+    "success": 45,
+    "missing": 0
+  },
+  {
+    "label": "42_greedy",
+    "policy": "g8-caller",
+    "key": "a2e06b4d0b9508e39d369a779a02d8193332e843597d25a201a2ffba852abb98",
+    "n": 56,
+    "success": 42,
+    "missing": 0
+  },
+  {
+    "label": "43_diversity",
+    "policy": "g13-planner",
+    "key": "622e3414552ae21f527984b156de2b8c53733376995972c2a9ce4bd08b768550",
+    "n": 56,
+    "success": 45,
+    "missing": 0
+  },
+  {
+    "label": "43_greedy",
+    "policy": "g25-planner",
+    "key": "df5d1eefde3d7884b687f0cc3e72cfed0524032951efed42bf9ab310c186cf29",
+    "n": 56,
+    "success": 45,
+    "missing": 0
+  },
+  {
+    "label": "44_diversity",
+    "policy": "g27-caller",
+    "key": "0e7b6755ad1ba76d24ed92e321c542a87c03a8216ed0ed8081c135633aed1632",
+    "n": 56,
+    "success": 34,
+    "missing": 0
+  },
+  {
+    "label": "44_greedy",
+    "policy": "g5-planner",
+    "key": "7d3d9cd49b7499a18ce4bb35915493c939a62a56b32b5c60272f449428006a6f",
+    "n": 56,
+    "success": 35,
+    "missing": 0
+  }
+]

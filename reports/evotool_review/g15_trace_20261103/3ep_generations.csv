@@ -1,0 +1,91 @@
+﻿gen,epoch,parent,child,target,accepted,retained,parent_reward,child_reward,selection_best,g15_probability_before,parent_weight_before,g15_wins_after,g15_reward_after,depth,g15_descendant,lineage,changed_modules,validation_error,batch_ids
+0,1,init,g0-planner,planner,False,False,0.3833,0.3833,0.6362,0.0,1.0,,,1,False,init -> g0-planner,planner,,bfcl_70;bfcl_66;bfcl_92
+1,1,init,g1-planner,planner,False,False,0.6,0.3667,0.6362,0.0,1.0,,,1,False,init -> g1-planner,planner,,bfcl_134;bfcl_22;bfcl_75
+2,1,init,g2-planner,planner,False,False,0.6,0.5917,0.6362,0.0,1.0,,,1,False,init -> g2-planner,planner,,bfcl_33;bfcl_4;bfcl_82
+3,1,init,g3-caller,caller,False,False,0.6167,0.6167,0.6362,0.0,1.0,,,1,False,init -> g3-caller,caller,,bfcl_43;bfcl_89;bfcl_146
+4,1,init,g4-planner,planner,True,True,0.6067,0.85,0.7062,0.0,1.0,,,1,False,init -> g4-planner,planner,,bfcl_83;bfcl_31;bfcl_52
+5,1,init,g5-planner,planner,False,False,0.1333,0.1333,0.7062,0.0,0.8667,,,1,False,init -> g5-planner,planner,,bfcl_5;bfcl_15;bfcl_32
+6,1,init,g6-planner,planner,True,False,0.6111,0.85,0.7062,0.0,0.8667,,,1,False,init -> g6-planner,planner,,bfcl_97;bfcl_18;bfcl_65
+7,1,g4-planner,g7-caller,caller,False,False,0.3833,0.3667,0.7062,0.0,0.1333,,,2,False,init -> g4-planner -> g7-caller,caller,,bfcl_100;bfcl_95;bfcl_139
+8,1,init,g8-caller,caller,False,False,0.6167,0.6167,0.7062,0.0,0.8667,,,1,False,init -> g8-caller,caller,,bfcl_147;bfcl_41;bfcl_87
+9,1,init,g9-planner,planner,False,False,0.85,0.85,0.7062,0.0,0.8667,,,1,False,init -> g9-planner,planner,,bfcl_103;bfcl_61;bfcl_17
+10,1,init,g10-caller,caller,False,False,0.6167,0.6167,0.7062,0.0,0.8667,,,1,False,init -> g10-caller,caller,,bfcl_53;bfcl_102;bfcl_67
+11,1,init,g11-planner,planner,False,False,0.3533,0.3533,0.7062,0.0,0.8667,,,1,False,init -> g11-planner,planner,,bfcl_85;bfcl_50;bfcl_48
+12,1,init,g12-caller,caller,False,False,0.6167,0.6167,0.7062,0.0,0.8667,,,1,False,init -> g12-caller,caller,,bfcl_1;bfcl_119;bfcl_124
+13,1,init,g13-planner,planner,True,False,0.3583,0.3833,0.7062,0.0,0.8667,,,1,False,init -> g13-planner,planner,,bfcl_84;bfcl_150;bfcl_136
+14,1,init,init,planner,False,False,0.85,0.85,0.7062,0.0,0.8667,,,0,False,init,,target_mismatch,bfcl_77;bfcl_40;bfcl_138
+15,1,init,g15-caller,caller,True,True,0.3833,0.6167,0.7063,0.0,0.8667,1,0.7063,1,False,init -> g15-caller,caller,,bfcl_10;bfcl_110;bfcl_132
+16,1,init,g16-planner,planner,True,False,0.3542,0.6,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g16-planner,planner,,bfcl_117;bfcl_123;bfcl_73
+17,1,g15-caller,g17-caller,caller,False,False,0.6167,0.6167,0.7063,0.03333333333333333,0.0333,1,0.7063,2,True,init -> g15-caller -> g17-caller,caller,,bfcl_125;bfcl_129;bfcl_62
+18,1,init,g18-planner,planner,False,False,0.3733,0.3733,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g18-planner,planner,,bfcl_131;bfcl_3;bfcl_99
+19,1,init,g19-planner,planner,True,False,0.3667,0.85,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g19-planner,planner,,bfcl_101;bfcl_39;bfcl_113
+20,1,init,g20-caller,caller,True,False,0.3833,0.6167,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g20-caller,caller,,bfcl_133;bfcl_35;bfcl_105
+21,1,g4-planner,g21-caller,caller,True,False,0.3708,0.6042,0.7063,0.03333333333333333,0.1333,1,0.7063,2,False,init -> g4-planner -> g21-caller,caller,,bfcl_120;bfcl_64;bfcl_118
+22,1,init,g22-planner,planner,False,False,0.85,0.85,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g22-planner,planner,,bfcl_26;bfcl_88;bfcl_37
+23,1,init,g23-caller,caller,True,False,0.6167,0.85,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g23-caller,caller,,bfcl_106;bfcl_137;bfcl_112
+24,1,init,g24-caller,caller,True,False,0.3667,0.8333,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g24-caller,caller,,bfcl_42;bfcl_93;bfcl_54
+25,1,init,g25-planner,planner,False,False,0.3356,0.3356,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g25-planner,planner,,bfcl_107;bfcl_30;bfcl_76
+26,1,init,g26-caller,caller,False,False,0.3833,0.3833,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g26-caller,caller,,bfcl_116;bfcl_144;bfcl_86
+27,1,init,g27-planner,planner,True,False,0.3542,0.5875,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g27-planner,planner,,bfcl_79;bfcl_142;bfcl_19
+28,1,init,init,planner,False,False,0.85,0.85,0.7063,0.03333333333333333,0.8333,1,0.7063,0,False,init,,unchanged_spec,bfcl_128;bfcl_68;bfcl_111
+29,1,init,g29-caller,caller,False,False,0.6167,0.6167,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g29-caller,caller,,bfcl_135;bfcl_96;bfcl_121
+30,2,init,g30-caller,caller,False,False,0.6167,0.6167,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g30-caller,caller,,bfcl_89;bfcl_99;bfcl_39
+31,2,init,g31-caller,caller,False,False,0.6167,0.6167,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g31-caller,caller,,bfcl_92;bfcl_95;bfcl_139
+32,2,g4-planner,g32-caller,caller,False,False,0.6167,0.6167,0.7063,0.03333333333333333,0.1333,1,0.7063,2,False,init -> g4-planner -> g32-caller,caller,,bfcl_131;bfcl_107;bfcl_82
+33,2,init,g33-caller,caller,True,False,0.6167,0.85,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g33-caller,caller,,bfcl_129;bfcl_75;bfcl_93
+34,2,init,g34-caller,caller,False,False,0.6167,0.3833,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g34-caller,caller,,bfcl_128;bfcl_53;bfcl_43
+35,2,init,g35-planner,planner,False,False,0.6,0.5917,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g35-planner,planner,,bfcl_4;bfcl_10;bfcl_19
+36,2,init,g36-caller,caller,False,False,0.1375,0.1375,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g36-caller,caller,,bfcl_84;bfcl_79;bfcl_67
+37,2,init,g37-planner,planner,False,False,0.14,0.14,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g37-planner,planner,,bfcl_110;bfcl_48;bfcl_3
+38,2,init,init,planner,False,False,0.85,0.85,0.7063,0.03333333333333333,0.8333,1,0.7063,0,False,init,,target_mismatch,bfcl_77;bfcl_123;bfcl_106
+39,2,init,g39-planner,planner,True,False,0.3583,0.3833,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g39-planner,planner,,bfcl_121;bfcl_86;bfcl_150
+40,2,init,g40-caller,caller,False,False,0.6167,0.3833,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g40-caller,caller,,bfcl_133;bfcl_100;bfcl_116
+41,2,init,g41-caller,caller,True,False,0.6167,0.85,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g41-caller,caller,,bfcl_1;bfcl_105;bfcl_103
+42,2,init,g42-caller,caller,True,False,0.15,0.3833,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g42-caller,caller,,bfcl_54;bfcl_144;bfcl_132
+43,2,init,g43-caller,caller,False,False,0.6167,0.6167,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g43-caller,caller,,bfcl_66;bfcl_111;bfcl_61
+44,2,g15-caller,g44-planner,planner,True,False,0.6,0.85,0.7063,0.03333333333333333,0.0333,1,0.7063,2,True,init -> g15-caller -> g44-planner,planner,,bfcl_113;bfcl_41;bfcl_88
+45,2,init,g45-planner,planner,True,False,0.3606,0.3697,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g45-planner,planner,,bfcl_76;bfcl_15;bfcl_50
+46,2,init,g46-planner,planner,False,False,0.3778,0.3708,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g46-planner,planner,,bfcl_65;bfcl_62;bfcl_119
+47,2,init,g47-caller,caller,False,False,0.6167,0.6167,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g47-caller,caller,,bfcl_26;bfcl_135;bfcl_33
+48,2,g4-planner,g48-planner,planner,False,False,0.85,0.85,0.7063,0.03333333333333333,0.1333,1,0.7063,2,False,init -> g4-planner -> g48-planner,planner,,bfcl_83;bfcl_97;bfcl_37
+49,2,init,g49-caller,caller,False,False,0.6167,0.6167,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g49-caller,caller,,bfcl_18;bfcl_124;bfcl_52
+50,2,init,g50-planner,planner,False,False,0.5867,0.5867,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g50-planner,planner,,bfcl_40;bfcl_85;bfcl_68
+51,2,init,g51-planner,planner,False,False,0.85,0.85,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g51-planner,planner,,bfcl_102;bfcl_112;bfcl_125
+52,2,init,g52-caller,caller,True,False,0.6167,0.85,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g52-caller,caller,,bfcl_146;bfcl_31;bfcl_137
+53,2,init,g53-planner,planner,False,False,0.35,0.35,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g53-planner,planner,,bfcl_22;bfcl_117;bfcl_142
+54,2,init,g54-caller,caller,False,False,0.3542,0.3542,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g54-caller,caller,,bfcl_35;bfcl_73;bfcl_42
+55,2,g4-planner,g55-caller,caller,False,False,0.1375,0.1375,0.7063,0.03333333333333333,0.1333,1,0.7063,2,False,init -> g4-planner -> g55-caller,caller,,bfcl_147;bfcl_64;bfcl_70
+56,2,init,g56-caller,caller,True,False,0.3833,0.6167,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g56-caller,caller,,bfcl_120;bfcl_5;bfcl_87
+57,2,g4-planner,g57-planner,planner,False,False,0.85,0.85,0.7063,0.03333333333333333,0.1333,1,0.7063,2,False,init -> g4-planner -> g57-planner,planner,,bfcl_118;bfcl_17;bfcl_101
+58,2,init,init,planner,False,False,0.85,0.85,0.7063,0.03333333333333333,0.8333,1,0.7063,0,False,init,,target_mismatch,bfcl_138;bfcl_136;bfcl_96
+59,2,init,g59-planner,planner,True,False,0.0917,0.1067,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g59-planner,planner,,bfcl_30;bfcl_134;bfcl_32
+60,3,init,g60-planner,planner,False,False,0.85,0.85,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g60-planner,planner,,bfcl_92;bfcl_89;bfcl_106
+61,3,init,init,planner,False,False,0.85,0.85,0.7063,0.03333333333333333,0.8333,1,0.7063,0,False,init,,unchanged_spec,bfcl_128;bfcl_52;bfcl_136
+62,3,g4-planner,g62-synthesizer,synthesizer,False,False,0.85,0.85,0.7063,0.03333333333333333,0.1333,1,0.7063,2,False,init -> g4-planner -> g62-synthesizer,synthesizer,,bfcl_73;bfcl_37;bfcl_107
+63,3,init,g63-planner,planner,False,False,0.3533,0.3533,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g63-planner,planner,,bfcl_19;bfcl_85;bfcl_139
+64,3,g4-planner,g64-planner,planner,False,False,0.85,0.6167,0.7063,0.03333333333333333,0.1333,1,0.7063,2,False,init -> g4-planner -> g64-planner,planner,,bfcl_111;bfcl_75;bfcl_93
+65,3,init,g65-caller,caller,False,False,0.6167,0.6167,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g65-caller,caller,,bfcl_131;bfcl_102;bfcl_26
+66,3,g4-planner,g66-planner,planner,True,False,0.3733,0.6167,0.7063,0.03333333333333333,0.1333,1,0.7063,2,False,init -> g4-planner -> g66-planner,planner,,bfcl_84;bfcl_124;bfcl_112
+67,3,init,g67-caller,caller,True,True,0.3833,0.6167,0.7063,0.03333333333333333,0.8333,1,0.7063,1,False,init -> g67-caller,caller,,bfcl_67;bfcl_5;bfcl_96
+68,3,init,g68-caller,caller,False,False,0.6167,0.6167,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g68-caller,caller,,bfcl_39;bfcl_68;bfcl_125
+69,3,init,g69-caller,caller,False,False,0.6167,0.6167,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g69-caller,caller,,bfcl_48;bfcl_1;bfcl_41
+70,3,init,g70-planner,planner,True,False,0.3667,0.6,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g70-planner,planner,,bfcl_105;bfcl_138;bfcl_142
+71,3,init,g71-caller,caller,False,False,0.3833,0.3833,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g71-caller,caller,,bfcl_132;bfcl_120;bfcl_18
+72,3,init,g72-planner,planner,False,False,0.6,0.5917,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g72-planner,planner,,bfcl_146;bfcl_4;bfcl_88
+73,3,g4-planner,g73-planner,planner,False,False,0.3733,0.3733,0.7063,0.03333333333333333,0.1333,1,0.7063,2,False,init -> g4-planner -> g73-planner,planner,,bfcl_110;bfcl_144;bfcl_3
+74,3,init,g74-planner,planner,True,False,0.8333,0.85,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g74-planner,planner,,bfcl_50;bfcl_22;bfcl_42
+75,3,init,g75-caller,caller,True,False,0.6167,0.85,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g75-caller,caller,,bfcl_137;bfcl_33;bfcl_17
+76,3,g4-planner,g76-planner,planner,False,False,0.3667,0.3467,0.7063,0.03333333333333333,0.1333,1,0.7063,2,False,init -> g4-planner -> g76-planner,planner,,bfcl_123;bfcl_117;bfcl_76
+77,3,init,g77-planner,planner,False,False,0.3583,0.3583,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g77-planner,planner,,bfcl_30;bfcl_62;bfcl_10
+78,3,init,g78-caller,caller,False,False,0.3833,0.3833,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g78-caller,caller,,bfcl_101;bfcl_66;bfcl_35
+79,3,g4-planner,g79-planner,planner,False,False,0.6,0.6,0.7063,0.03333333333333333,0.1333,1,0.7063,2,False,init -> g4-planner -> g79-planner,planner,,bfcl_103;bfcl_43;bfcl_118
+80,3,init,g80-planner,planner,False,False,0.1233,0.1233,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g80-planner,planner,,bfcl_83;bfcl_32;bfcl_135
+81,3,init,g81-planner,planner,True,False,0.5917,0.6167,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g81-planner,planner,,bfcl_82;bfcl_150;bfcl_95
+82,3,init,g82-planner,planner,False,False,0.85,0.85,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g82-planner,planner,,bfcl_121;bfcl_87;bfcl_129
+83,3,g67-caller,g83-planner,planner,False,False,0.6,0.6,0.7063,0.03333333333333333,0.0333,1,0.7063,2,False,init -> g67-caller -> g83-planner,planner,,bfcl_31;bfcl_113;bfcl_116
+84,3,init,g84-planner,planner,False,False,0.3833,0.3833,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g84-planner,planner,,bfcl_119;bfcl_70;bfcl_147
+85,3,init,g85-caller,caller,False,False,0.3653,0.3653,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g85-caller,caller,,bfcl_65;bfcl_64;bfcl_99
+86,3,init,g86-caller,caller,False,False,0.6167,0.6167,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g86-caller,caller,,bfcl_100;bfcl_40;bfcl_97
+87,3,init,g87-caller,caller,True,False,0.3833,0.6167,0.7063,0.03333333333333333,0.8,1,0.7063,1,False,init -> g87-caller,caller,,bfcl_54;bfcl_53;bfcl_15
+88,3,init,init,planner,False,False,0.85,0.85,0.7063,0.03333333333333333,0.8,1,0.7063,0,False,init,,target_mismatch,bfcl_77;bfcl_133;bfcl_61
+89,3,g15-caller,g89-planner,planner,True,False,0.1208,0.3708,0.7063,0.03333333333333333,0.0333,1,0.7063,2,True,init -> g15-caller -> g89-planner,planner,,bfcl_86;bfcl_134;bfcl_79
