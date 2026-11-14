@@ -1,0 +1,36 @@
+{
+  "runlog": "E:\\langchain\\MUSE\\outputs\\evotool_review\\generalization\\s43_diversity\\logs\\bfcl__bfcl_aligned_evolution.runlog.jsonl",
+  "generations": 30,
+  "unique_policy_specs": 29,
+  "changed_candidates": 28,
+  "accepted_candidates": 10,
+  "entered_population": 2,
+  "gain_events": 9,
+  "historically_novel_events": 4,
+  "historically_new_task_ids": [
+    "bfcl_127",
+    "bfcl_13",
+    "bfcl_16",
+    "bfcl_38"
+  ],
+  "initial_successes": 22,
+  "history_union": 26,
+  "final_population_ids": [
+    "init",
+    "g9-planner",
+    "g13-planner"
+  ],
+  "final_population_union": 23,
+  "best_historical_policy": "g28-planner",
+  "best_historical_single": 25,
+  "history_population_gap": 3,
+  "tasks_lost_from_final_population": [
+    "bfcl_13",
+    "bfcl_16",
+    "bfcl_38"
+  ],
+  "model": {
+    "name": "evotool-qwen3:8b",
+    "digest": "d4086d1a2305702c527154af5f05be9f5e8d9de00bf68a6a05694dce01324d79"
+  }
+}

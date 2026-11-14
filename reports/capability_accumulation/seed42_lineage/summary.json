@@ -1,0 +1,33 @@
+{
+  "runlog": "E:\\langchain\\MUSE\\tmp\\evotool_latest_audit\\results\\selection_s42\\baseline_90gen\\logs\\bfcl__bfcl_aligned_evolution.runlog.jsonl",
+  "generations": 30,
+  "unique_policy_specs": 30,
+  "changed_candidates": 29,
+  "accepted_candidates": 11,
+  "entered_population": 3,
+  "gain_events": 13,
+  "historically_novel_events": 4,
+  "historically_new_task_ids": [
+    "bfcl_127",
+    "bfcl_13",
+    "bfcl_16",
+    "bfcl_38"
+  ],
+  "initial_successes": 22,
+  "history_union": 26,
+  "final_population_ids": [
+    "init",
+    "g4-planner",
+    "g8-caller",
+    "g16-planner"
+  ],
+  "final_population_union": 26,
+  "best_historical_policy": "g22-planner",
+  "best_historical_single": 25,
+  "history_population_gap": 0,
+  "tasks_lost_from_final_population": [],
+  "model": {
+    "name": "evotool-qwen3:8b",
+    "digest": "d4086d1a2305702c527154af5f05be9f5e8d9de00bf68a6a05694dce01324d79"
+  }
+}

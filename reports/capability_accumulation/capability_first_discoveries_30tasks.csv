@@ -1,0 +1,5 @@
+﻿task,first_gen,epoch,first_policy,parent,module,accepted_on_batch,entered_population,present_in_any_descendant,present_in_final_lineage_descendant,present_in_final_population_union,present_in_final_best_reference,present_in_any_final_best
+bfcl_38,2,1,g2-planner,init,planner,0,0,0,0,1,1,1
+bfcl_13,3,1,g3-caller,init,caller,0,0,0,0,0,0,0
+bfcl_127,4,1,g4-planner,init,planner,1,1,1,0,1,1,1
+bfcl_16,12,1,g12-caller,init,caller,0,0,0,0,0,0,0

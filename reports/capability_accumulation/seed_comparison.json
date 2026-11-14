@@ -1,0 +1,53 @@
+{
+  "seeds": [
+    {
+      "seed": 42,
+      "generations": 30,
+      "unique_policy_specs": 30,
+      "gain_events": 13,
+      "historically_novel_events": 4,
+      "new_task_count": 4,
+      "history_union": 26,
+      "final_population_union": 26,
+      "best_historical_single": 25,
+      "history_population_gap": 0,
+      "lost_task_count": 0
+    },
+    {
+      "seed": 43,
+      "generations": 30,
+      "unique_policy_specs": 29,
+      "gain_events": 9,
+      "historically_novel_events": 4,
+      "new_task_count": 4,
+      "history_union": 26,
+      "final_population_union": 23,
+      "best_historical_single": 25,
+      "history_population_gap": 3,
+      "lost_task_count": 3
+    },
+    {
+      "seed": 44,
+      "generations": 30,
+      "unique_policy_specs": 30,
+      "gain_events": 7,
+      "historically_novel_events": 2,
+      "new_task_count": 3,
+      "history_union": 25,
+      "final_population_union": 23,
+      "best_historical_single": 24,
+      "history_population_gap": 2,
+      "lost_task_count": 2
+    }
+  ],
+  "means": {
+    "gain_events": 9.667,
+    "historically_novel_events": 3.333,
+    "new_task_count": 3.667,
+    "history_union": 25.667,
+    "final_population_union": 24.0,
+    "best_historical_single": 24.667,
+    "history_population_gap": 1.667,
+    "lost_task_count": 1.667
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "scope": {
+    "generations": 90,
+    "actual_prompt_changes": 84,
+    "lineage_policy_ids_including_aliases": 85,
+    "unique_3ep_policy_specs": 74,
+    "selection_tasks": 30,
+    "matrix_cells": 2220,
+    "missing_matrix_cells": 0,
+    "evidence_boundary": "Exact lineage metrics use the 30-task selection set, not independent generalization data."
+  },
+  "capability_generation": {
+    "parent_child_gain_mutations": 37,
+    "historically_novel_mutations": 4,
+    "new_tasks_beyond_initial": 4,
+    "initial_successes": 22,
+    "history_union": 26,
+    "exact_duplicate_strategy_attempts": 17,
+    "unchanged_parent_child_attempts": 6,
+    "revisited_historical_spec_after_prompt_change": 11,
+    "behavior_duplicate_of_history_attempts": 76,
+    "new_prompt_spec_but_no_new_historical_task": 69
+  },
+  "regression_and_net": {
+    "gain_and_regression_mutations": 4,
+    "gain_task_events": 47,
+    "regression_task_events": 11,
+    "net_task_events": 36,
+    "mutation_categories_all_90": {
+      "1_no_behavior_change": 39,
+      "2_gains_only": 26,
+      "3_gains_and_regressions": 3,
+      "4_regressions_only": 5,
+      "5_exact_duplicate_strategy": 17
+    }
+  },
+  "selection_and_retention": {
+    "accepted_on_training_batch_all_attempts": 28,
+    "entered_population_all_attempts": 3,
+    "gain_mutations_failed_training_gate": 23,
+    "gain_task_events_failed_training_gate": 28,
+    "gain_mutations_passed_gate_not_population": 12,
+    "gain_task_events_passed_gate_not_population": 16,
+    "gain_mutations_entered_population": 2,
+    "entered_gain_mutations_not_fully_inherited_by_final_lineage": 2,
+    "gain_task_events_entered_population": 3,
+    "gain_task_events_inherited_by_any_descendant": 3,
+    "gain_task_events_inherited_by_final_lineage": 0,
+    "gain_task_events_present_in_final_population": 28
+  },
+  "final_coverage": {
+    "historical_union": 26,
+    "historical_union_ids": [
+      "bfcl_11",
+      "bfcl_114",
+      "bfcl_12",
+      "bfcl_122",
+      "bfcl_126",
+      "bfcl_127",
+      "bfcl_13",
+      "bfcl_14",
+      "bfcl_143",
+      "bfcl_148",
+      "bfcl_16",
+      "bfcl_25",
+      "bfcl_28",
+      "bfcl_34",
+      "bfcl_38",
+      "bfcl_45",
+      "bfcl_46",
+      "bfcl_47",
+      "bfcl_49",
+      "bfcl_59",
+      "bfcl_6",
+      "bfcl_69",
+      "bfcl_74",
+      "bfcl_80",
+      "bfcl_91",
+      "bfcl_94"
+    ],
+    "final_population": [
+      "init",
+      "g4-planner",
+      "g15-caller",
+      "g67-caller"
+    ],
+    "final_population_union": 24,
+    "final_population_union_ids": [
+      "bfcl_11",
+      "bfcl_114",
+      "bfcl_12",
+      "bfcl_122",
+      "bfcl_126",
+      "bfcl_127",
+      "bfcl_14",
+      "bfcl_143",
+      "bfcl_148",
+      "bfcl_25",
+      "bfcl_28",
+      "bfcl_34",
+      "bfcl_38",
+      "bfcl_45",
+      "bfcl_46",
+      "bfcl_47",
+      "bfcl_49",
+      "bfcl_59",
+      "bfcl_6",
+      "bfcl_69",
+      "bfcl_74",
+      "bfcl_80",
+      "bfcl_91",
+      "bfcl_94"
+    ],
+    "final_population_best_score": 24,
+    "final_population_best_policies": [
+      "g4-planner"
+    ],
+    "final_population_best_reference": "g4-planner",
+    "historical_best_single_score": 25,
+    "historical_best_single_policies": [
+      "g21-caller",
+      "g32-caller",
+      "g48-planner",
+      "g51-planner",
+      "g64-planner"
+    ],
+    "history_minus_final_population_gap": 2,
+    "history_minus_final_population_task_ids": [
+      "bfcl_13",
+      "bfcl_16"
+    ],
+    "population_union_minus_best_single_gap": 0,
+    "population_union_minus_best_reference_task_ids": []
+  },
+  "natural_lineage_accumulation": {
+    "gain_mutations_on_non_initial_parent": 6,
+    "gain_mutations_retaining_all_parent_improvements_over_initial": 4,
+    "gain_mutations_retaining_at_least_one_parent_improvement_over_initial": 4,
+    "full_accumulation_generations": [
+      21,
+      32,
+      48,
+      64
+    ],
+    "parent_child_regression_mutations": 10
+  },
+  "module_epoch_breakdown": [
+    {
+      "dimension": "module",
+      "value": "caller",
+      "attempts": 39,
+      "prompt_changes": 39,
+      "new_prompt_specs": 34,
+      "parent_child_gain_mutations": 22,
+      "parent_child_gain_rate_pct": 56.41,
+      "historically_novel_mutations": 2,
+      "historically_novel_rate_pct": 5.13,
+      "gain_task_events": 24,
+      "regression_task_events": 5,
+      "net_task_events": 19
+    },
+    {
+      "dimension": "module",
+      "value": "planner",
+      "attempts": 50,
+      "prompt_changes": 44,
+      "new_prompt_specs": 38,
+      "parent_child_gain_mutations": 15,
+      "parent_child_gain_rate_pct": 34.09,
+      "historically_novel_mutations": 2,
+      "historically_novel_rate_pct": 4.55,
+      "gain_task_events": 23,
+      "regression_task_events": 6,
+      "net_task_events": 17
+    },
+    {
+      "dimension": "module",
+      "value": "synthesizer",
+      "attempts": 1,
+      "prompt_changes": 1,
+      "new_prompt_specs": 1,
+      "parent_child_gain_mutations": 0,
+      "parent_child_gain_rate_pct": 0.0,
+      "historically_novel_mutations": 0,
+      "historically_novel_rate_pct": 0.0,
+      "gain_task_events": 0,
+      "regression_task_events": 0,
+      "net_task_events": 0
+    },
+    {
+      "dimension": "epoch",
+      "value": 1,
+      "attempts": 30,
+      "prompt_changes": 28,
+      "new_prompt_specs": 28,
+      "parent_child_gain_mutations": 13,
+      "parent_child_gain_rate_pct": 46.43,
+      "historically_novel_mutations": 4,
+      "historically_novel_rate_pct": 14.29,
+      "gain_task_events": 17,
+      "regression_task_events": 5,
+      "net_task_events": 12
+    },
+    {
+      "dimension": "epoch",
+      "value": 2,
+      "attempts": 30,
+      "prompt_changes": 28,
+      "new_prompt_specs": 24,
+      "parent_child_gain_mutations": 14,
+      "parent_child_gain_rate_pct": 50.0,
+      "historically_novel_mutations": 0,
+      "historically_novel_rate_pct": 0.0,
+      "gain_task_events": 19,
+      "regression_task_events": 3,
+      "net_task_events": 16
+    },
+    {
+      "dimension": "epoch",
+      "value": 3,
+      "attempts": 30,
+      "prompt_changes": 28,
+      "new_prompt_specs": 21,
+      "parent_child_gain_mutations": 10,
+      "parent_child_gain_rate_pct": 35.71,
+      "historically_novel_mutations": 0,
+      "historically_novel_rate_pct": 0.0,
+      "gain_task_events": 11,
+      "regression_task_events": 3,
+      "net_task_events": 8
+    }
+  ],
+  "selection_repeat_progress": {
+    "available": true,
+    "raw_error_records": 120,
+    "selection": {
+      "expected_cells": 720,
+      "completed_cells": 720,
+      "remaining_cells": 0,
+      "latest_error_cells": 0,
+      "task_success_cells": 569
+    },
+    "unseen": {
+      "expected_cells": 1344,
+      "completed_cells": 1338,
+      "remaining_cells": 6,
+      "latest_error_cells": 6,
+      "task_success_cells": 1074
+    },
+    "selection_policy_stability": [
+      {
+        "policy": "g21",
+        "repeats_completed": 3,
+        "mean_successes": 24.0,
+        "min_successes": 24,
+        "max_successes": 24
+      },
+      {
+        "policy": "g23",
+        "repeats_completed": 3,
+        "mean_successes": 22.333,
+        "min_successes": 22,
+        "max_successes": 23
+      },
+      {
+        "policy": "g32",
+        "repeats_completed": 3,
+        "mean_successes": 25.0,
+        "min_successes": 25,
+        "max_successes": 25
+      },
+      {
+        "policy": "g4",
+        "repeats_completed": 3,
+        "mean_successes": 24.0,
+        "min_successes": 24,
+        "max_successes": 24
+      },
+      {
+        "policy": "g44",
+        "repeats_completed": 3,
+        "mean_successes": 24.333,
+        "min_successes": 24,
+        "max_successes": 25
+      },
+      {
+        "policy": "g44_g21",
+        "repeats_completed": 3,
+        "mean_successes": 24.333,
+        "min_successes": 24,
+        "max_successes": 25
+      },
+      {
+        "policy": "g4_g23",
+        "repeats_completed": 3,
+        "mean_successes": 24.0,
+        "min_successes": 24,
+        "max_successes": 24
+      },
+      {
+        "policy": "initial",
+        "repeats_completed": 3,
+        "mean_successes": 21.667,
+        "min_successes": 21,
+        "max_successes": 22
+      }
+    ]
+  },
+  "combination_case": {
+    "evidence": "g4Planner+g21Caller reaches 25/30; g4Planner+g23Caller loses bfcl_16 although InitialPlanner+g23Caller is 3/3.",
+    "limit": "Concrete parent-context/module-interface case only; not a population-frequency estimate."
+  },
+  "pending_validation": {
+    "unseen_not_final": true,
+    "different_seeds_not_run": [
+      42,
+      43,
+      44
+    ]
+  }
+}
